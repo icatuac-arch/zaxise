@@ -101,15 +101,16 @@ export default function DealsPane() {
               className="flex items-center gap-3 py-[11px] border-b border-[#ebeaf2] min-h-[76px] transition-colors hover:bg-[#fafafe] -mx-1 px-1 rounded-lg"
             >
               <div
-                className="w-14 h-14 rounded-[14px] grid place-items-center shrink-0 overflow-hidden p-1"
+                className="w-[60px] h-[60px] rounded-[14px] grid place-items-center shrink-0 overflow-hidden"
                 style={{ background: CATEGORY_BG[deal.category] || "#eee9ff" }}
               >
                 {deal.image_url ? (
                   <img
                     src={deal.image_url}
                     alt=""
-                    className="max-w-full max-h-full object-contain"
+                    className="w-full h-full object-cover"
                     loading="lazy"
+                    referrerPolicy="no-referrer"
                   />
                 ) : (
                   <span className="text-[20px]">🏷️</span>

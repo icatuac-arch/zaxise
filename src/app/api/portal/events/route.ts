@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 
-// Fetch upcoming events from IndianPrograms' Supabase (shared instance)
 export async function GET(request: NextRequest) {
   const metro = request.nextUrl.searchParams.get('metro') || ''
+  const category = request.nextUrl.searchParams.get('category') || ''
+  const language = request.nextUrl.searchParams.get('language') || ''
+  const dateFrom = request.nextUrl.searchParams.get('dateFrom') || ''
+  const dateTo = request.nextUrl.searchParams.get('dateTo') || ''
   const limit = Math.min(
-    parseInt(request.nextUrl.searchParams.get('limit') || '8'),
-    20
+    parseInt(request.nextUrl.searchParams.get('limit') || '10'),
+    30
   )
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -22,16 +25,17 @@ export async function GET(request: NextRequest) {
 
   let query = supabase
     .from('events')
-    .select('id, title, date, time, venue, city, state, metro_region, category, price, image_url')
+    .select('id, title, date, time, venue, city, state, metro_region, category, language, price, image_url')
     .eq('status', 'published')
     .is('deleted_at', null)
-    .gte('date', today)
+    .gte('date', dateFrom || today)
     .order('date', { ascending: true })
     .limit(limit)
 
-  if (metro) {
-    query = query.eq('metro_region', metro)
-  }
+  if (metro) query = query.eq('metro_region', metro)
+  if (category) query = query.eq('category', category)
+  if (language) query = query.eq('language', language)
+  if (dateTo) query = query.lte('date', dateTo)
 
   const { data, error } = await query
 
@@ -40,11 +44,9 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ events: [] })
   }
 
-  // Map metro_region to metro_area for the frontend
   const events = (data || []).map(e => ({
     ...e,
     metro_area: e.metro_region,
-    slug: '',
     short_id: e.id,
   }))
 
