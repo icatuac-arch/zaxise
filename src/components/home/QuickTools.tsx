@@ -96,7 +96,7 @@ const TOOLS: ToolConfig[] = [
     label: "Color picker",
     title: "Color picker",
     fields: [
-      { label: "Choose color", type: "color", defaultValue: "#e8ac51" },
+      { label: "Choose color", type: "color", defaultValue: "#6548ef" },
     ],
     calculate: (v) => v[0],
   },
@@ -137,6 +137,13 @@ const TOOLS: ToolConfig[] = [
   },
 ];
 
+// Alternating icon colors: purple, green, orange
+const ICON_STYLES = [
+  { bg: "#efebff", color: "#6648e3" },
+  { bg: "#e4f7f1", color: "#087d70" },
+  { bg: "#ffecdf", color: "#b45a27" },
+];
+
 export default function QuickTools({ searchQuery }: Props) {
   const [activeTool, setActiveTool] = useState<ToolConfig | null>(null);
   const [fieldValues, setFieldValues] = useState<string[]>([]);
@@ -166,17 +173,23 @@ export default function QuickTools({ searchQuery }: Props) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {TOOLS.map((tool) => {
+      <div className="grid grid-cols-2 gap-[10px] sm:grid-cols-4">
+        {TOOLS.map((tool, idx) => {
           const visible = !q || tool.label.toLowerCase().includes(q);
           if (!visible) return null;
+          const style = ICON_STYLES[idx % ICON_STYLES.length];
           return (
             <button
               key={tool.id}
               onClick={() => openTool(tool)}
-              className="card-lift flex items-center gap-3 rounded-[10px] border border-line bg-white p-3.5 text-left text-ink"
+              className="card-lift flex items-center gap-[10px] rounded-[14px] border border-line bg-white p-[16px_13px] text-left text-ink"
             >
-              <span className="text-xl">{tool.icon}</span>
+              <span
+                className="grid place-items-center w-[34px] h-[34px] shrink-0 rounded-[10px] text-[14px] font-[600]"
+                style={{ background: style.bg, color: style.color }}
+              >
+                {tool.icon}
+              </span>
               <b className="text-[13px]">{tool.label}</b>
             </button>
           );
@@ -184,17 +197,17 @@ export default function QuickTools({ searchQuery }: Props) {
       </div>
 
       {/* No results */}
-      {q &&
-        TOOLS.every((t) => !t.label.toLowerCase().includes(q)) && (
-          <div className="mt-3 rounded-[17px] border border-line bg-white p-5 text-sm text-muted">
-            No matching services. Try another search.
-          </div>
-        )}
+      {q && TOOLS.every((t) => !t.label.toLowerCase().includes(q)) && (
+        <div className="mt-3 rounded-[20px] border border-line bg-white p-5 text-sm text-muted">
+          No matching services. Try another search.
+        </div>
+      )}
 
       {/* Modal */}
       {activeTool && (
         <div
-          className="fixed inset-0 z-20 grid place-items-center bg-navy/50 p-5"
+          className="fixed inset-0 z-20 grid place-items-center p-5"
+          style={{ background: "rgba(27,23,61,0.4)", backdropFilter: "blur(7px)" }}
           onClick={(e) => {
             if (e.target === e.currentTarget) closeTool();
           }}
@@ -205,9 +218,12 @@ export default function QuickTools({ searchQuery }: Props) {
           aria-modal="true"
           aria-labelledby="tool-title"
         >
-          <div className="w-full max-w-[460px] rounded-[18px] bg-white p-6">
+          <div
+            className="w-full max-w-[460px] rounded-[24px] bg-white p-6"
+            style={{ boxShadow: "0 20px 70px rgba(25,20,43,0.2)" }}
+          >
             <div className="flex items-start justify-between">
-              <h2 id="tool-title" className="font-serif text-xl">
+              <h2 id="tool-title" className="text-xl font-[750]" style={{ letterSpacing: "-0.5px" }}>
                 {activeTool.title}
               </h2>
               <button
@@ -231,7 +247,7 @@ export default function QuickTools({ searchQuery }: Props) {
                         next[i] = e.target.value;
                         setFieldValues(next);
                       }}
-                      className="mt-1 block w-full rounded-lg border border-line p-2.5 text-sm outline-none focus:border-gold"
+                      className="mt-1 block w-full rounded-[8px] border border-line p-2.5 text-sm outline-none focus:border-[#9b89ff]"
                       rows={3}
                     />
                   ) : (
@@ -243,7 +259,7 @@ export default function QuickTools({ searchQuery }: Props) {
                         next[i] = e.target.value;
                         setFieldValues(next);
                       }}
-                      className="mt-1 block w-full rounded-lg border border-line p-2.5 text-sm outline-none focus:border-gold"
+                      className="mt-1 block w-full rounded-[8px] border border-line p-2.5 text-sm outline-none focus:border-[#9b89ff]"
                     />
                   )}
                 </label>
@@ -252,14 +268,14 @@ export default function QuickTools({ searchQuery }: Props) {
 
             <button
               onClick={calculate}
-              className="mt-4 w-full rounded-[9px] bg-gold px-5 py-3 font-[800] text-[#16283b]"
+              className="mt-4 w-full rounded-[12px] bg-[#6849ed] px-5 py-3 text-[13px] font-[700] text-white transition-colors hover:bg-[#5234d5]"
             >
               Calculate
             </button>
 
             {result && (
               <div
-                className="mt-4 whitespace-pre-wrap break-all text-[22px] font-bold"
+                className="mt-4 whitespace-pre-wrap break-all text-[22px] font-bold text-[#6245d9]"
                 aria-live="polite"
               >
                 {result}

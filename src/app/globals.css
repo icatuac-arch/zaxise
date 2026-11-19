@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #10243d;
-  --ink: #192c42;
-  --muted: #657689;
-  --gold: #e8ac51;
-  --gold-dark: #936321;
-  --gold-hover: #a66f20;
-  --paper: #f5f3ee;
+  --navy: #171a2c;
+  --ink: #202235;
+  --muted: #62677c;
+  --gold: #6548ef;
+  --gold-dark: #6245d9;
+  --gold-hover: #5234d5;
+  --paper: #f7f8fc;
   --white: #ffffff;
-  --line: #e5e3dc;
-  --green: #1b7765;
-  --green-light: #60d5ad;
+  --line: #e8e9f1;
+  --green: #087d70;
+  --green-light: #18b99a;
   --surface: #ffffff;
-  --surface-hover: #fcfaf5;
+  --surface-hover: #f8f8fc;
+  --purple-x: #7254ef;
 }
 
 @theme inline {
@@ -27,9 +28,9 @@
   --color-green: var(--green);
   --color-green-light: var(--green-light);
   --color-surface: var(--surface);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: var(--font-geist-mono);
-  --font-serif: Georgia, "Times New Roman", serif;
+  --font-serif: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* ── allcalc / calculator compatibility layer ── */
   --color-primary: var(--navy);
@@ -47,7 +48,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 15px;
   line-height: 1.55;
 }
@@ -57,12 +58,12 @@ html {
 }
 
 ::selection {
-  background: rgba(232, 172, 81, 0.25);
+  background: rgba(101, 72, 239, 0.18);
 }
 
 /* Live dot pulse */
 @keyframes pulse-dot {
-  50% { box-shadow: 0 0 0 8px rgba(96, 213, 173, 0); }
+  50% { box-shadow: 0 0 0 8px rgba(24, 185, 154, 0); }
 }
 
 .dot-pulse {
@@ -70,7 +71,7 @@ html {
   height: 8px;
   border-radius: 50%;
   background: var(--green-light);
-  box-shadow: 0 0 0 4px rgba(96, 213, 173, 0.13);
+  box-shadow: 0 0 0 4px rgba(24, 185, 154, 0.13);
   animation: pulse-dot 2s infinite;
 }
 
@@ -80,19 +81,20 @@ html {
 }
 .card-lift:hover {
   transform: translateY(-3px);
-  border-color: #c5a16c;
-  box-shadow: 0 7px 20px rgba(24, 44, 66, 0.06);
+  border-color: #c8bbff;
+  box-shadow: 0 9px 25px rgba(107, 83, 207, 0.07);
 }
 
 /* Hero gradient */
 .hero-gradient {
-  background: radial-gradient(ellipse at 85% 10%, #315c70 0, transparent 45%),
-    linear-gradient(120deg, #10243d, #173c51);
+  background: linear-gradient(120deg, #eeebff 0%, #f4f0ff 48%, #dff9f4 100%);
+  border: 1px solid #e6e1fa;
+  box-shadow: 0 12px 40px rgba(74, 60, 156, 0.035);
 }
 
 /* Event art gradient */
 .event-gradient {
-  background: linear-gradient(120deg, #1e574d, #133d51);
+  background: linear-gradient(125deg, #6547e8, #9b69ee);
 }
 
 /* Scrollbar */
