@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { proxyImg } from "@/lib/imgProxy";
 
 interface Deal {
   id: string;
@@ -106,11 +107,10 @@ export default function DealsPane() {
               >
                 {deal.image_url ? (
                   <img
-                    src={deal.image_url}
+                    src={proxyImg(deal.image_url)}
                     alt=""
                     className="w-full h-full object-cover"
                     loading="lazy"
-                    referrerPolicy="no-referrer"
                   />
                 ) : (
                   <span className="text-[20px]">🏷️</span>

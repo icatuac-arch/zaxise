@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { proxyImg } from "@/lib/imgProxy";
 import {
   ExternalLink,
   ChevronDown,
@@ -32,7 +33,7 @@ export default function DealCard({ deal }: DealCardProps) {
       {/* Image */}
       <div className="relative h-48 bg-zinc-900 flex items-center justify-center p-4">
         <img
-          src={deal.image_url}
+          src={proxyImg(deal.image_url)}
           alt={deal.product_name}
           className="max-h-full max-w-full object-contain"
           loading="lazy"
