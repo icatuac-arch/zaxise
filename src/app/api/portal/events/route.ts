@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 
 // Fetch upcoming events from IndianPrograms' Supabase (shared instance)
-// filtered by metro area
 export async function GET(request: NextRequest) {
   const metro = request.nextUrl.searchParams.get('metro') || ''
   const limit = Math.min(
@@ -19,16 +18,19 @@ export async function GET(request: NextRequest) {
 
   const supabase = createClient(supabaseUrl, supabaseKey)
 
+  const today = new Date().toISOString().split('T')[0]
+
   let query = supabase
     .from('events')
-    .select('id, title, date, time, venue, city, state, metro_area, category, price, image_url, slug, short_id')
+    .select('id, title, date, time, venue, city, state, metro_region, category, price, image_url')
     .eq('status', 'published')
-    .gte('date', new Date().toISOString().split('T')[0])
+    .is('deleted_at', null)
+    .gte('date', today)
     .order('date', { ascending: true })
     .limit(limit)
 
   if (metro) {
-    query = query.eq('metro_area', metro)
+    query = query.eq('metro_region', metro)
   }
 
   const { data, error } = await query
@@ -38,8 +40,16 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ events: [] })
   }
 
+  // Map metro_region to metro_area for the frontend
+  const events = (data || []).map(e => ({
+    ...e,
+    metro_area: e.metro_region,
+    slug: '',
+    short_id: e.id,
+  }))
+
   return NextResponse.json({
-    events: data || [],
+    events,
     metro: metro || 'all',
   })
 }
