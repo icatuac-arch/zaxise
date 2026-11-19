@@ -1,0 +1,9 @@
+{
+  "id": "0101",
+  "category": "Ocean",
+  "text": "More than 80% of the ocean floor remains unmapped and unexplored — we know more about the surface of Mars.",
+  "source": { "name": "NOAA", "url": "https://noaa.gov" },
+  "tags": ["ocean-floor", "exploration"],
+  "difficulty": "easy",
+  "publishedAt": "2026-04-25T00:00:00Z"
+}

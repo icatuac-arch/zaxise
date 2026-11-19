@@ -1,0 +1,9 @@
+{
+  "id": "0152",
+  "category": "Math",
+  "text": "A shuffled deck of 52 cards has so many possible arrangements (8\u00d710^67) that no two properly shuffled decks in history have likely ever been in the same order.",
+  "source": { "name": "Stanford Mathematics", "url": "https://mathematics.stanford.edu" },
+  "tags": ["combinatorics", "probability"],
+  "difficulty": "medium",
+  "publishedAt": "2026-06-15T00:00:00Z"
+}

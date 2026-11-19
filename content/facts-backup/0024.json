@@ -1,0 +1,9 @@
+{
+  "id": "0024",
+  "category": "Science",
+  "text": "A single bolt of lightning contains enough energy to toast 100,000 slices of bread, reaching temperatures five times hotter than the Sun's surface.",
+  "source": { "name": "NOAA", "url": "https://noaa.gov" },
+  "tags": ["lightning", "energy"],
+  "difficulty": "medium",
+  "publishedAt": "2026-02-07T00:00:00Z"
+}

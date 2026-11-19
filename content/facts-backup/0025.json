@@ -1,0 +1,9 @@
+{
+  "id": "0025",
+  "category": "Technology",
+  "text": "The first 1GB hard drive, introduced by IBM in 1980, weighed over 500 pounds and cost $40,000.",
+  "source": { "name": "IBM", "url": "https://ibm.com" },
+  "tags": ["storage", "ibm"],
+  "difficulty": "easy",
+  "publishedAt": "2026-02-08T00:00:00Z"
+}

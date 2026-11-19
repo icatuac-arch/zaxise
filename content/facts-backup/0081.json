@@ -1,0 +1,9 @@
+{
+  "id": "0081",
+  "category": "Technology",
+  "text": "South Korea's internet speed is consistently among the fastest in the world — averaging over 200 Mbps.",
+  "source": { "name": "Ookla Speedtest Global Index", "url": "https://speedtest.net/global-index" },
+  "tags": ["south-korea", "internet"],
+  "difficulty": "easy",
+  "publishedAt": "2026-04-05T00:00:00Z"
+}

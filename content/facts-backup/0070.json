@@ -1,0 +1,9 @@
+{
+  "id": "0070",
+  "category": "Geography",
+  "text": "Colombia is the only country in South America with coastlines on both the Pacific Ocean and the Caribbean Sea.",
+  "source": { "name": "CIA World Factbook", "url": "https://cia.gov/the-world-factbook" },
+  "tags": ["colombia", "coastlines"],
+  "difficulty": "medium",
+  "publishedAt": "2026-03-25T00:00:00Z"
+}

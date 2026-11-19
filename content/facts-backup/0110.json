@@ -1,0 +1,9 @@
+{
+  "id": "0110",
+  "category": "Ocean",
+  "text": "The ocean produces over 50% of the world's oxygen through phytoplankton — tiny marine plants most people have never heard of.",
+  "source": { "name": "NOAA", "url": "https://noaa.gov" },
+  "tags": ["phytoplankton", "oxygen"],
+  "difficulty": "medium",
+  "publishedAt": "2026-05-04T00:00:00Z"
+}

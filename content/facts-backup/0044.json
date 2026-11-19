@@ -1,0 +1,9 @@
+{
+  "id": "0044",
+  "category": "Space",
+  "text": "The International Space Station travels at about 28,000 km/h, orbiting Earth roughly every 90 minutes.",
+  "source": { "name": "NASA", "url": "https://nasa.gov" },
+  "tags": ["iss", "orbit"],
+  "difficulty": "easy",
+  "publishedAt": "2026-02-27T00:00:00Z"
+}

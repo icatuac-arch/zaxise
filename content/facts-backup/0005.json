@@ -1,0 +1,9 @@
+{
+  "id": "0005",
+  "category": "Geography",
+  "text": "Russia has 11 time zones, more than any other country. When it's midnight in Kaliningrad, it's already 10 AM in Kamchatka.",
+  "source": { "name": "World Atlas", "url": "https://worldatlas.com" },
+  "tags": ["russia", "time-zones"],
+  "difficulty": "easy",
+  "publishedAt": "2026-01-19T00:00:00Z"
+}

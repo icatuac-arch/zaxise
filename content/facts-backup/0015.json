@@ -1,0 +1,9 @@
+{
+  "id": "0015",
+  "category": "Science",
+  "text": "If you could fold a piece of paper 42 times, it would reach the Moon. Each fold doubles the thickness exponentially.",
+  "source": { "name": "Physics Central", "url": "https://physicscentral.com" },
+  "tags": ["mathematics", "exponential"],
+  "difficulty": "medium",
+  "publishedAt": "2026-01-29T00:00:00Z"
+}

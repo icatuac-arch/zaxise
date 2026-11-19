@@ -1,0 +1,9 @@
+{
+  "id": "0200",
+  "category": "Ocean",
+  "text": "The Maldives is the lowest-lying country on Earth — its average ground level is just 1.5 meters above sea level, making it critically vulnerable to rising seas.",
+  "source": { "name": "IPCC", "url": "https://ipcc.ch" },
+  "tags": ["maldives", "sea-level", "climate"],
+  "difficulty": "easy",
+  "publishedAt": "2026-08-02T00:00:00Z"
+}

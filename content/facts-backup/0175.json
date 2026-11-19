@@ -1,0 +1,9 @@
+{
+  "id": "0175",
+  "category": "Medicine",
+  "text": "Smallpox is the only human disease to have been completely eradicated — declared eliminated by WHO in 1980 after a global vaccination campaign.",
+  "source": { "name": "WHO", "url": "https://who.int" },
+  "tags": ["smallpox", "vaccination", "eradication"],
+  "difficulty": "easy",
+  "publishedAt": "2026-07-08T00:00:00Z"
+}

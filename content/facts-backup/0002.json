@@ -1,0 +1,9 @@
+{
+  "id": "0002",
+  "category": "Animals",
+  "text": "Octopuses have three hearts, nine brains, and blue blood. Two hearts pump blood to the gills, while the third pumps it to the rest of the body.",
+  "source": { "name": "Smithsonian", "url": "https://ocean.si.edu" },
+  "tags": ["octopus", "marine-life"],
+  "difficulty": "easy",
+  "publishedAt": "2026-01-16T00:00:00Z"
+}

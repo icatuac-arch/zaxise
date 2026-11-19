@@ -1,0 +1,9 @@
+{
+  "id": "0007",
+  "category": "Technology",
+  "text": "The first computer bug was an actual bug — a moth found trapped in a relay of the Harvard Mark II computer in 1947.",
+  "source": { "name": "Computer History Museum", "url": "https://computerhistory.org" },
+  "tags": ["computers", "debugging"],
+  "difficulty": "easy",
+  "publishedAt": "2026-01-21T00:00:00Z"
+}

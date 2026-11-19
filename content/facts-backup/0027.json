@@ -1,0 +1,9 @@
+{
+  "id": "0027",
+  "category": "Language",
+  "text": "The sentence 'The quick brown fox jumps over the lazy dog' uses every letter of the English alphabet at least once. It's called a pangram.",
+  "source": { "name": "Merriam-Webster", "url": "https://merriam-webster.com" },
+  "tags": ["pangram", "alphabet"],
+  "difficulty": "easy",
+  "publishedAt": "2026-02-10T00:00:00Z"
+}

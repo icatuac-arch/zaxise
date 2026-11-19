@@ -1,0 +1,9 @@
+{
+  "id": "0149",
+  "category": "Math",
+  "text": "The ancient Babylonians used a base-60 number system, which is why we still have 60 seconds in a minute and 360 degrees in a circle.",
+  "source": { "name": "British Museum", "url": "https://britishmuseum.org" },
+  "tags": ["babylon", "base-60", "time"],
+  "difficulty": "medium",
+  "publishedAt": "2026-06-12T00:00:00Z"
+}
