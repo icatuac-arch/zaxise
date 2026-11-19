@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { createClient } from "@supabase/supabase-js";
 import DealsBoard from "@/components/deals/DealsBoard";
 import type { TechDeal } from "@/lib/deals";
@@ -23,7 +24,6 @@ async function getLatestDeals(): Promise<{
 
   const supabase = createClient(supabaseUrl, supabaseKey);
 
-  // Get the latest feed date
   const { data: feedData } = await supabase
     .from("tech_deals_feeds")
     .select("feed_date")
@@ -37,7 +37,6 @@ async function getLatestDeals(): Promise<{
 
   const feedDate = feedData.feed_date;
 
-  // Get all deals for that date
   const { data: deals } = await supabase
     .from("tech_deals")
     .select("*")
@@ -48,7 +47,6 @@ async function getLatestDeals(): Promise<{
     return { deals: [], feedDate, lastVerified: null };
   }
 
-  // Find the most recent verification timestamp
   const lastVerified = deals.reduce<string | null>((latest, deal) => {
     if (!deal.last_verified_at) return latest;
     if (!latest) return deal.last_verified_at;
@@ -62,15 +60,17 @@ async function getLatestDeals(): Promise<{
   };
 }
 
-export default async function DealsPage() {
+async function DealsContent() {
   const { deals, feedDate, lastVerified } = await getLatestDeals();
 
   if (deals.length === 0) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-border bg-surface py-20 text-center">
+        <div className="rounded-2xl border border-line bg-white py-20 text-center">
           <p className="text-4xl mb-4">🏷️</p>
-          <h1 className="text-2xl font-bold">Tech Deals Coming Soon</h1>
+          <h1 className="text-2xl font-bold text-navy">
+            Tech Deals Coming Soon
+          </h1>
           <p className="mt-2 text-muted">
             Verified daily tech deals will appear here once the first feed is
             pushed. Check back soon!
@@ -87,6 +87,26 @@ export default async function DealsPage() {
         feedDate={feedDate}
         lastVerified={lastVerified}
       />
+    </div>
+  );
+}
+
+function DealsLoading() {
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+      <div className="animate-pulse rounded-2xl border border-line bg-white py-20 text-center">
+        <p className="text-muted">Loading deals...</p>
+      </div>
+    </div>
+  );
+}
+
+export default function DealsPage() {
+  return (
+    <div className="min-h-screen bg-paper">
+      <Suspense fallback={<DealsLoading />}>
+        <DealsContent />
+      </Suspense>
     </div>
   );
 }

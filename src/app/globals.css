@@ -1,96 +1,111 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --accent: #6366f1;
-  --accent-light: #818cf8;
-  --surface: #18181b;
-  --surface-hover: #27272a;
-  --border: #27272a;
-  --muted: #a1a1aa;
+  --navy: #10243d;
+  --ink: #192c42;
+  --muted: #657689;
+  --gold: #e8ac51;
+  --gold-dark: #936321;
+  --gold-hover: #a66f20;
+  --paper: #f5f3ee;
+  --white: #ffffff;
+  --line: #e5e3dc;
+  --green: #1b7765;
+  --green-light: #60d5ad;
+  --surface: #ffffff;
+  --surface-hover: #fcfaf5;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-surface: var(--surface);
-  --color-surface-hover: var(--surface-hover);
-  --color-border: var(--border);
+  --color-navy: var(--navy);
+  --color-ink: var(--ink);
   --color-muted: var(--muted);
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --color-paper: var(--paper);
+  --color-line: var(--line);
+  --color-green: var(--green);
+  --color-green-light: var(--green-light);
+  --color-surface: var(--surface);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: Georgia, "Times New Roman", serif;
+
+  /* ── allcalc / calculator compatibility layer ── */
+  --color-primary: var(--navy);
+  --color-primary-dark: #0c1d30;
+  --color-dark: var(--ink);
+  --color-dark-light: var(--muted);
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-border: var(--line);
+  --color-input: var(--surface);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
+::selection {
+  background: rgba(232, 172, 81, 0.25);
+}
+
+/* Live dot pulse */
+@keyframes pulse-dot {
+  50% { box-shadow: 0 0 0 8px rgba(96, 213, 173, 0); }
+}
+
+.dot-pulse {
   width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green-light);
+  box-shadow: 0 0 0 4px rgba(96, 213, 173, 0.13);
+  animation: pulse-dot 2s infinite;
+}
+
+/* Card hover */
+.card-lift {
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  border-color: #c5a16c;
+  box-shadow: 0 7px 20px rgba(24, 44, 66, 0.06);
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: radial-gradient(ellipse at 85% 10%, #315c70 0, transparent 45%),
+    linear-gradient(120deg, #10243d, #173c51);
+}
+
+/* Event art gradient */
+.event-gradient {
+  background: linear-gradient(120deg, #1e574d, #133d51);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--paper);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background: var(--line);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted);
-}
-
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7, #ec4899);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Glow effect */
-.glow {
-  box-shadow: 0 0 40px rgba(99, 102, 241, 0.15), 0 0 80px rgba(99, 102, 241, 0.05);
-}
-
-/* Animated gradient border */
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-.animated-border {
-  background: linear-gradient(270deg, #6366f1, #8b5cf6, #a855f7, #ec4899, #6366f1);
-  background-size: 300% 300%;
-  animation: gradient-shift 6s ease infinite;
-}
-
-/* Floating animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Pulse glow */
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.4); }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
 }

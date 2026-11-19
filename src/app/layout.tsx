@@ -1,8 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,41 +13,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zaxise — Everything You Need, One Platform",
+  title: "ZAXISE — Your world, closer.",
   description:
-    "Your all-in-one digital platform. Events, deals, tools, travel, trivia, calculators, social media, and more — all under one roof.",
-  keywords: [
-    "events",
-    "deals",
-    "tools",
-    "travel",
-    "trivia",
-    "calculators",
-    "social media",
-    "ticketing",
-    "Indian programs",
-    "media tools",
-  ],
+    "Discover Indian events across America, stay connected to home, find useful tools and make everyday life a little easier.",
   openGraph: {
-    title: "Zaxise — Everything You Need, One Platform",
+    title: "ZAXISE — Your world, closer.",
     description:
-      "Your all-in-one digital platform. Events, deals, tools, travel, trivia, calculators, social media, and more.",
+      "Events, deals, tools, time zones, travel, and more — all in one place for the Indian-American community.",
     type: "website",
     url: "https://zaxise.com",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#10243d",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,5 +1,5 @@
-import PortalHome from "@/components/portal/PortalHome";
+import ZaxiseHome from "@/components/home/ZaxiseHome";
 
 export default function Home() {
-  return <PortalHome />;
+  return <ZaxiseHome />;
 }
