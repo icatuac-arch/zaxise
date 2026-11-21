@@ -141,8 +141,8 @@ export default function EventsPane() {
   return (
     <section
       id="community"
-      className="rounded-[20px] border border-[#ebebf3] bg-white p-[21px]"
-      style={{ boxShadow: "0 3px 12px rgba(37,41,72,0.016)" }}
+      className="rounded-[20px] border border-[#E9DFE4] bg-white p-[21px]"
+      style={{ boxShadow: "0 12px 36px #6A30400A" }}
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
@@ -160,7 +160,7 @@ export default function EventsPane() {
         <select
           value={regionIdx}
           onChange={(e) => setRegionIdx(Number(e.target.value))}
-          className="rounded-[10px] border border-line bg-[#f8f8fc] px-2 py-[7px] text-[12px] text-ink"
+          className="rounded-[10px] border border-[#E9DFE4] bg-[#FAF8F9] px-2 py-[7px] text-[12px] text-ink"
           aria-label="Choose your city"
         >
           {REGIONS.map((r, i) => (
@@ -176,7 +176,7 @@ export default function EventsPane() {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="rounded-[8px] border border-line bg-[#f8f8fc] px-2 py-[5px] text-[11px] text-ink"
+          className="rounded-[8px] border border-[#E9DFE4] bg-[#FAF8F9] px-2 py-[5px] text-[11px] text-ink"
           aria-label="Event type"
         >
           {CATEGORIES.map((c) => (
@@ -189,7 +189,7 @@ export default function EventsPane() {
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
-          className="rounded-[8px] border border-line bg-[#f8f8fc] px-2 py-[5px] text-[11px] text-ink"
+          className="rounded-[8px] border border-[#E9DFE4] bg-[#FAF8F9] px-2 py-[5px] text-[11px] text-ink"
           aria-label="Language"
         >
           {LANGUAGES.map((l) => (
@@ -202,7 +202,7 @@ export default function EventsPane() {
         <select
           value={dateRange}
           onChange={(e) => setDateRange(e.target.value)}
-          className="rounded-[8px] border border-line bg-[#f8f8fc] px-2 py-[5px] text-[11px] text-ink"
+          className="rounded-[8px] border border-[#E9DFE4] bg-[#FAF8F9] px-2 py-[5px] text-[11px] text-ink"
           aria-label="Date range"
         >
           <option value="">Any Date</option>
@@ -218,7 +218,7 @@ export default function EventsPane() {
               setLanguage("");
               setDateRange("");
             }}
-            className="rounded-[8px] bg-[#eee9ff] px-2 py-[5px] text-[11px] font-[600] text-[#6245d9] hover:bg-[#e2dbff] transition-colors"
+            className="rounded-[8px] bg-[#F3E6ED] px-2 py-[5px] text-[11px] font-[600] text-[#801C45] hover:bg-[#EECFDB] transition-colors"
           >
             Clear filters ×
           </button>
@@ -249,7 +249,7 @@ export default function EventsPane() {
               href={`https://indianprograms.com/e/${event.short_id}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 py-[11px] border-b border-[#ebeaf2] min-h-[76px] transition-colors hover:bg-[#fafafe] -mx-2 px-2 rounded-lg"
+              className="flex items-center gap-3 py-[11px] border-b border-[#E9DFE4] min-h-[76px] transition-colors hover:bg-[#FAF4F7] -mx-2 px-2 rounded-lg"
             >
               {/* Event image or category icon */}
               <div
@@ -280,12 +280,12 @@ export default function EventsPane() {
                 {/* Tags row */}
                 <div className="flex items-center gap-1.5 mt-1">
                   {event.language && (
-                    <span className="rounded-[4px] bg-[#f3f4f9] px-1.5 py-[1px] text-[10px] font-[600] text-[#555971]">
+                    <span className="rounded-[4px] bg-[#F3E6ED] px-1.5 py-[1px] text-[10px] font-[600] text-[#71646C]">
                       {event.language}
                     </span>
                   )}
                   {event.category && (
-                    <span className="rounded-[4px] bg-[#eee9ff] px-1.5 py-[1px] text-[10px] font-[600] text-[#6d50df] capitalize">
+                    <span className="rounded-[4px] bg-[#F3E6ED] px-1.5 py-[1px] text-[10px] font-[600] text-[#801C45] capitalize">
                       {event.category}
                     </span>
                   )}
@@ -312,7 +312,7 @@ export default function EventsPane() {
         href="https://indianprograms.com/"
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-3 inline-block text-[13px] font-[750] text-[#6245d9] hover:text-[#5234d5] transition-colors"
+        className="mt-3 inline-block text-[13px] font-[750] text-[#801C45] hover:text-[#631437] transition-colors"
       >
         Browse all events on IndianPrograms ↗
       </a>

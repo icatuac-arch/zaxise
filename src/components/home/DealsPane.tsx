@@ -48,8 +48,8 @@ export default function DealsPane() {
   return (
     <section
       id="deals"
-      className="rounded-[20px] border border-[#ebebf3] bg-white p-[21px]"
-      style={{ boxShadow: "0 3px 12px rgba(37,41,72,0.016)" }}
+      className="rounded-[20px] border border-[#E9DFE4] bg-white p-[21px]"
+      style={{ boxShadow: "0 12px 36px #6A30400A" }}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
@@ -65,7 +65,7 @@ export default function DealsPane() {
         </div>
         <a
           href="/deals"
-          className="shrink-0 text-[13px] font-[750] text-[#6245d9] hover:text-[#5234d5] transition-colors"
+          className="shrink-0 text-[13px] font-[750] text-[#801C45] hover:text-[#631437] transition-colors"
         >
           View all →
         </a>
@@ -99,7 +99,7 @@ export default function DealsPane() {
               href={deal.product_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 py-[11px] border-b border-[#ebeaf2] min-h-[76px] transition-colors hover:bg-[#fafafe] -mx-1 px-1 rounded-lg"
+              className="flex items-center gap-3 py-[11px] border-b border-[#E9DFE4] min-h-[76px] transition-colors hover:bg-[#FAF4F7] -mx-1 px-1 rounded-lg"
             >
               <div
                 className="w-[60px] h-[60px] rounded-[14px] grid place-items-center shrink-0 overflow-hidden"
@@ -147,7 +147,7 @@ export default function DealsPane() {
 
       <a
         href="/deals"
-        className="mt-3 inline-block text-[13px] font-[750] text-[#6245d9] hover:text-[#5234d5] transition-colors"
+        className="mt-3 inline-block text-[13px] font-[750] text-[#801C45] hover:text-[#631437] transition-colors"
       >
         Browse all tech deals →
       </a>

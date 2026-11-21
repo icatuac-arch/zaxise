@@ -9,8 +9,8 @@ const TILES = [
     href: "#community",
     title: "Indian Events",
     sub: "Find your community",
-    iconBg: "#eee8ff",
-    iconColor: "#6946e8",
+    iconBg: "#F3E6ED",
+    iconColor: "#801C45",
     svg: (
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" width={23} height={23}>
         <rect width={18} height={16} x={3} y={5} rx={3} />
@@ -48,8 +48,8 @@ const TILES = [
     href: "#tools",
     title: "Media Tools",
     sub: "Create & convert",
-    iconBg: "#ffe8f1",
-    iconColor: "#bd4775",
+    iconBg: "#F3E6ED",
+    iconColor: "#801C45",
     svg: (
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" width={23} height={23}>
         <rect width={18} height={16} x={3} y={4} rx={3} />
@@ -87,13 +87,22 @@ const TILES = [
     href: "#housing",
     title: "Rent or Buy",
     sub: "Compare housing costs",
-    iconBg: "#eee8ff",
-    iconColor: "#6946e8",
+    iconBg: "#F3E6ED",
+    iconColor: "#801C45",
     svg: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" width={23} height={23}>
         <path d="m3 10 9-7 9 7v10H3zM9 20v-7h6v7" />
       </svg>
     ),
+  },
+  {
+    href: "/travel",
+    title: "Travel",
+    sub: "Explore & plan trips",
+    iconBg: "#F3E6ED",
+    iconColor: "#801C45",
+    svg: null,
+    emoji: "✈",
   },
 ];
 
@@ -101,7 +110,7 @@ export default function EcosystemTiles({ searchQuery }: Props) {
   const q = searchQuery.toLowerCase().trim();
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
       {TILES.map((tile) => {
         const visible =
           !q || tile.title.toLowerCase().includes(q) || tile.sub.toLowerCase().includes(q);
@@ -111,15 +120,15 @@ export default function EcosystemTiles({ searchQuery }: Props) {
           <a
             key={tile.title}
             href={tile.href}
-            {...(tile.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="card-lift rounded-[20px] border border-[#ebebf3] bg-white p-[19px_15px]"
-            style={{ boxShadow: "0 3px 12px rgba(37,41,72,0.016)" }}
+            {...(tile.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            className="card-lift rounded-[20px] border border-[#E9DFE4] bg-white p-[19px_15px]"
+            style={{ boxShadow: "0 12px 36px #6A30400A" }}
           >
             <div
-              className="mb-3 grid h-[46px] w-[46px] place-items-center rounded-[14px]"
+              className="mb-3 grid h-[46px] w-[46px] place-items-center rounded-[14px] text-[23px]"
               style={{ background: tile.iconBg, color: tile.iconColor }}
             >
-              {tile.svg}
+              {tile.emoji ? tile.emoji : tile.svg}
             </div>
             <strong className="block text-[14px]">{tile.title}</strong>
             <small className="text-[12px] text-muted">{tile.sub}</small>

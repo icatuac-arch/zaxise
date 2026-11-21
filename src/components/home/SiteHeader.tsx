@@ -15,17 +15,21 @@ const NAV_LINKS = [
   { href: "#discover", label: "Discover" },
   { href: "https://tikvite.com/", label: "Ticketing ↗", external: true },
   { href: "#housing", label: "Rent or Buy" },
+  { href: "/travel", label: "Travel" },
 ];
 
 export default function SiteHeader({ searchQuery, onSearch }: Props) {
   return (
-    <header className="sticky top-0 z-10 border-b border-line bg-white/95 backdrop-blur-[18px]">
+    <header
+      className="sticky top-0 z-10 border-b border-[#E9DFE4] bg-white/95 backdrop-blur-[18px]"
+      style={{ boxShadow: "0 2px 22px #50243808" }}
+    >
       <div className="mx-auto flex max-w-[1260px] items-center gap-7 px-6 py-[19px]">
         <Link
           href="/"
-          className="text-[30px] font-[850] tracking-[-1.8px] text-navy whitespace-nowrap"
+          className="text-[30px] font-[850] tracking-[-1.8px] text-[#29232B] whitespace-nowrap"
         >
-          ZA<b className="text-[#7254ef]">X</b>ISE
+          ZA<b style={{ color: "#801C45" }}>X</b>ISE
         </Link>
 
         <nav className="hidden flex-1 items-center gap-6 text-[14px] font-[650] md:flex">
@@ -36,7 +40,7 @@ export default function SiteHeader({ searchQuery, onSearch }: Props) {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-[#6245d9]"
+                className="transition-colors hover:text-[#801C45]"
               >
                 {link.label}
               </a>
@@ -44,7 +48,7 @@ export default function SiteHeader({ searchQuery, onSearch }: Props) {
               <a
                 key={link.label}
                 href={link.href}
-                className="transition-colors hover:text-[#6245d9]"
+                className="transition-colors hover:text-[#801C45]"
               >
                 {link.label}
               </a>
@@ -57,7 +61,7 @@ export default function SiteHeader({ searchQuery, onSearch }: Props) {
           placeholder="⌕  Find a tool or service"
           value={searchQuery}
           onChange={(e) => onSearch(e.target.value)}
-          className="min-w-0 w-[220px] rounded-[12px] border border-transparent bg-[#f3f4f9] px-3 py-[9px] text-sm outline-none focus:outline-[2px] focus:outline-[#9b89ff]"
+          className="min-w-0 w-[220px] rounded-[12px] border border-transparent bg-[#F3E6ED] px-3 py-[9px] text-sm outline-none focus:outline-[2px] focus:outline-[#BA7396]"
           aria-label="Search services"
         />
       </div>

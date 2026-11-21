@@ -2,11 +2,11 @@
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-white border-t border-line px-6 py-8 text-muted">
+    <footer className="bg-white border-t border-[#E9DFE4] px-6 py-8 text-muted">
       <div className="mx-auto flex max-w-[1208px] flex-wrap items-start justify-between gap-5">
         <div>
-          <div className="text-[29px] font-[850] tracking-[-1.8px] text-navy">
-            ZA<b className="text-[#7254ef]">X</b>ISE
+          <div className="text-[29px] font-[850] tracking-[-1.8px] text-[#29232B]">
+            ZA<b style={{ color: "#801C45" }}>X</b>ISE
           </div>
           <small className="block text-sm">
             Indian at heart. Connected in America.
@@ -30,7 +30,7 @@ export default function SiteFooter() {
           >
             Tikvite
           </a>
-          <small className="block mt-1">Homepage design preview</small>
+          <small className="block mt-1">Burgundy &amp; Blush · Homepage</small>
         </div>
         <small className="text-sm">&copy; 2026 Zaxise</small>
       </div>

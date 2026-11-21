@@ -96,7 +96,7 @@ const TOOLS: ToolConfig[] = [
     label: "Color picker",
     title: "Color picker",
     fields: [
-      { label: "Choose color", type: "color", defaultValue: "#6548ef" },
+      { label: "Choose color", type: "color", defaultValue: "#801C45" },
     ],
     calculate: (v) => v[0],
   },
@@ -137,9 +137,9 @@ const TOOLS: ToolConfig[] = [
   },
 ];
 
-// Alternating icon colors: purple, green, orange
+// Alternating icon colors: burgundy, green, orange
 const ICON_STYLES = [
-  { bg: "#efebff", color: "#6648e3" },
+  { bg: "#F3E6ED", color: "#801C45" },
   { bg: "#e4f7f1", color: "#087d70" },
   { bg: "#ffecdf", color: "#b45a27" },
 ];
@@ -182,7 +182,7 @@ export default function QuickTools({ searchQuery }: Props) {
             <button
               key={tool.id}
               onClick={() => openTool(tool)}
-              className="card-lift flex items-center gap-[10px] rounded-[14px] border border-line bg-white p-[16px_13px] text-left text-ink"
+              className="card-lift flex items-center gap-[10px] rounded-[14px] border border-[#E9DFE4] bg-white p-[16px_13px] text-left text-ink"
             >
               <span
                 className="grid place-items-center w-[34px] h-[34px] shrink-0 rounded-[10px] text-[14px] font-[600]"
@@ -198,7 +198,7 @@ export default function QuickTools({ searchQuery }: Props) {
 
       {/* No results */}
       {q && TOOLS.every((t) => !t.label.toLowerCase().includes(q)) && (
-        <div className="mt-3 rounded-[20px] border border-line bg-white p-5 text-sm text-muted">
+        <div className="mt-3 rounded-[20px] border border-[#E9DFE4] bg-white p-5 text-sm text-muted">
           No matching services. Try another search.
         </div>
       )}
@@ -247,7 +247,7 @@ export default function QuickTools({ searchQuery }: Props) {
                         next[i] = e.target.value;
                         setFieldValues(next);
                       }}
-                      className="mt-1 block w-full rounded-[8px] border border-line p-2.5 text-sm outline-none focus:border-[#9b89ff]"
+                      className="mt-1 block w-full rounded-[8px] border border-[#E9DFE4] p-2.5 text-sm outline-none focus:border-[#BA7396]"
                       rows={3}
                     />
                   ) : (
@@ -259,7 +259,7 @@ export default function QuickTools({ searchQuery }: Props) {
                         next[i] = e.target.value;
                         setFieldValues(next);
                       }}
-                      className="mt-1 block w-full rounded-[8px] border border-line p-2.5 text-sm outline-none focus:border-[#9b89ff]"
+                      className="mt-1 block w-full rounded-[8px] border border-[#E9DFE4] p-2.5 text-sm outline-none focus:border-[#BA7396]"
                     />
                   )}
                 </label>
@@ -268,14 +268,14 @@ export default function QuickTools({ searchQuery }: Props) {
 
             <button
               onClick={calculate}
-              className="mt-4 w-full rounded-[12px] bg-[#6849ed] px-5 py-3 text-[13px] font-[700] text-white transition-colors hover:bg-[#5234d5]"
+              className="mt-4 w-full rounded-[12px] bg-[#801C45] px-5 py-3 text-[13px] font-[700] text-white transition-colors hover:bg-[#631437]"
             >
               Calculate
             </button>
 
             {result && (
               <div
-                className="mt-4 whitespace-pre-wrap break-all text-[22px] font-bold text-[#6245d9]"
+                className="mt-4 whitespace-pre-wrap break-all text-[22px] font-bold text-[#801C45]"
                 aria-live="polite"
               >
                 {result}

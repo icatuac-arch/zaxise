@@ -1,20 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #171a2c;
-  --ink: #202235;
-  --muted: #62677c;
-  --gold: #6548ef;
-  --gold-dark: #6245d9;
-  --gold-hover: #5234d5;
-  --paper: #f7f8fc;
+  /* Burgundy & Blush palette */
+  --accent: #801C45;
+  --hover: #631437;
+  --tint: #F3E6ED;
+  --bg2: #F8EFE8;
+  --paper: #FAF8F9;
+  --ink: #29232B;
+  --navy: #29232B;
+  --line: #E9DFE4;
+  --muted: #71646C;
+  --heroink: #29232B;
+  --herotext: #65545F;
+  --heroaccent: #801C45;
+  --heroedge: #E9DFE4;
+  --secondary: #fff;
+  --secondaryink: #801C45;
+  /* Legacy / compat */
+  --gold: #801C45;
+  --gold-dark: #631437;
+  --gold-hover: #521130;
   --white: #ffffff;
-  --line: #e8e9f1;
   --green: #087d70;
   --green-light: #18b99a;
   --surface: #ffffff;
-  --surface-hover: #f8f8fc;
-  --purple-x: #7254ef;
+  --surface-hover: #FAF8F9;
 }
 
 @theme inline {
@@ -58,7 +69,7 @@ html {
 }
 
 ::selection {
-  background: rgba(101, 72, 239, 0.18);
+  background: rgba(128, 28, 69, 0.15);
 }
 
 /* Live dot pulse */
@@ -75,26 +86,26 @@ html {
   animation: pulse-dot 2s infinite;
 }
 
-/* Card hover */
+/* Card hover — burgundy */
 .card-lift {
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 .card-lift:hover {
   transform: translateY(-3px);
-  border-color: #c8bbff;
-  box-shadow: 0 9px 25px rgba(107, 83, 207, 0.07);
+  border-color: var(--accent);
+  box-shadow: 0 14px 32px #801C4512;
 }
 
-/* Hero gradient */
+/* Hero gradient — Burgundy & Blush */
 .hero-gradient {
-  background: linear-gradient(120deg, #eeebff 0%, #f4f0ff 48%, #dff9f4 100%);
-  border: 1px solid #e6e1fa;
-  box-shadow: 0 12px 40px rgba(74, 60, 156, 0.035);
+  background: radial-gradient(circle at 91% 8%, #ffffffb8 0, transparent 37%),
+              linear-gradient(125deg, #F9EAF0, #F2E0E9 52%, #F9EFF2);
+  border: 1px solid #F0DAE4;
 }
 
 /* Event art gradient */
 .event-gradient {
-  background: linear-gradient(125deg, #6547e8, #9b69ee);
+  background: var(--accent);
 }
 
 /* Scrollbar */
@@ -110,4 +121,28 @@ html {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted);
+}
+
+/* Focus ring — burgundy */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #BA7396;
+  outline-offset: 2px;
+}
+
+/* Panel/tile shadows */
+.panel-shadow {
+  box-shadow: 0 12px 36px #6A30400A;
+}
+
+/* Travel module styles */
+.travel-module {
+  margin: 34px 0 38px;
+  padding: 28px;
+  background: linear-gradient(145deg, #fff9f6 0%, #fff 48%, #fcf0f3 100%);
+  border: 1px solid #ead9dc;
+  border-radius: 26px;
+  box-shadow: 0 16px 45px #631b3610;
 }

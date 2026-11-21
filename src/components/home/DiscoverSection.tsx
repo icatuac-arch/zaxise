@@ -32,8 +32,8 @@ export default function DiscoverSection() {
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {/* Did You Know */}
       <section
-        className="rounded-[20px] border border-line bg-white p-5"
-        style={{ boxShadow: "0 3px 12px rgba(37,41,72,0.016)" }}
+        className="rounded-[20px] border border-[#E9DFE4] bg-white p-5"
+        style={{ boxShadow: "0 12px 36px #6A30400A" }}
       >
         <div className="text-[11px] font-[800] uppercase tracking-[1.4px] text-green">
           Did you know?
@@ -46,7 +46,7 @@ export default function DiscoverSection() {
         </div>
         <button
           onClick={nextFact}
-          className="border-0 bg-transparent p-0 text-[13px] font-[750] text-[#6245d9] hover:text-[#5234d5] transition-colors"
+          className="border-0 bg-transparent p-0 text-[13px] font-[750] text-[#801C45] hover:text-[#631437] transition-colors"
         >
           Another fact →
         </button>
@@ -54,14 +54,14 @@ export default function DiscoverSection() {
 
       {/* Space & Astronomy */}
       <section
-        className="rounded-[20px] border-[#e9e3ff] p-5"
+        className="rounded-[20px] p-5"
         style={{
-          background: "#f0edff",
-          border: "1px solid #e9e3ff",
-          boxShadow: "0 3px 12px rgba(37,41,72,0.016)",
+          background: "#FAF0F4",
+          border: "1px solid #E9DFE4",
+          boxShadow: "0 12px 36px #6A30400A",
         }}
       >
-        <div className="text-[11px] font-[800] uppercase tracking-[1.4px] text-[#6550b9]">
+        <div className="text-[11px] font-[800] uppercase tracking-[1.4px] text-[#801C45]">
           Beyond our world
         </div>
         <h3
@@ -77,41 +77,38 @@ export default function DiscoverSection() {
           href="https://apod.nasa.gov/apod/astropix.html"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-block text-[13px] font-[750] text-[#6245d9] hover:text-[#5234d5] transition-colors"
+          className="mt-3 inline-block text-[13px] font-[750] text-[#801C45] hover:text-[#631437] transition-colors"
         >
           NASA picture of the day ↗
         </a>
       </section>
 
-      {/* Weekend inspiration */}
+      {/* Travel inspiration — links to /travel */}
       <section
         className="rounded-[20px] p-5"
         style={{
-          background: "#e9f8f3",
-          border: "1px solid #dcefe7",
-          boxShadow: "0 3px 12px rgba(37,41,72,0.016)",
+          background: "#FFF5F8",
+          border: "1px solid #EAD9DC",
+          boxShadow: "0 12px 36px #6A30400A",
         }}
       >
-        <div className="text-[11px] font-[800] uppercase tracking-[1.4px] text-[#6550b9]">
+        <div className="text-[11px] font-[800] uppercase tracking-[1.4px] text-[#801C45]">
           Weekend inspiration
         </div>
         <h3
           className="mt-3 text-[20px] font-[750] leading-[1.25]"
           style={{ letterSpacing: "-0.5px" }}
         >
-          Find your next escape
+          Travel smarter, together
         </h3>
         <p className="mt-2 text-[13px] text-muted">
-          Explore America&apos;s national parks, scenic landscapes and hidden
-          gems.
+          Discover destinations, vegetarian food, nearby escapes and family-friendly itineraries.
         </p>
         <a
-          href="https://www.nps.gov/findapark/index.htm"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 inline-block text-[13px] font-[750] text-[#6245d9] hover:text-[#5234d5] transition-colors"
+          href="/travel"
+          className="mt-3 inline-block text-[13px] font-[750] text-[#801C45] hover:text-[#631437] transition-colors"
         >
-          Explore national parks ↗
+          Open ZAXISE Travel ↗
         </a>
       </section>
     </div>

@@ -60,10 +60,8 @@ export default function ZaxiseHome() {
           <HousingCalcPane />
         </div>
 
-        {/* 3.5 Your Next Escape — travel feed */}
-        <div className="mt-[34px]">
-          <TravelFeedWidget />
-        </div>
+        {/* 3.5 Your Next Escape — travel feed (self-contained margins) */}
+        <TravelFeedWidget />
 
         {/* 4. Explore ZAXISE ecosystem tiles */}
         <div className="mt-[34px] mb-[14px] flex items-end justify-between gap-3">
@@ -93,7 +91,7 @@ export default function ZaxiseHome() {
           </div>
           <a
             href="/tools"
-            className="shrink-0 text-[13px] font-[750] text-[#6245d9] hover:text-[#5234d5] transition-colors"
+            className="shrink-0 text-[13px] font-[750] text-[#801C45] hover:text-[#631437] transition-colors"
           >
             Original tools directory ↗
           </a>
