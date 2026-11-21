@@ -166,17 +166,16 @@ export async function PUT(request: NextRequest) {
       continue
     }
 
-    // Increment push_count for existing entities
-    await supabase.rpc('increment_push_count', { entity_id: entity.id }).catch(() => {
-      // Non-fatal — rpc may not exist yet
-    })
-
-    // Log the push
-    await supabase.from('travel_feed_log').insert({
-      entity_id: entity.id,
-      fields_updated: updatedFields,
-      pushed_by: 'gundya',
-    }).catch(() => {})
+    // Log the push (non-fatal if it fails)
+    try {
+      await supabase.from('travel_feed_log').insert({
+        entity_id: entity.id,
+        fields_updated: updatedFields,
+        pushed_by: 'gundya',
+      })
+    } catch {
+      // Non-fatal
+    }
 
     results.push({ id: entity.id, status: 'accepted' })
     accepted++

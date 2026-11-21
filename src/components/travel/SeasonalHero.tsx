@@ -516,8 +516,6 @@ export default function SeasonalHero() {
   const resetToAuto = () => {
     setDebugOverride(null)
     saveDebugOverride(null)
-    setManualLat('')
-    setManualLng('')
     // Re-trigger geolocation
     const now = new Date()
     const month = now.getMonth()
@@ -548,8 +546,6 @@ export default function SeasonalHero() {
     const saved = loadDebugOverride()
     if (saved && saved.lat !== undefined && saved.lng !== undefined) {
       setDebugOverride(saved)
-      setManualLat(String(saved.lat))
-      setManualLng(String(saved.lng))
       const m = saved.month !== undefined ? saved.month : month
       computeContext(saved.lat, saved.lng, m, day)
       return
