@@ -9,6 +9,7 @@ import EventsPane from "./EventsPane";
 import DealsPane from "./DealsPane";
 import HousingCalcPane from "./HousingCalcPane";
 import QuickTools from "./QuickTools";
+import TravelFeedWidget from "./TravelFeedWidget";
 import DiscoverSection from "./DiscoverSection";
 
 export default function ZaxiseHome() {
@@ -57,6 +58,11 @@ export default function ZaxiseHome() {
         {/* 3. Rent or Buy housing calculator */}
         <div className="mt-[20px]">
           <HousingCalcPane />
+        </div>
+
+        {/* 3.5 Your Next Escape — travel feed */}
+        <div className="mt-[34px]">
+          <TravelFeedWidget />
         </div>
 
         {/* 4. Explore ZAXISE ecosystem tiles */}
