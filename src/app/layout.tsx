@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import GlobalNav from "@/components/GlobalNav";
+import GlobalFooter from "@/components/GlobalFooter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#10243d",
+  themeColor: "#801C45",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -35,7 +38,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body className="min-h-screen flex flex-col">
+        <Suspense>
+          <GlobalNav />
+        </Suspense>
+        <main className="flex-1">{children}</main>
+        <Suspense>
+          <GlobalFooter />
+        </Suspense>
+      </body>
     </html>
   );
 }
