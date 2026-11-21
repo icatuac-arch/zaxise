@@ -9,13 +9,25 @@ const TYPE_FIELDS: Record<string, string[]> = {
   country: [
     'name', 'hero_image_url', 'card_image_url', 'image_alt', 'essentials',
     'counts', 'best_time_to_visit', 'avg_daily_budget_usd', 'description',
+    'country_id',
+    // Indian-traveler fields
+    'visa_info', 'direct_flights', 'inr_budget', 'indian_restaurants',
+    'indian_groceries', 'vegetarian_info', 'jain_info', 'family_notes',
+    'senior_notes', 'indian_neighborhood', 'currency_info', 'safety_info',
+    'language_tips', 'sim_esim', 'plug_type',
   ],
   city: [
     'name', 'country_id', 'hero_image_url', 'card_image_url', 'image_alt',
     'description', 'hotel_price_bands_usd', 'avg_daily_budget_usd', 'counts',
+    'city_id',
+    // Indian-traveler fields
+    'visa_info', 'direct_flights', 'inr_budget', 'indian_restaurants',
+    'indian_groceries', 'vegetarian_info', 'jain_info', 'family_notes',
+    'senior_notes', 'indian_neighborhood', 'currency_info', 'safety_info',
+    'language_tips', 'sim_esim', 'plug_type',
   ],
   attraction: [
-    'name', 'city_id', 'image_url', 'image_alt', 'description',
+    'name', 'city_id', 'country_id', 'image_url', 'image_alt', 'description',
     'entry_fee', 'opening_hours', 'top_rank',
   ],
 }
@@ -126,22 +138,30 @@ export async function PUT(request: NextRequest) {
       pushed_by: 'gundya',
     }
 
-    // Parent ID mapping
+    // Parent ID mapping (both parent_id and direct city_id/country_id columns)
     if (entity.type === 'city' && entity.country_id) {
       updatePayload.parent_id = entity.country_id
-    } else if (entity.type === 'attraction' && entity.city_id) {
-      updatePayload.parent_id = entity.city_id
+      updatePayload.country_id = entity.country_id
+    } else if (entity.type === 'attraction') {
+      if (entity.city_id) {
+        updatePayload.parent_id = entity.city_id
+        updatePayload.city_id = entity.city_id
+      }
+      if (entity.country_id) {
+        updatePayload.country_id = entity.country_id
+      }
     }
+
+    // JSONB field names for proper handling
+    const jsonbFields = new Set([
+      'counts', 'avg_daily_budget_usd', 'hotel_price_bands_usd', 'entry_fee',
+      'visa_info', 'direct_flights', 'inr_budget', 'currency_info',
+    ])
 
     const updatedFields: string[] = []
     for (const field of allowedFields) {
       if (entity[field] !== undefined) {
-        // JSONB fields
-        if (['counts', 'avg_daily_budget_usd', 'hotel_price_bands_usd', 'entry_fee'].includes(field)) {
-          updatePayload[field] = entity[field]
-        } else {
-          updatePayload[field] = entity[field]
-        }
+        updatePayload[field] = entity[field]
         updatedFields.push(field)
       }
     }
