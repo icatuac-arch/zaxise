@@ -6,7 +6,7 @@ interface Props {
 
 const TILES = [
   {
-    href: "#community",
+    href: "https://indianprograms.com",
     title: "Indian Events",
     sub: "Find your community",
     iconBg: "#F3E6ED",
@@ -32,7 +32,7 @@ const TILES = [
     ),
   },
   {
-    href: "#deals",
+    href: "/deals",
     title: "Tech Deals",
     sub: "Shop smarter",
     iconBg: "#dff7ed",
@@ -45,7 +45,7 @@ const TILES = [
     ),
   },
   {
-    href: "#tools",
+    href: "/tools",
     title: "Media Tools",
     sub: "Create & convert",
     iconBg: "#F3E6ED",
@@ -58,9 +58,9 @@ const TILES = [
     ),
   },
   {
-    href: "#clocks",
-    title: "Time & Date",
-    sub: "Across time zones",
+    href: "/time",
+    title: "Time & Space",
+    sub: "Clocks, astronomy & ISS",
     iconBg: "#e4edff",
     iconColor: "#3865cb",
     svg: (
@@ -71,9 +71,9 @@ const TILES = [
     ),
   },
   {
-    href: "#discover",
-    title: "Discover",
-    sub: "Travel, space & more",
+    href: "/facts",
+    title: "Did You Know",
+    sub: "40K+ amazing facts",
     iconBg: "#fff3cf",
     iconColor: "#9a6c04",
     svg: (
@@ -84,7 +84,7 @@ const TILES = [
     ),
   },
   {
-    href: "#housing",
+    href: "/rent-or-buy",
     title: "Rent or Buy",
     sub: "Compare housing costs",
     iconBg: "#F3E6ED",
