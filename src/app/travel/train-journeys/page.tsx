@@ -508,7 +508,7 @@ export default function TrainJourneysPage() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
       {/* ── Header ── */}
       <header className="text-center mb-12">
-        <p className="text-sm font-semibold uppercase tracking-widest text-sky-600 mb-3">WorldTourly Presents</p>
+        <p className="text-sm font-semibold uppercase tracking-widest text-sky-600 mb-3">Zaxise Presents</p>
         <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-4">
           World&apos;s Most Scenic Train Journeys
         </h1>
@@ -809,7 +809,7 @@ export default function TrainJourneysPage() {
           Prices and schedules are approximate and subject to change. Always check with the official operator before booking.
         </p>
         <p className="text-xs text-slate-400 mt-2">
-          WorldTourly &mdash; Your trusted travel companion
+          Zaxise &mdash; Your trusted travel companion
         </p>
       </footer>
     </div>

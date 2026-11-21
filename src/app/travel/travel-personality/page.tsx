@@ -208,7 +208,7 @@ export default function TravelPersonalityPage() {
 
   function handleShare() {
     if (!result) return;
-    const text = `I'm a ${result.name} ${result.emoji} — What's your travel personality? Take the quiz at WorldTourly.com`;
+    const text = `I'm a ${result.name} ${result.emoji} — What's your travel personality? Take the quiz at Zaxise.com`;
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);

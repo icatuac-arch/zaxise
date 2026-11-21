@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { COUNTRIES } from '@/data/travel/destinations';
 
-const CHECKLIST_KEY = 'worldtourly-pretip-checklist';
+const CHECKLIST_KEY = 'zaxise-pretip-checklist';
 
 const checklistItems = [
   'Passport valid for 6+ months',

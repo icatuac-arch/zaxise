@@ -178,7 +178,7 @@ export default function DidYouKnowPage() {
   }, [filteredFacts, markRead]);
 
   const copyFact = useCallback(async (fact: Fact) => {
-    const text = `Did you know? ${fact.text} ${fact.flag}\n\nLearn more at worldtourly.com/did-you-know`;
+    const text = `Did you know? ${fact.text} ${fact.flag}\n\nLearn more at zaxise.com/did-you-know`;
     try {
       await navigator.clipboard.writeText(text);
       setCopiedId(fact.id);
@@ -439,7 +439,7 @@ export default function DidYouKnowPage() {
                   <span className="text-sm text-white/70">
                     {FACTS.find((f) => f.id === cardImageId)?.country}
                   </span>
-                  <span className="text-sm font-semibold text-[#F59E0B]">worldtourly.com</span>
+                  <span className="text-sm font-semibold text-[#F59E0B]">zaxise.com</span>
                 </div>
               </div>
               <div className="flex justify-center gap-3 mt-4">

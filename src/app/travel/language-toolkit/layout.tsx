@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Language & Communication Toolkit — WorldTourly',
+  title: 'Language & Communication Toolkit — Zaxise',
   description:
     'Your complete travel communication survival guide. Essential phrases in 15 languages, translation tools, emergency communication, restaurant survival tips, and more. Never be lost for words abroad.',
   keywords: [

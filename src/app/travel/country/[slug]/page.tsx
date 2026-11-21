@@ -178,7 +178,7 @@ export default async function CountryPage({ params }: { params: Promise<{ slug: 
     "@context": "https://schema.org",
     "@type": "TouristDestination",
     name: country.name,
-    description: `${country.tagline} Explore the top attractions, cities, and travel essentials for ${country.name} on WorldTourly.`,
+    description: `${country.tagline} Explore the top attractions, cities, and travel essentials for ${country.name} on Zaxise.`,
     touristType: touristTypes,
     includesAttraction: top3Attractions,
   };

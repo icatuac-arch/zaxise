@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "Don't Miss — Experiences You'll Regret Skipping — WorldTourly",
+  title: "Don't Miss — Experiences You'll Regret Skipping — Zaxise",
   description:
     'Not just attractions — unforgettable EXPERIENCES unique to Japan, Italy, Thailand, France, and India. Advice from a well-traveled friend.',
   openGraph: {

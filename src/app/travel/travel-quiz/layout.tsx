@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Travel Quiz — How Well Do You Know the World? | WorldTourly',
+  title: 'Travel Quiz — How Well Do You Know the World? | Zaxise',
   description:
     'Test your travel knowledge with 20 fun questions about landmarks, cultures, currencies, and more. Share your score with friends!',
   openGraph: {
-    title: 'Travel Quiz — How Well Do You Know the World? | WorldTourly',
+    title: 'Travel Quiz — How Well Do You Know the World? | Zaxise',
     description:
       'Can you score 20/20 on the ultimate travel quiz? Test your knowledge now!',
   },

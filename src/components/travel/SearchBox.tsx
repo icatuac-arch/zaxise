@@ -21,7 +21,7 @@ function buildSearchIndex(): SearchResult[] {
       name: country.name,
       subtitle: `${country.continent} · ${country.states.reduce((a, s) => a + s.cities.length, 0)} cities`,
       flag: country.flag,
-      href: `/country/${country.slug}`,
+      href: `/travel/country/${country.slug}`,
     })
     for (const state of country.states) {
       for (const city of state.cities) {
@@ -30,7 +30,7 @@ function buildSearchIndex(): SearchResult[] {
           name: city.name,
           subtitle: `${country.name} · ${country.flag}`,
           flag: country.flag,
-          href: `/country/${country.slug}/${state.id}/${city.id}`,
+          href: `/travel/country/${country.slug}/${state.id}/${city.id}`,
         })
       }
     }
@@ -104,7 +104,7 @@ export default function SearchBox({
       } else if (results.length > 0) {
         navigate(results[0].href)
       } else if (query.length >= 2) {
-        router.push(`/destinations?q=${encodeURIComponent(query)}`)
+        router.push(`/travel/destinations?q=${encodeURIComponent(query)}`)
       }
     } else if (e.key === 'Escape') {
       setOpen(false)
@@ -116,7 +116,7 @@ export default function SearchBox({
     if (results.length > 0) {
       navigate(results[0].href)
     } else if (query.length >= 2) {
-      router.push(`/destinations?q=${encodeURIComponent(query)}`)
+      router.push(`/travel/destinations?q=${encodeURIComponent(query)}`)
     }
   }
 
@@ -169,7 +169,7 @@ export default function SearchBox({
           ))}
           {query.length >= 2 && (
             <button
-              onClick={() => router.push(`/destinations?q=${encodeURIComponent(query)}`)}
+              onClick={() => router.push(`/travel/destinations?q=${encodeURIComponent(query)}`)}
               className="w-full flex items-center justify-center gap-1 px-4 py-2 text-xs text-sky-600 font-medium hover:bg-sky-50 border-t border-slate-100 transition-colors"
             >
               View all results for &quot;{query}&quot; <ChevronRight className="w-3 h-3" />

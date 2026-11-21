@@ -1,4 +1,4 @@
-// WorldTourly — US State Department Travel Advisory Data
+// Zaxise — US State Department Travel Advisory Data
 // Levels as of early 2026
 
 export interface TravelAdvisory {

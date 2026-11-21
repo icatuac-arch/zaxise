@@ -352,7 +352,7 @@ export default function TripPrepPage() {
         }}
       >
         <p style={{ color: C.secondary, fontWeight: 700, fontSize: 14, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 16 }}>
-          WorldTourly Presents
+          Zaxise Presents
         </p>
         <h1
           style={{
@@ -1263,7 +1263,7 @@ export default function TripPrepPage() {
 
         {/* ─── FOOTER NOTE ─── */}
         <p style={{ textAlign: 'center', color: C.muted, fontSize: 13, lineHeight: 1.7, maxWidth: 560, margin: '0 auto' }}>
-          This guide is maintained by the WorldTourly team and updated regularly. Safe travels.
+          This guide is maintained by the Zaxise team and updated regularly. Safe travels.
         </p>
       </main>
     </div>

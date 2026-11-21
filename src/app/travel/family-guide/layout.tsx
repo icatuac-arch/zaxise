@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Family Travel Guide — WorldTourly',
+  title: 'Family Travel Guide — Zaxise',
   description:
     'Family-friendly attractions, kid activities, age suitability tips, baby facilities, budget guidance, and packing lists for traveling with children.',
 }

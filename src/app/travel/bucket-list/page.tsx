@@ -180,7 +180,7 @@ export default function BucketListPage() {
   }, []);
 
   const shareList = useCallback(async () => {
-    const text = `My WorldTourly Bucket List: ${stats.visitedCount + stats.wantCount} destinations, ${stats.countriesVisited} countries visited, ${stats.wantCount} to go!\n\nBuild yours: worldtourly.com/bucket-list`;
+    const text = `My Zaxise Bucket List: ${stats.visitedCount + stats.wantCount} destinations, ${stats.countriesVisited} countries visited, ${stats.wantCount} to go!\n\nBuild yours: zaxise.com/bucket-list`;
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);

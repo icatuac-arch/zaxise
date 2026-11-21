@@ -1,4 +1,4 @@
-// WorldTourly — Destination data (modular index)
+// Zaxise — Destination data (modular index)
 
 import { Country } from './types'
 import { ASIA_COUNTRIES } from './countries/asia'

@@ -399,7 +399,7 @@ export default function NearYou() {
   useEffect(() => {
     // Check for explicit location override (from LocationBar component)
     try {
-      const raw = localStorage.getItem('worldtourly_location')
+      const raw = localStorage.getItem('zaxise_location')
       if (raw) {
         const override = JSON.parse(raw)
         if (typeof override.lat === 'number' && typeof override.lng === 'number') {

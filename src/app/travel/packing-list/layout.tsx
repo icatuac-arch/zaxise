@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Smart Packing List Generator — WorldTourly',
+  title: 'Smart Packing List Generator — Zaxise',
   description:
     'Generate a customized packing list based on your destination, season, trip type, and travel companions. Check items off, save progress, and print or share your list.',
 }

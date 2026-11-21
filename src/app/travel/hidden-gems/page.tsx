@@ -247,7 +247,7 @@ export default function HiddenGemsPage() {
   const gems = filter === 'all' ? HIDDEN_GEMS : HIDDEN_GEMS.filter((g) => g.countryId === filter);
 
   function handleShare(gem: HiddenGem, idx: number) {
-    const text = `Hidden gem alert: ${gem.name} in ${gem.country} — ${gem.whySpecial.slice(0, 100)}... Discover more at WorldTourly.com/hidden-gems`;
+    const text = `Hidden gem alert: ${gem.name} in ${gem.country} — ${gem.whySpecial.slice(0, 100)}... Discover more at Zaxise.com/hidden-gems`;
     navigator.clipboard.writeText(text).then(() => {
       setCopiedIdx(idx);
       setTimeout(() => setCopiedIdx(null), 2000);

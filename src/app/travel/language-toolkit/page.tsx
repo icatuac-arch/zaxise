@@ -1477,7 +1477,7 @@ export default function LanguageToolkitPage() {
           Save this toolkit to your phone&rsquo;s home screen. When you are standing in a restaurant in Tokyo or negotiating in a market in Marrakech, you will be glad you did.
         </p>
         <p style={{ fontSize: '14px', opacity: 0.5 }}>
-          WorldTourly — Language & Communication Toolkit
+          Zaxise — Language & Communication Toolkit
         </p>
       </section>
     </div>

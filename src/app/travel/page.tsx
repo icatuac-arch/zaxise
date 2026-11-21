@@ -3,38 +3,46 @@ import Link from "next/link";
 import NearYou from "@/components/travel/NearYou";
 import SearchBox from "@/components/travel/SearchBox";
 import SeasonalHero from "@/components/travel/SeasonalHero";
+import { COUNTRIES } from "@/data/travel/destinations";
+
+// Derive city counts from actual data to keep hub in sync with country pages
+function getCityCount(slug: string): number {
+  const country = COUNTRIES.find((c) => c.slug === slug);
+  if (!country) return 0;
+  return country.states.reduce((acc, s) => acc + s.cities.length, 0);
+}
 
 const featuredCountries = [
-  { name: "Japan", slug: "japan", flag: "🇯🇵", tagline: "Where tradition meets tomorrow", cities: 48, image: "photo-1528360983277-13d401cdc186" },
-  { name: "Italy", slug: "italy", flag: "🇮🇹", tagline: "Art, history & la dolce vita", cities: 42, image: "photo-1552832230-c0197dd311b5" },
-  { name: "France", slug: "france", flag: "🇫🇷", tagline: "Romance, culture & cuisine", cities: 38, image: "photo-1502602898657-3e91760cbb34" },
-  { name: "Thailand", slug: "thailand", flag: "🇹🇭", tagline: "The land of smiles", cities: 28, image: "photo-1528181304800-259b08848526" },
-  { name: "USA", slug: "united-states", flag: "🇺🇸", tagline: "Coast to coast adventures", cities: 65, image: "photo-1501594907352-04cda38ebc29" },
-  { name: "India", slug: "india", flag: "🇮🇳", tagline: "A kaleidoscope of experiences", cities: 52, image: "photo-1564507592333-c60657eea523" },
+  { name: "Japan", slug: "japan", flag: "🇯🇵", tagline: "Where tradition meets tomorrow", cities: getCityCount("japan"), image: "photo-1528360983277-13d401cdc186" },
+  { name: "Italy", slug: "italy", flag: "🇮🇹", tagline: "Art, history & la dolce vita", cities: getCityCount("italy"), image: "photo-1552832230-c0197dd311b5" },
+  { name: "France", slug: "france", flag: "🇫🇷", tagline: "Romance, culture & cuisine", cities: getCityCount("france"), image: "photo-1502602898657-3e91760cbb34" },
+  { name: "Thailand", slug: "thailand", flag: "🇹🇭", tagline: "The land of smiles", cities: getCityCount("thailand"), image: "photo-1528181304800-259b08848526" },
+  { name: "USA", slug: "united-states", flag: "🇺🇸", tagline: "Coast to coast adventures", cities: getCityCount("united-states"), image: "photo-1501594907352-04cda38ebc29" },
+  { name: "India", slug: "india", flag: "🇮🇳", tagline: "A kaleidoscope of experiences", cities: getCityCount("india"), image: "photo-1564507592333-c60657eea523" },
 ];
 
 const toolsAndFeatures = [
-  { emoji: "🧠", title: "Travel Personality Quiz", desc: "Discover your travel style & get matched destinations", href: "/travel-personality", gradient: "from-purple-500 to-violet-600" },
-  { emoji: "⚖️", title: "Compare Destinations", desc: "Side-by-side on cost, weather, safety & vibe", href: "/compare", gradient: "from-blue-500 to-cyan-600" },
-  { emoji: "💎", title: "Hidden Gems", desc: "Off-the-beaten-path spots most tourists miss", href: "/hidden-gems", gradient: "from-emerald-500 to-teal-600" },
-  { emoji: "🗺️", title: "Interactive Maps", desc: "Visual exploration of every destination", href: "/maps", gradient: "from-sky-500 to-blue-600" },
-  { emoji: "💰", title: "Budget Calculator", desc: "Estimate costs for any trip in seconds", href: "/travel-cost", gradient: "from-amber-500 to-orange-600" },
-  { emoji: "✅", title: "Trip Preparation", desc: "Checklists, docs & pre-departure essentials", href: "/trip-prep", gradient: "from-rose-500 to-pink-600" },
+  { emoji: "🧠", title: "Travel Personality Quiz", desc: "Discover your travel style & get matched destinations", href: "/travel/travel-personality", gradient: "from-purple-500 to-violet-600" },
+  { emoji: "⚖️", title: "Compare Destinations", desc: "Side-by-side on cost, weather, safety & vibe", href: "/travel/compare", gradient: "from-blue-500 to-cyan-600" },
+  { emoji: "💎", title: "Hidden Gems", desc: "Off-the-beaten-path spots most tourists miss", href: "/travel/hidden-gems", gradient: "from-emerald-500 to-teal-600" },
+  { emoji: "🗺️", title: "Interactive Maps", desc: "Visual exploration of every destination", href: "/travel/maps", gradient: "from-sky-500 to-blue-600" },
+  { emoji: "💰", title: "Budget Calculator", desc: "Estimate costs for any trip in seconds", href: "/travel/travel-cost", gradient: "from-amber-500 to-orange-600" },
+  { emoji: "✅", title: "Trip Preparation", desc: "Checklists, docs & pre-departure essentials", href: "/travel/trip-prep", gradient: "from-rose-500 to-pink-600" },
 ];
 
 const guides = [
-  { emoji: "🍕", label: "Food", href: "/food-guide" },
-  { emoji: "🌦️", label: "Weather", href: "/weather-guide" },
-  { emoji: "🛡️", label: "Safety", href: "/safety" },
-  { emoji: "📄", label: "Visa", href: "/visa-guide" },
-  { emoji: "🙏", label: "Etiquette", href: "/etiquette-guide" },
-  { emoji: "🗣️", label: "Language", href: "/language-guide" },
-  { emoji: "🛍️", label: "Shopping", href: "/shopping-guide" },
-  { emoji: "📸", label: "Photography", href: "/photography-guide" },
-  { emoji: "👪", label: "Family", href: "/family-guide" },
-  { emoji: "⛰️", label: "Adventure", href: "/adventure-guide" },
-  { emoji: "🎉", label: "Festivals", href: "/festivals" },
-  { emoji: "🌱", label: "Responsible Travel", href: "/responsible-travel" },
+  { emoji: "🍕", label: "Food", href: "/travel/food-guide" },
+  { emoji: "🌦️", label: "Weather", href: "/travel/weather-guide" },
+  { emoji: "🛡️", label: "Safety", href: "/travel/safety" },
+  { emoji: "📄", label: "Visa", href: "/travel/visa-guide" },
+  { emoji: "🙏", label: "Etiquette", href: "/travel/etiquette-guide" },
+  { emoji: "🗣️", label: "Language", href: "/travel/language-guide" },
+  { emoji: "🛍️", label: "Shopping", href: "/travel/shopping-guide" },
+  { emoji: "📸", label: "Photography", href: "/travel/photography-guide" },
+  { emoji: "👪", label: "Family", href: "/travel/family-guide" },
+  { emoji: "⛰️", label: "Adventure", href: "/travel/adventure-guide" },
+  { emoji: "🎉", label: "Festivals", href: "/travel/festivals" },
+  { emoji: "🌱", label: "Responsible Travel", href: "/travel/responsible-travel" },
 ];
 
 export default function Home() {
@@ -50,7 +58,7 @@ export default function Home() {
       <section className="bg-gradient-to-b from-slate-50 to-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-dark text-center mb-2">
-            Explore 63 Countries
+            Explore {COUNTRIES.length} Countries
           </h2>
           <p className="text-dark/60 text-center mb-8 max-w-lg mx-auto">
             Curated guides, ranked attractions & local secrets for every destination.
@@ -87,7 +95,7 @@ export default function Home() {
 
           <div className="text-center mt-6">
             <Link href="/travel/destinations" className="inline-flex items-center gap-1 text-sky-600 font-semibold hover:text-sky-700 transition-colors">
-              View all 63 countries <ChevronRight className="w-4 h-4" />
+              View all {COUNTRIES.length} countries <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

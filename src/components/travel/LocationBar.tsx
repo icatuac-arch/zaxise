@@ -30,7 +30,7 @@ const PRESET_LOCATIONS = [
   { label: 'Lisbon, Portugal', lat: 38.7223, lng: -9.1393 },
 ]
 
-const STORAGE_KEY = 'worldtourly_location'
+const STORAGE_KEY = 'zaxise_location'
 
 export interface LocationOverride {
   lat: number

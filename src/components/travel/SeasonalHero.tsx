@@ -439,25 +439,6 @@ function getLocalContext(lat: number, lng: number, month: number): { tagline: st
   return null
 }
 
-const DEBUG_CITIES: { label: string; lat: number; lng: number }[] = [
-  { label: 'New York, USA', lat: 40.7128, lng: -73.9352 },
-  { label: 'London, UK', lat: 51.5074, lng: -0.1278 },
-  { label: 'Tokyo, Japan', lat: 35.6762, lng: 139.6503 },
-  { label: 'Sydney, Australia', lat: -33.8688, lng: 151.2093 },
-  { label: 'Mumbai, India', lat: 19.076, lng: 72.8777 },
-  { label: 'Paris, France', lat: 48.8566, lng: 2.3522 },
-  { label: 'Bangkok, Thailand', lat: 13.7563, lng: 100.5018 },
-  { label: 'Dubai, UAE', lat: 25.2048, lng: 55.2708 },
-  { label: 'Nairobi, Kenya', lat: -1.2921, lng: 36.8219 },
-  { label: 'Sao Paulo, Brazil', lat: -23.5505, lng: -46.6333 },
-  { label: 'Reykjavik, Iceland', lat: 64.1466, lng: -21.9426 },
-  { label: 'Singapore', lat: 1.3521, lng: 103.8198 },
-  { label: 'Cape Town, South Africa', lat: -33.9249, lng: 18.4241 },
-  { label: 'Munich, Germany', lat: 48.1351, lng: 11.582 },
-]
-
-const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-
 interface DebugOverride {
   lat?: number
   lng?: number
@@ -469,7 +450,7 @@ function loadDebugOverride(): DebugOverride | null {
   if (typeof window === 'undefined') return null
   try {
     // Check shared LocationBar override first
-    const shared = localStorage.getItem('worldtourly_location')
+    const shared = localStorage.getItem('zaxise_location')
     if (shared) {
       const loc = JSON.parse(shared)
       if (loc.lat !== undefined && loc.lng !== undefined) {
@@ -477,7 +458,7 @@ function loadDebugOverride(): DebugOverride | null {
       }
     }
     // Fall back to old debug override
-    const raw = localStorage.getItem('worldtourly_debug_override')
+    const raw = localStorage.getItem('zaxise_debug_override')
     if (raw) return JSON.parse(raw)
   } catch {}
   return null
@@ -486,9 +467,9 @@ function loadDebugOverride(): DebugOverride | null {
 function saveDebugOverride(override: DebugOverride | null) {
   if (typeof window === 'undefined') return
   if (override) {
-    localStorage.setItem('worldtourly_debug_override', JSON.stringify(override))
+    localStorage.setItem('zaxise_debug_override', JSON.stringify(override))
   } else {
-    localStorage.removeItem('worldtourly_debug_override')
+    localStorage.removeItem('zaxise_debug_override')
   }
 }
 
@@ -496,11 +477,7 @@ export default function SeasonalHero() {
   const [context, setContext] = useState<SeasonContext>(SEASONAL_THEMES.spring)
   const [localTagline, setLocalTagline] = useState<string | null>(null)
   const [loaded, setLoaded] = useState(false)
-  const [debugOpen, setDebugOpen] = useState(false)
   const [debugOverride, setDebugOverride] = useState<DebugOverride | null>(null)
-  const [activeThemeKey, setActiveThemeKey] = useState<string>('spring')
-  const [manualLat, setManualLat] = useState('')
-  const [manualLng, setManualLng] = useState('')
 
   // Compute the season context from given params
   const computeContext = (lat: number, lng: number, month: number, day: number) => {
@@ -509,7 +486,6 @@ export default function SeasonalHero() {
     else setLocalTagline(null)
 
     const season = getSeasonForLocation(lat, month, day, lng)
-    setActiveThemeKey(season)
     const theme = { ...(SEASONAL_THEMES[season] || SEASONAL_THEMES.spring) }
 
     // Override bgImage with country-specific image if available
@@ -650,128 +626,6 @@ export default function SeasonalHero() {
         </div>
       </div>
 
-      {/* Debug Panel */}
-      <div className="fixed bottom-4 right-4 z-50">
-        {debugOpen && (
-          <div className="mb-2 bg-gray-900/95 backdrop-blur-sm text-white rounded-xl shadow-2xl border border-white/10 p-4 w-80 text-sm">
-            <div className="flex items-center justify-between mb-3">
-              <span className="font-semibold text-xs uppercase tracking-wider text-white/60">Season Debug</span>
-              <button onClick={() => setDebugOpen(false)} className="text-white/40 hover:text-white text-lg leading-none">&times;</button>
-            </div>
-
-            {/* Current info */}
-            <div className="bg-white/10 rounded-lg p-2.5 mb-3 space-y-1">
-              <div className="flex justify-between">
-                <span className="text-white/50">Theme:</span>
-                <span className="font-mono">{activeThemeKey}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-white/50">Season:</span>
-                <span>{context.season} {context.emoji}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-white/50">Tagline:</span>
-                <span className="text-right text-xs max-w-[180px] truncate">{localTagline || context.tagline}</span>
-              </div>
-              {debugOverride && (
-                <div className="flex justify-between">
-                  <span className="text-white/50">Override:</span>
-                  <span className="text-amber-300 text-xs">{debugOverride.cityLabel || `${debugOverride.lat}, ${debugOverride.lng}`}</span>
-                </div>
-              )}
-            </div>
-
-            {/* City dropdown */}
-            <label className="block text-white/50 text-xs mb-1">City preset</label>
-            <select
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-2.5 py-1.5 mb-3 text-white text-sm focus:outline-none focus:border-white/40"
-              value={debugOverride?.cityLabel || ''}
-              onChange={(e) => {
-                const city = DEBUG_CITIES.find(c => c.label === e.target.value)
-                if (city) {
-                  setManualLat(String(city.lat))
-                  setManualLng(String(city.lng))
-                  applyOverride({ lat: city.lat, lng: city.lng, month: debugOverride?.month, cityLabel: city.label })
-                }
-              }}
-            >
-              <option value="">Select a city...</option>
-              {DEBUG_CITIES.map(city => (
-                <option key={city.label} value={city.label}>{city.label}</option>
-              ))}
-            </select>
-
-            {/* Manual lat/lng */}
-            <label className="block text-white/50 text-xs mb-1">Manual lat/lng</label>
-            <div className="flex gap-2 mb-3">
-              <input
-                type="number"
-                placeholder="Lat"
-                value={manualLat}
-                onChange={(e) => setManualLat(e.target.value)}
-                className="flex-1 bg-white/10 border border-white/20 rounded-lg px-2.5 py-1.5 text-white text-sm focus:outline-none focus:border-white/40 placeholder:text-white/30"
-              />
-              <input
-                type="number"
-                placeholder="Lng"
-                value={manualLng}
-                onChange={(e) => setManualLng(e.target.value)}
-                className="flex-1 bg-white/10 border border-white/20 rounded-lg px-2.5 py-1.5 text-white text-sm focus:outline-none focus:border-white/40 placeholder:text-white/30"
-              />
-              <button
-                onClick={() => {
-                  const lat = parseFloat(manualLat)
-                  const lng = parseFloat(manualLng)
-                  if (!isNaN(lat) && !isNaN(lng)) {
-                    applyOverride({ lat, lng, month: debugOverride?.month, cityLabel: undefined })
-                  }
-                }}
-                className="bg-white/20 hover:bg-white/30 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors"
-              >
-                Go
-              </button>
-            </div>
-
-            {/* Month override */}
-            <label className="block text-white/50 text-xs mb-1">Month override</label>
-            <select
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-2.5 py-1.5 mb-3 text-white text-sm focus:outline-none focus:border-white/40"
-              value={debugOverride?.month !== undefined ? debugOverride.month : ''}
-              onChange={(e) => {
-                const val = e.target.value
-                if (val === '') {
-                  applyOverride(debugOverride ? { ...debugOverride, month: undefined } : null)
-                } else {
-                  const month = parseInt(val, 10)
-                  const lat = debugOverride?.lat ?? 40
-                  const lng = debugOverride?.lng ?? -74
-                  applyOverride({ ...debugOverride, lat, lng, month })
-                }
-              }}
-            >
-              <option value="">Auto (current month)</option>
-              {MONTH_NAMES.map((name, i) => (
-                <option key={i} value={i}>{name}</option>
-              ))}
-            </select>
-
-            {/* Reset */}
-            <button
-              onClick={resetToAuto}
-              className="w-full bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors"
-            >
-              Reset to Auto
-            </button>
-          </div>
-        )}
-        <button
-          onClick={() => setDebugOpen(!debugOpen)}
-          className="w-10 h-10 bg-gray-900/80 backdrop-blur-sm hover:bg-gray-900 text-white rounded-full shadow-lg border border-white/10 flex items-center justify-center text-lg transition-all hover:scale-110"
-          title="Season debug panel"
-        >
-          🔧
-        </button>
-      </div>
     </section>
   )
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Shopping Guide — WorldTourly',
+  title: 'Shopping Guide — Zaxise',
   description:
     'Discover the best shopping destinations, local specialties, bargaining tips, tax refund info, and authenticity advice for travelers worldwide.',
 }

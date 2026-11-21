@@ -288,7 +288,7 @@ export default function TravelQuizPage() {
   }, [currentIndex, shuffledQuestions.length, score, bestScore]);
 
   const shareScore = useCallback(async () => {
-    const text = `I scored ${score}/${shuffledQuestions.length} on WorldTourly's Travel Quiz! How well do you know the world?\n\nTake the quiz: worldtourly.com/travel-quiz`;
+    const text = `I scored ${score}/${shuffledQuestions.length} on Zaxise's Travel Quiz! How well do you know the world?\n\nTake the quiz: zaxise.com/travel-quiz`;
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);

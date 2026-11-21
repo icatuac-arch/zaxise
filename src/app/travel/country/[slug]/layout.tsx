@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const country = COUNTRIES.find((c) => c.slug === slug);
   if (!country) {
-    return { title: 'Country Not Found | WorldTourly' };
+    return { title: 'Country Not Found | Zaxise' };
   }
 
   const topAttractions = country.states
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const description = `Explore ${country.name}: top attractions, cities, travel tips, visa info, safety, weather, and more.${attractionMention} ${country.tagline}`;
 
   return {
-    title: `${country.name} Travel Guide — Top Attractions & Trip Planner | WorldTourly`,
+    title: `${country.name} Travel Guide — Top Attractions & Trip Planner | Zaxise`,
     description,
     keywords: [
       `${country.name} travel guide`,
@@ -41,26 +41,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       `${country.name} safety`,
     ],
     alternates: {
-      canonical: `https://worldtourly.com/country/${country.slug}`,
+      canonical: `https://zaxise.com/country/${country.slug}`,
     },
     openGraph: {
       type: 'article',
-      title: `${country.name} Travel Guide — Top Attractions & Trip Planner | WorldTourly`,
+      title: `${country.name} Travel Guide — Top Attractions & Trip Planner | Zaxise`,
       description,
-      url: `https://worldtourly.com/country/${country.slug}`,
-      siteName: 'WorldTourly',
+      url: `https://zaxise.com/country/${country.slug}`,
+      siteName: 'Zaxise',
       images: [
         {
           url: '/og-image.png',
           width: 1200,
           height: 630,
-          alt: `${country.name} Travel Guide | WorldTourly`,
+          alt: `${country.name} Travel Guide | Zaxise`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${country.name} Travel Guide | WorldTourly`,
+      title: `${country.name} Travel Guide | Zaxise`,
       description,
       images: ['/og-image.png'],
     },

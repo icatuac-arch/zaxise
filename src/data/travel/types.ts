@@ -1,4 +1,4 @@
-// WorldTourly — Type definitions for destination data model
+// Zaxise — Type definitions for destination data model
 
 export interface Attraction {
   id: string
