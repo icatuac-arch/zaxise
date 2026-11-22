@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
   const events = (data || []).map(e => ({
     ...e,
     metro_area: e.metro_region,
-    short_id: e.id,
+    short_id: e.id.replace(/-/g, '').slice(0, 7),
   }))
 
   return NextResponse.json({

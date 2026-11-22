@@ -2,12 +2,33 @@
 
 import { useEffect, useState } from "react";
 
-const ZONES: [string, string][] = [
-  ["🇺🇸 San Francisco", "America/Los_Angeles"],
-  ["🇮🇳 Mumbai", "Asia/Kolkata"],
-  ["🇺🇸 New York", "America/New_York"],
-  ["🇺🇸 Chicago", "America/Chicago"],
+const ALL_ZONES: { label: string; tz: string }[] = [
+  { label: "🇺🇸 San Francisco", tz: "America/Los_Angeles" },
+  { label: "🇮🇳 Mumbai", tz: "Asia/Kolkata" },
+  { label: "🇺🇸 New York", tz: "America/New_York" },
+  { label: "🇺🇸 Chicago", tz: "America/Chicago" },
+  { label: "🇮🇳 Delhi", tz: "Asia/Kolkata" },
+  { label: "🇮🇳 Bangalore", tz: "Asia/Kolkata" },
+  { label: "🇮🇳 Chennai", tz: "Asia/Kolkata" },
+  { label: "🇮🇳 Kolkata", tz: "Asia/Kolkata" },
+  { label: "🇮🇳 Hyderabad", tz: "Asia/Kolkata" },
+  { label: "🇮🇳 Pune", tz: "Asia/Kolkata" },
+  { label: "🇺🇸 Dallas", tz: "America/Chicago" },
+  { label: "🇺🇸 Houston", tz: "America/Chicago" },
+  { label: "🇺🇸 Seattle", tz: "America/Los_Angeles" },
+  { label: "🇺🇸 Boston", tz: "America/New_York" },
+  { label: "🇺🇸 Atlanta", tz: "America/New_York" },
+  { label: "🇺🇸 Denver", tz: "America/Denver" },
+  { label: "🇺🇸 Phoenix", tz: "America/Phoenix" },
+  { label: "🇺🇸 DC", tz: "America/New_York" },
+  { label: "🇬🇧 London", tz: "Europe/London" },
+  { label: "🇦🇪 Dubai", tz: "Asia/Dubai" },
+  { label: "🇸🇬 Singapore", tz: "Asia/Singapore" },
+  { label: "🇯🇵 Tokyo", tz: "Asia/Tokyo" },
+  { label: "🇦🇺 Sydney", tz: "Australia/Sydney" },
 ];
+
+const DEFAULT_SELECTIONS = [0, 1, 2, 3]; // SF, Mumbai, NY, Chicago
 
 function getGreeting(): string {
   const hour = new Date().getHours();
@@ -22,36 +43,68 @@ interface ClockData {
   day: string;
 }
 
-function getClocks(): ClockData[] {
+function getClocks(indices: number[]): ClockData[] {
   const now = new Date();
-  return ZONES.map(([city, tz]) => ({
-    city,
-    time: now.toLocaleTimeString("en-US", {
-      timeZone: tz,
-      hour: "numeric",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: true,
-    }),
-    day: now.toLocaleDateString("en-US", {
-      timeZone: tz,
-      weekday: "short",
-      month: "short",
-      day: "numeric",
-    }),
-  }));
+  return indices.map((i) => {
+    const zone = ALL_ZONES[i] || ALL_ZONES[0];
+    return {
+      city: zone.label,
+      time: now.toLocaleTimeString("en-US", {
+        timeZone: zone.tz,
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      }),
+      day: now.toLocaleDateString("en-US", {
+        timeZone: zone.tz,
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+      }),
+    };
+  });
+}
+
+function loadSavedClocks(): number[] {
+  try {
+    const saved = localStorage.getItem("zaxise_clocks");
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length === 4) return parsed;
+    }
+  } catch {}
+  return DEFAULT_SELECTIONS;
 }
 
 export default function HeroSection() {
   const [greeting, setGreeting] = useState("Namaste!");
+  const [selections, setSelections] = useState<number[]>(DEFAULT_SELECTIONS);
   const [clocks, setClocks] = useState<ClockData[] | null>(null);
+  const [editing, setEditing] = useState<number | null>(null);
 
   useEffect(() => {
     setGreeting(getGreeting());
-    setClocks(getClocks());
-    const interval = setInterval(() => setClocks(getClocks()), 1000);
+    const saved = loadSavedClocks();
+    setSelections(saved);
+    setClocks(getClocks(saved));
+    const interval = setInterval(() => {
+      setSelections((s) => {
+        setClocks(getClocks(s));
+        return s;
+      });
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const updateClock = (slotIndex: number, zoneIndex: number) => {
+    const next = [...selections];
+    next[slotIndex] = zoneIndex;
+    setSelections(next);
+    setClocks(getClocks(next));
+    localStorage.setItem("zaxise_clocks", JSON.stringify(next));
+    setEditing(null);
+  };
 
   return (
     <section
@@ -116,11 +169,12 @@ export default function HeroSection() {
           </span>
         </div>
         <div className="grid grid-cols-2 gap-[10px]">
-          {(clocks || ZONES.map(([city]) => ({ city, time: "--:--:--", day: "---" }))).map(
-            (c) => (
+          {(clocks || DEFAULT_SELECTIONS.map(() => ({ city: "---", time: "--:--:--", day: "---" }))).map(
+            (c, i) => (
               <div
-                key={c.city}
-                className="rounded-[15px] border border-[#E9DFE4] bg-white px-3 py-3.5"
+                key={i}
+                className="relative rounded-[15px] border border-[#E9DFE4] bg-white px-3 py-3.5 cursor-pointer hover:border-[#801C45]/30 transition-colors"
+                onClick={() => setEditing(editing === i ? null : i)}
               >
                 <div className="text-[12px] font-[650] text-muted">{c.city}</div>
                 <div
@@ -130,10 +184,30 @@ export default function HeroSection() {
                   {c.time}
                 </div>
                 <div className="text-[11px] text-[#71646C]">{c.day}</div>
+                {/* City picker dropdown */}
+                {editing === i && (
+                  <div
+                    className="absolute left-0 top-full mt-1 z-20 w-[180px] max-h-[200px] overflow-y-auto rounded-xl border border-[#E9DFE4] bg-white shadow-lg"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {ALL_ZONES.map((zone, zi) => (
+                      <button
+                        key={zone.label}
+                        onClick={() => updateClock(i, zi)}
+                        className={`block w-full text-left px-3 py-2 text-[12px] hover:bg-[#F3E6ED] transition-colors ${
+                          selections[i] === zi ? "font-bold text-[#801C45] bg-[#F3E6ED]" : ""
+                        }`}
+                      >
+                        {zone.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             )
           )}
         </div>
+        <p className="mt-2 text-[9px] text-center text-[#71646C]/60">Click a clock to change city</p>
       </div>
     </section>
   );
