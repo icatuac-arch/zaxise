@@ -33,7 +33,7 @@ export default async function FactPage({
 
       <FactViewTracker category={fact.category} />
       <Link
-        href="/browse"
+        href="/facts/browse"
         className="relative z-10 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-ink-soft hover:text-tomato transition-colors mb-8"
       >
         <svg

@@ -365,7 +365,7 @@ export default function PrequalifyPage() {
           <Link href="/" className="btn-primary inline-flex items-center gap-2">
             Rent vs Buy Calculator <ArrowRight className="w-4 h-4" />
           </Link>
-          <Link href="/checklist" className="btn-secondary inline-flex items-center gap-2">
+          <Link href="/rent-or-buy/checklist" className="btn-secondary inline-flex items-center gap-2">
             Home Buying Checklist <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

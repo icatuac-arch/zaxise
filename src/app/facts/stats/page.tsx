@@ -343,7 +343,7 @@ export default function StatsPage() {
 
           <p className="mt-3 font-mono text-xs text-[var(--muted)]/50">
             Tip: browse{" "}
-            <Link href="/browse" className="underline hover:text-[var(--accent)]">
+            <Link href="/facts/browse" className="underline hover:text-[var(--accent)]">
               all categories
             </Link>{" "}
             to expand your journey.
@@ -361,7 +361,7 @@ export default function StatsPage() {
             <p className="font-mono text-xs text-[var(--muted)]/60 mt-2 mb-5">
               Start exploring facts and your category breakdown will appear here.
             </p>
-            <Link href="/browse" className="btn btn-primary">
+            <Link href="/facts/browse" className="btn btn-primary">
               Start Exploring →
             </Link>
           </div>
@@ -440,7 +440,7 @@ export default function StatsPage() {
           <h2 className="font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
             Badges — {earned.length} earned
           </h2>
-          <Link href="/learn" className="ml-auto font-mono text-xs text-[var(--accent)] hover:underline">
+          <Link href="/facts/learn" className="ml-auto font-mono text-xs text-[var(--accent)] hover:underline">
             Learning Paths →
           </Link>
         </div>
@@ -453,10 +453,10 @@ export default function StatsPage() {
           Keep reading to grow your stats. New facts are added regularly.
         </p>
         <div className="flex items-center gap-3">
-          <Link href="/daily" className="btn">
+          <Link href="/facts/daily" className="btn">
             Daily Digest
           </Link>
-          <Link href="/quiz" className="btn btn-primary">
+          <Link href="/facts/quiz" className="btn btn-primary">
             Take a Quiz →
           </Link>
         </div>

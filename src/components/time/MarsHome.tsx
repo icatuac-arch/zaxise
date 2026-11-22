@@ -598,7 +598,7 @@ function MarsSpaceNews() {
           <Star className="w-5 h-5 text-yellow-500" />
           Space News
         </h3>
-        <Link href="/news" className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
+        <Link href="/time/news" className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
           All news <ChevronRight className="w-4 h-4" />
         </Link>
       </div>
@@ -1076,7 +1076,7 @@ export default function MarsHome() {
                 {editMode ? '✓ done' : '✏️ customize'}
               </button>
               <span className="text-gray-700">·</span>
-              <Link href="/world-clock" className="text-cyan-500 hover:text-cyan-300 transition-colors">
+              <Link href="/time/world-clock" className="text-cyan-500 hover:text-cyan-300 transition-colors">
                 all cities →
               </Link>
             </div>
@@ -1159,7 +1159,7 @@ export default function MarsHome() {
       <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-5">
           <h2 className="text-xl font-bold text-gray-900">Popular Time Zone Conversions &mdash; Live</h2>
-          <Link href="/timezone-compare" className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
+          <Link href="/time/timezone-compare" className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
             Convert any timezone <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
@@ -1188,7 +1188,7 @@ export default function MarsHome() {
       <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold text-gray-900">Meeting Planner</h2>
-          <Link href="/meeting-planner" className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
+          <Link href="/time/meeting-planner" className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
             Full planner <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
@@ -1505,19 +1505,19 @@ export default function MarsHome() {
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
-              href="/world-clock"
+              href="/time/world-clock"
               className="px-6 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors"
             >
               World Clock
             </Link>
             <Link
-              href="/astronomy"
+              href="/time/astronomy"
               className="px-6 py-2.5 rounded-lg bg-orange-600 text-white text-sm font-medium hover:bg-orange-700 transition-colors"
             >
               Astronomy
             </Link>
             <Link
-              href="/iss-tracker"
+              href="/time/iss-tracker"
               className="px-6 py-2.5 rounded-lg bg-cyan-600 text-white text-sm font-medium hover:bg-cyan-700 transition-colors"
             >
               ISS Tracker

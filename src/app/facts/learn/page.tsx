@@ -242,7 +242,7 @@ export default function LearnPage() {
           <h2 className="font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
             Badges — {earned.length} earned
           </h2>
-          <Link href="/stats" className="ml-auto font-mono text-xs text-[var(--accent)] hover:underline">
+          <Link href="/facts/stats" className="ml-auto font-mono text-xs text-[var(--accent)] hover:underline">
             View all stats →
           </Link>
         </div>

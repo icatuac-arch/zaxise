@@ -34,10 +34,10 @@ function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4" style={{ animationDelay: '0.3s' }}>
-          <Link href="/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2 shadow-lg shadow-amber-500/20">
+          <Link href="/social/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2 shadow-lg shadow-amber-500/20">
             Get Started Free <ArrowRight className="w-5 h-5" />
           </Link>
-          <Link href="/dashboard" className="btn-secondary text-lg px-8 py-4 rounded-2xl inline-flex items-center gap-2">
+          <Link href="/social/dashboard" className="btn-secondary text-lg px-8 py-4 rounded-2xl inline-flex items-center gap-2">
             <Play className="w-5 h-5 text-violet-400" /> Watch Demo
           </Link>
         </div>
@@ -114,7 +114,7 @@ function FeaturesGrid() {
           ))}
         </div>
         <div className="text-center mt-10">
-          <Link href="/features" className="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 font-medium transition-colors">
+          <Link href="/social/features" className="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 font-medium transition-colors">
             Explore all features <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -340,7 +340,7 @@ function CTABanner() {
               Join creators and brands using SocialMarketly to grow their audience.
             </p>
             <Link
-              href="/pricing"
+              href="/social/pricing"
               className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold text-lg px-10 py-4 rounded-2xl hover:bg-slate-100 transition-colors shadow-xl"
             >
               Start Free — No Credit Card <ArrowRight className="w-5 h-5" />

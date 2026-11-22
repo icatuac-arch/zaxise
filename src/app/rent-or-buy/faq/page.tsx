@@ -211,13 +211,13 @@ export default function FAQPage() {
         <h3 className="text-lg font-bold text-dark mb-2">Still have questions?</h3>
         <p className="text-sm text-muted mb-4">Explore our other resources to learn more about the home buying process.</p>
         <div className="flex flex-wrap justify-center gap-3">
-          <Link href="/glossary" className="btn-primary inline-flex items-center gap-2 text-sm">
+          <Link href="/rent-or-buy/glossary" className="btn-primary inline-flex items-center gap-2 text-sm">
             Glossary of Terms <ArrowRight className="w-4 h-4" />
           </Link>
-          <Link href="/prequalify" className="btn-secondary inline-flex items-center gap-2 text-sm">
+          <Link href="/rent-or-buy/prequalify" className="btn-secondary inline-flex items-center gap-2 text-sm">
             Pre-Qualification Estimator <ArrowRight className="w-4 h-4" />
           </Link>
-          <Link href="/checklist" className="btn-secondary inline-flex items-center gap-2 text-sm">
+          <Link href="/rent-or-buy/checklist" className="btn-secondary inline-flex items-center gap-2 text-sm">
             Buying Checklist <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

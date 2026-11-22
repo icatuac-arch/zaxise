@@ -440,7 +440,7 @@ function ChainsContent() {
               {/* Explore CTA */}
               <div className="mt-6 pt-4 border-t border-[var(--muted)]/20">
                 <Link
-                  href="/explore"
+                  href="/facts/explore"
                   className="btn w-full justify-center gap-2 text-xs"
                 >
                   Random Walk <ArrowRight size={13} />

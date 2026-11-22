@@ -13,7 +13,7 @@ export default function ClosingCostsPage() {
     <div>
       <div className="hero-section mb-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/guides" className="inline-flex items-center gap-1 text-sm text-white/80 hover:text-white mb-6">
+          <Link href="/rent-or-buy/guides" className="inline-flex items-center gap-1 text-sm text-white/80 hover:text-white mb-6">
             <ArrowLeft className="w-4 h-4" /> Back to Guides
           </Link>
           <div className="flex items-center gap-3 mb-4">
@@ -147,7 +147,7 @@ export default function ClosingCostsPage() {
         <Link href="/" className="btn-primary inline-flex items-center gap-2">
           Try the Calculator
         </Link>
-        <Link href="/guides/rent-vs-buy-factors" className="btn-secondary inline-flex items-center gap-2">
+        <Link href="/rent-or-buy/guides/rent-vs-buy-factors" className="btn-secondary inline-flex items-center gap-2">
           Next: Rent vs Buy Factors
         </Link>
       </div>

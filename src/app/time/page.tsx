@@ -480,7 +480,7 @@ function HeroSection({ userTz, dateStr, weekNum }: { userTz: string | null; date
             {weather && (
               <>
                 <span className="text-muted-dark">·</span>
-                <Link href="/weather" className="flex items-center gap-2 rounded-lg px-3 py-1.5 border border-card-border bg-card-bg/40 hover:border-primary/40 transition-colors">
+                <Link href="/time/weather" className="flex items-center gap-2 rounded-lg px-3 py-1.5 border border-card-border bg-card-bg/40 hover:border-primary/40 transition-colors">
                   <span className="text-lg">{getWeatherEmoji(weather.desc)}</span>
                   <span className="font-bold text-white">{weather.temp}°C</span>
                   <span className="text-xs text-muted capitalize hidden sm:inline">{weather.desc}</span>
@@ -539,7 +539,7 @@ function WeatherWidget({ userTz }: { userTz: string | null }) {
         <h2 className="font-heading text-lg font-bold text-white flex items-center gap-2">
           <Cloud className="w-5 h-5 text-sky-400" /> Weather
         </h2>
-        <Link href="/weather" className="text-xs text-primary hover:text-primary/80 transition-colors">
+        <Link href="/time/weather" className="text-xs text-primary hover:text-primary/80 transition-colors">
           Full weather page →
         </Link>
       </div>
@@ -588,7 +588,7 @@ function SpaceNewsWidget() {
         <h2 className="font-heading text-lg font-bold text-white flex items-center gap-2">
           <Rocket className="w-5 h-5 text-orange-400" /> Space News
         </h2>
-        <Link href="/news" className="text-xs text-primary hover:text-primary/80 transition-colors">
+        <Link href="/time/news" className="text-xs text-primary hover:text-primary/80 transition-colors">
           All news →
         </Link>
       </div>
@@ -1665,7 +1665,7 @@ function HomeWorldClock({ userTz }: { userTz: string | null }) {
           <button onClick={() => setEditMode(!editMode)} className="text-[10px] text-muted hover:text-primary transition-colors">
             {editMode ? '✓ Done' : '✏️ Customize'}
           </button>
-          <Link href="/world-clock" className="text-xs text-primary hover:text-primary/80 transition-colors">
+          <Link href="/time/world-clock" className="text-xs text-primary hover:text-primary/80 transition-colors">
             All cities →
           </Link>
         </div>
@@ -2037,7 +2037,7 @@ function HomeMeetingPlanner() {
         <h2 className="font-heading text-lg font-bold text-white flex items-center gap-2">
           <Users className="w-5 h-5 text-violet-400" /> Meeting Planner
         </h2>
-        <Link href="/meeting-planner" className="text-xs text-primary hover:text-primary/80 transition-colors">
+        <Link href="/time/meeting-planner" className="text-xs text-primary hover:text-primary/80 transition-colors">
           Full page →
         </Link>
       </div>
@@ -2255,7 +2255,7 @@ function InlineAgeCalculator() {
             )}
           </div>
         )}
-        <Link href="/age-calculator" className="mt-auto pt-2 text-[11px] text-rose-400 hover:text-rose-300 transition-colors">
+        <Link href="/time/age-calculator" className="mt-auto pt-2 text-[11px] text-rose-400 hover:text-rose-300 transition-colors">
           Full version &rarr;
         </Link>
       </div>
@@ -2355,7 +2355,7 @@ function InlineStopwatch() {
           </div>
         )}
 
-        <Link href="/stopwatch" className="mt-auto pt-2 text-[11px] text-emerald-400 hover:text-emerald-300 transition-colors">
+        <Link href="/time/stopwatch" className="mt-auto pt-2 text-[11px] text-emerald-400 hover:text-emerald-300 transition-colors">
           Full version &rarr;
         </Link>
       </div>
@@ -2437,7 +2437,7 @@ function InlineDateDifference() {
           </div>
         )}
 
-        <Link href="/date-difference" className="mt-auto pt-2 text-[11px] text-sky-400 hover:text-sky-300 transition-colors">
+        <Link href="/time/date-difference" className="mt-auto pt-2 text-[11px] text-sky-400 hover:text-sky-300 transition-colors">
           Full version &rarr;
         </Link>
       </div>
@@ -2637,13 +2637,13 @@ function DefaultHome() {
             50+ tools for time zones, calendars, astronomy, and space exploration. No sign-up, no ads, completely free.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href="/world-clock" className="px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors">
+            <Link href="/time/world-clock" className="px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors">
               World Clock
             </Link>
-            <Link href="/astronomy" className="px-5 py-2.5 rounded-lg border border-card-border text-white text-sm font-medium hover:bg-card-bg transition-colors">
+            <Link href="/time/astronomy" className="px-5 py-2.5 rounded-lg border border-card-border text-white text-sm font-medium hover:bg-card-bg transition-colors">
               Astronomy
             </Link>
-            <Link href="/iss-tracker" className="px-5 py-2.5 rounded-lg border border-card-border text-white text-sm font-medium hover:bg-card-bg transition-colors">
+            <Link href="/time/iss-tracker" className="px-5 py-2.5 rounded-lg border border-card-border text-white text-sm font-medium hover:bg-card-bg transition-colors">
               ISS Tracker
             </Link>
           </div>

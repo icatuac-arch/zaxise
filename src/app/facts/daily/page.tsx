@@ -379,10 +379,10 @@ export default function DailyDigestPage() {
             Come back tomorrow for five new facts from different categories.
           </p>
           <div className="flex items-center gap-3">
-            <Link href="/browse" className="btn">
+            <Link href="/facts/browse" className="btn">
               Browse All Facts
             </Link>
-            <Link href="/stats" className="btn btn-primary">
+            <Link href="/facts/stats" className="btn btn-primary">
               Your Stats →
             </Link>
           </div>

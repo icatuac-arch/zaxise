@@ -32,11 +32,11 @@ export function SiteFooter() {
 
         {/* Navigation links */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-xs">
-          <Link href="/browse" className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors">Browse</Link>
-          <Link href="/quiz" className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors">Quiz</Link>
-          <Link href="/daily" className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors">Daily Digest</Link>
-          <Link href="/collections" className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors">Collections</Link>
-          <Link href="/submit" className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors">Submit a Fact</Link>
+          <Link href="/facts/browse" className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors">Browse</Link>
+          <Link href="/facts/quiz" className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors">Quiz</Link>
+          <Link href="/facts/daily" className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors">Daily Digest</Link>
+          <Link href="/facts/collections" className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors">Collections</Link>
+          <Link href="/facts/submit" className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors">Submit a Fact</Link>
         </div>
 
         {/* Legal links + copyright */}

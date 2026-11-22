@@ -268,7 +268,7 @@ export default async function ArticlePage({ params }: Props) {
             Home
           </Link>
           <span aria-hidden="true">›</span>
-          <Link href="/blog" className="hover:text-[var(--accent)] transition-colors">
+          <Link href="/facts/blog" className="hover:text-[var(--accent)] transition-colors">
             Blog
           </Link>
           <span aria-hidden="true">›</span>
@@ -355,7 +355,7 @@ export default async function ArticlePage({ params }: Props) {
         {/* Back to blog */}
         <div className="mt-10 pt-8 border-t border-[var(--muted)]/10">
           <Link
-            href="/blog"
+            href="/facts/blog"
             className="inline-flex items-center gap-2 font-mono text-xs text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
           >
             <svg viewBox="0 0 12 12" className="w-3 h-3" fill="none" aria-hidden="true">

@@ -34,7 +34,7 @@ export default function FeatureDetailPage({
           </div>
           <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-4">{title}</h1>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-8">{tagline}</p>
-          <Link href="/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
+          <Link href="/social/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
             Get Started Free <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
@@ -82,7 +82,7 @@ export default function FeatureDetailPage({
             <div className="relative py-14 px-8">
               <h2 className="text-3xl font-bold text-white mb-4">Start using {title} today</h2>
               <p className="text-white/80 mb-8">Free forever. No credit card required.</p>
-              <Link href="/pricing" className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-8 py-3 rounded-xl hover:bg-slate-100 transition-colors">
+              <Link href="/social/pricing" className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-8 py-3 rounded-xl hover:bg-slate-100 transition-colors">
                 Get Started <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

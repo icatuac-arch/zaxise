@@ -106,7 +106,7 @@ export default function SolutionsPage() {
             <div className="relative py-14 px-8">
               <h2 className="text-3xl font-bold text-white mb-4">Not sure which plan fits?</h2>
               <p className="text-white/80 mb-8">Start free and upgrade as you grow. Every solution includes our core features at no cost.</p>
-              <Link href="/pricing" className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-8 py-3 rounded-xl hover:bg-slate-100 transition-colors">
+              <Link href="/social/pricing" className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-8 py-3 rounded-xl hover:bg-slate-100 transition-colors">
                 Get Started Free <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

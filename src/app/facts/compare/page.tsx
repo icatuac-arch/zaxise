@@ -405,7 +405,7 @@ export default function ComparePage() {
           <button className="btn" onClick={handleShare}>
             <Share2 size={14} /> Share Score
           </button>
-          <Link href="/challenge" className="btn">
+          <Link href="/facts/challenge" className="btn">
             <Zap size={14} /> Try Challenge Mode
           </Link>
         </div>

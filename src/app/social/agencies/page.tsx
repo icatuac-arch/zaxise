@@ -28,7 +28,7 @@ export default function AgenciesPage() {
           <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
             Manage dozens of clients, automate reporting, and impress with white-label dashboards — all for free. No per-client fees, no seat limits that break the bank.
           </p>
-          <Link href="/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
+          <Link href="/social/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
             Get Started Free <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
@@ -90,7 +90,7 @@ export default function AgenciesPage() {
             <div className="relative py-14 px-8">
               <h2 className="text-3xl font-bold text-white mb-4">Ready to scale your agency?</h2>
               <p className="text-white/80 mb-8">Free forever. Add unlimited clients. No per-seat pricing traps.</p>
-              <Link href="/pricing" className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-8 py-3 rounded-xl hover:bg-slate-100 transition-colors">
+              <Link href="/social/pricing" className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-8 py-3 rounded-xl hover:bg-slate-100 transition-colors">
                 Get Started Free <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

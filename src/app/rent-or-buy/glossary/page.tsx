@@ -140,10 +140,10 @@ export default function GlossaryPage() {
           Back to top
         </a>
         <div className="mt-4 flex flex-wrap justify-center gap-3">
-          <Link href="/faq" className="btn-primary inline-flex items-center gap-2 text-sm">
+          <Link href="/rent-or-buy/faq" className="btn-primary inline-flex items-center gap-2 text-sm">
             Read the FAQ
           </Link>
-          <Link href="/checklist" className="btn-secondary inline-flex items-center gap-2 text-sm">
+          <Link href="/rent-or-buy/checklist" className="btn-secondary inline-flex items-center gap-2 text-sm">
             Home Buying Checklist
           </Link>
         </div>

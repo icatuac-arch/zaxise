@@ -736,7 +736,7 @@ export default function MapPage() {
                     </p>
                     <p className="font-mono text-xs text-[var(--muted)]">
                       Try a different region or{" "}
-                      <Link href="/browse" className="text-[var(--accent)] hover:underline">
+                      <Link href="/facts/browse" className="text-[var(--accent)] hover:underline">
                         browse all facts
                       </Link>
                       .

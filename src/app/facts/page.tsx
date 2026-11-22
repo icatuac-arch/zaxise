@@ -699,7 +699,7 @@ export default function DidYouKnowHome() {
           )}
 
           <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-            <Link href="/challenge" className="text-sm font-bold hover:underline" style={{ color: '#4ECDC4' }}>
+            <Link href="/facts/challenge" className="text-sm font-bold hover:underline" style={{ color: '#4ECDC4' }}>
               🎮 Play More Challenges →
             </Link>
           </div>

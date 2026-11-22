@@ -284,7 +284,7 @@ export default function LocalDataPage() {
           <Link href="/" className="btn-primary inline-flex items-center gap-2">
             Rent vs Buy Calculator <ArrowRight className="w-4 h-4" />
           </Link>
-          <Link href="/prequalify" className="btn-secondary inline-flex items-center gap-2">
+          <Link href="/rent-or-buy/prequalify" className="btn-secondary inline-flex items-center gap-2">
             Pre-Qualification Estimator <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

@@ -602,7 +602,7 @@ export default function ChallengePage() {
           <button className="btn" onClick={handleShare}>
             <Share2 size={14} /> Share Score
           </button>
-          <Link href="/compare" className="btn">
+          <Link href="/facts/compare" className="btn">
             <Trophy size={14} /> Try Compare Game
           </Link>
         </div>

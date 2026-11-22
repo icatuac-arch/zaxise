@@ -587,7 +587,7 @@ export default function RentOrBuyPage() {
             <span className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-purple-200">✓ Instant Results</span>
           </div>
           <p className="text-xs text-white/60 text-center">
-            For informational purposes only — <a href="/disclaimer" className="underline text-white/80">full disclaimer</a>.
+            For informational purposes only — <a href="/rent-or-buy/disclaimer" className="underline text-white/80">full disclaimer</a>.
           </p>
         </div>
       </div>
@@ -1656,13 +1656,13 @@ export default function RentOrBuyPage() {
             &ldquo;The best time to understand your finances is before you make the biggest purchase of your life.&rdquo;
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/guides/first-time-buyer" className="btn-primary inline-flex items-center gap-2">
+            <Link href="/rent-or-buy/guides/first-time-buyer" className="btn-primary inline-flex items-center gap-2">
               📚 First-Time Buyer Guide <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/guides/rent-vs-buy-factors" className="btn-secondary inline-flex items-center gap-2">
+            <Link href="/rent-or-buy/guides/rent-vs-buy-factors" className="btn-secondary inline-flex items-center gap-2">
               🔑 Key Rent vs Buy Factors <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/resources" className="btn-secondary inline-flex items-center gap-2">
+            <Link href="/rent-or-buy/resources" className="btn-secondary inline-flex items-center gap-2">
               🔗 Free Resources <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -1763,7 +1763,7 @@ export default function RentOrBuyPage() {
 
         {/* Disclaimer */}
         <div className="text-xs text-muted text-center py-4">
-          <p><strong>DISCLAIMER:</strong> All calculations, projections, and analysis on this website are estimates for informational and educational purposes only. This is NOT financial, tax, legal, or real estate advice. Results are based on assumptions that may not reflect your actual situation. You use this tool entirely at your own risk. ZAXIS Ventures LLC, its owners, employees, and affiliates accept no responsibility or liability whatsoever for any financial decisions you make based on information from this website. Always consult qualified professionals before making real estate or investment decisions. By using this site, you agree to our <a href="/terms" className="underline">Terms of Use</a> and <a href="/disclaimer" className="underline">Disclaimer</a>.</p>
+          <p><strong>DISCLAIMER:</strong> All calculations, projections, and analysis on this website are estimates for informational and educational purposes only. This is NOT financial, tax, legal, or real estate advice. Results are based on assumptions that may not reflect your actual situation. You use this tool entirely at your own risk. ZAXIS Ventures LLC, its owners, employees, and affiliates accept no responsibility or liability whatsoever for any financial decisions you make based on information from this website. Always consult qualified professionals before making real estate or investment decisions. By using this site, you agree to our <a href="/terms" className="underline">Terms of Use</a> and <a href="/rent-or-buy/disclaimer" className="underline">Disclaimer</a>.</p>
         </div>
 
       </div>

@@ -170,7 +170,7 @@ export default function ResourcesPage() {
           <div className="glass rounded-2xl p-12">
             <h2 className="text-3xl font-bold text-white mb-4">Ready to put it all into practice?</h2>
             <p className="text-slate-400 mb-8">Start using SocialMarketly for free and apply everything you&apos;ve learned.</p>
-            <Link href="/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
+            <Link href="/social/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
               Get Started Free <ArrowRight className="w-5 h-5" />
             </Link>
           </div>

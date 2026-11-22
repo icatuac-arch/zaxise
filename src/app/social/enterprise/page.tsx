@@ -28,7 +28,7 @@ export default function EnterprisePage() {
           <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
             The security, compliance, and scale your enterprise demands — with the simplicity your teams love. SSO, advanced permissions, API access, and dedicated support.
           </p>
-          <Link href="/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
+          <Link href="/social/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
             Contact Sales <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
@@ -90,7 +90,7 @@ export default function EnterprisePage() {
             <div className="relative py-14 px-8">
               <h2 className="text-3xl font-bold text-white mb-4">Ready for enterprise social?</h2>
               <p className="text-white/80 mb-8">Custom pricing for large teams. Dedicated support and onboarding included.</p>
-              <Link href="/pricing" className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-8 py-3 rounded-xl hover:bg-slate-100 transition-colors">
+              <Link href="/social/pricing" className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-8 py-3 rounded-xl hover:bg-slate-100 transition-colors">
                 Contact Sales <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

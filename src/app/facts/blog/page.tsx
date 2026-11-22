@@ -216,7 +216,7 @@ export default function BlogPage() {
       {/* RSS link */}
       <div className="mt-12 pt-8 border-t border-[var(--muted)]/10 flex items-center gap-3">
         <a
-          href="/feed.xml"
+          href="/facts/feed.xml"
           className="flex items-center gap-1.5 font-mono text-xs text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
           aria-label="RSS Feed"
         >

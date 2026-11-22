@@ -224,7 +224,7 @@ export default function DashboardPage() {
           {/* CTA */}
           <div className="text-center mt-12">
             <p className="text-slate-400 mb-4">This is just a preview. Sign up to get your own dashboard.</p>
-            <Link href="/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
+            <Link href="/social/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
               Get Your Free Dashboard <ArrowRight className="w-5 h-5" />
             </Link>
           </div>

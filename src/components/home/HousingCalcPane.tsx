@@ -78,12 +78,12 @@ export default function HousingCalcPane() {
           Compare your monthly housing costs before making your next big decision.
         </p>
         <a
-          href="https://rent-or-buy-home.com/"
+          href="/rent-or-buy"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 inline-block text-[13px] font-[750] text-[#801C45] hover:text-[#631437] transition-colors"
         >
-          Explore the full Rent or Buy tool ↗
+          Explore the full Rent or Buy section ↗
         </a>
       </div>
 

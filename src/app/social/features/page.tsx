@@ -156,7 +156,7 @@ export default function FeaturesPage() {
           <div className="glass rounded-2xl p-12">
             <h2 className="text-3xl font-bold text-white mb-4">Ready to get started?</h2>
             <p className="text-slate-400 mb-8">All features included in the free plan. No credit card required.</p>
-            <Link href="/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
+            <Link href="/social/pricing" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
               Start Free Now <ArrowRight className="w-5 h-5" />
             </Link>
           </div>

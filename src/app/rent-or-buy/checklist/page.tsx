@@ -269,7 +269,7 @@ export default function ChecklistPage() {
       {/* CTA */}
       <div className="mt-10 text-center">
         <p className="text-sm text-muted mb-3">Not sure how much you can borrow?</p>
-        <Link href="/prequalify" className="btn-primary inline-flex items-center gap-2">
+        <Link href="/rent-or-buy/prequalify" className="btn-primary inline-flex items-center gap-2">
           Pre-Qualification Estimator <ArrowRight className="w-4 h-4" />
         </Link>
       </div>

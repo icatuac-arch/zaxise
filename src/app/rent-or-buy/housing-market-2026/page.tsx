@@ -13,7 +13,7 @@ export default function HousingMarket2026Page() {
     <div>
       <div className="hero-section mb-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/blog" className="inline-flex items-center gap-1 text-sm text-white/80 hover:text-white mb-6">
+          <Link href="/rent-or-buy/blog" className="inline-flex items-center gap-1 text-sm text-white/80 hover:text-white mb-6">
             <ArrowLeft className="w-4 h-4" /> Back to Blog
           </Link>
           <div className="flex items-center gap-3 mb-3">
@@ -90,7 +90,7 @@ export default function HousingMarket2026Page() {
         <Link href="/" className="btn-primary inline-flex items-center gap-2">
           Run Your Numbers
         </Link>
-        <Link href="/blog" className="btn-secondary inline-flex items-center gap-2">
+        <Link href="/rent-or-buy/blog" className="btn-secondary inline-flex items-center gap-2">
           More Articles
         </Link>
       </div>

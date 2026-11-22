@@ -132,7 +132,7 @@ export default async function SharePage({ params }: Props) {
             <Link href="/" className="btn flex items-center gap-2">
               <Shuffle size={14} /> Random Fact
             </Link>
-            <Link href="/collections" className="btn btn-primary flex items-center gap-2">
+            <Link href="/facts/collections" className="btn btn-primary flex items-center gap-2">
               Browse Collections
             </Link>
           </div>

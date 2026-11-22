@@ -181,7 +181,7 @@ export default function WhyFreePage() {
           <p className="text-slate-400 text-lg mb-8">
             Join creators and businesses who switched to free.
           </p>
-          <Link href="/dashboard" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
+          <Link href="/social/dashboard" className="btn-amber text-lg px-10 py-4 rounded-2xl inline-flex items-center gap-2">
             Get Started Free <ArrowRight className="w-5 h-5" />
           </Link>
           <p className="text-sm text-slate-500 mt-4">No credit card. No trial. Just free.</p>

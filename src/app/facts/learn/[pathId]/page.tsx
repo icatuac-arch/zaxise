@@ -267,7 +267,7 @@ export default function PathPage() {
     return (
       <div className="max-w-3xl mx-auto px-6 py-16 text-center">
         <p className="font-display text-2xl text-[var(--muted)]">Path not found.</p>
-        <Link href="/learn" className="btn mt-6 inline-flex">← Back to Paths</Link>
+        <Link href="/facts/learn" className="btn mt-6 inline-flex">← Back to Paths</Link>
       </div>
     );
   }
@@ -284,7 +284,7 @@ export default function PathPage() {
     return (
       <div className="max-w-3xl mx-auto px-6 py-16 text-center">
         <p className="font-display text-lg text-[var(--muted)]">{error}</p>
-        <Link href="/learn" className="btn mt-6 inline-flex">← Back to Paths</Link>
+        <Link href="/facts/learn" className="btn mt-6 inline-flex">← Back to Paths</Link>
       </div>
     );
   }
@@ -298,7 +298,7 @@ export default function PathPage() {
         <p className="font-mono text-sm text-[var(--muted)] mb-6">
           We&apos;re adding more {path.category} facts soon. Check back shortly!
         </p>
-        <Link href="/learn" className="btn btn-primary inline-flex">← Back to Paths</Link>
+        <Link href="/facts/learn" className="btn btn-primary inline-flex">← Back to Paths</Link>
       </div>
     );
   }
@@ -317,7 +317,7 @@ export default function PathPage() {
     return (
       <div className="max-w-2xl mx-auto px-6 py-12">
         <div className="flex items-center gap-2 mb-6">
-          <Link href="/learn" className="font-mono text-xs text-[var(--muted)] hover:text-[var(--accent)] flex items-center gap-1">
+          <Link href="/facts/learn" className="font-mono text-xs text-[var(--muted)] hover:text-[var(--accent)] flex items-center gap-1">
             <ChevronLeft size={14} /> Paths
           </Link>
           <span className="text-[var(--muted)]/40">›</span>
@@ -408,10 +408,10 @@ export default function PathPage() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/learn" className="btn btn-primary inline-flex justify-center">
+          <Link href="/facts/learn" className="btn btn-primary inline-flex justify-center">
             Back to Paths →
           </Link>
-          <Link href="/stats" className="btn inline-flex justify-center">
+          <Link href="/facts/stats" className="btn inline-flex justify-center">
             View Your Stats
           </Link>
         </div>
@@ -426,7 +426,7 @@ export default function PathPage() {
 
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 mb-6">
-        <Link href="/learn" className="font-mono text-xs text-[var(--muted)] hover:text-[var(--accent)] flex items-center gap-1">
+        <Link href="/facts/learn" className="font-mono text-xs text-[var(--muted)] hover:text-[var(--accent)] flex items-center gap-1">
           <ChevronLeft size={14} /> Paths
         </Link>
         <span className="text-[var(--muted)]/40">›</span>

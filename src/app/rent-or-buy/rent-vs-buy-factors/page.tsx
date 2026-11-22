@@ -13,7 +13,7 @@ export default function RentVsBuyFactorsPage() {
     <div>
       <div className="hero-section mb-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/guides" className="inline-flex items-center gap-1 text-sm text-white/80 hover:text-white mb-6">
+          <Link href="/rent-or-buy/guides" className="inline-flex items-center gap-1 text-sm text-white/80 hover:text-white mb-6">
             <ArrowLeft className="w-4 h-4" /> Back to Guides
           </Link>
           <div className="flex items-center gap-3 mb-4">
@@ -124,7 +124,7 @@ export default function RentVsBuyFactorsPage() {
         <Link href="/" className="btn-primary inline-flex items-center gap-2">
           Run the Numbers
         </Link>
-        <Link href="/guides" className="btn-secondary inline-flex items-center gap-2">
+        <Link href="/rent-or-buy/guides" className="btn-secondary inline-flex items-center gap-2">
           All Guides
         </Link>
       </div>
