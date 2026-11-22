@@ -15,6 +15,7 @@ import {
   CATEGORY_ICONS,
   CATEGORY_ORDER,
   formatVerifiedDate,
+  formatPrice,
 } from "@/lib/deals";
 import DealCard from "./DealCard";
 
@@ -34,6 +35,39 @@ export default function DealsBoard({
   const [search, setSearch] = useState("");
   const [filterMode, setFilterMode] = useState<FilterMode>("all");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+  // "New Today" logic — deals where first_posted_at equals feed date
+  const newTodayDeals = deals
+    .filter((d) => d.first_posted_at === feedDate)
+    .sort((a, b) => {
+      // Historical lows first, then by discount_pct
+      if (a.is_historical_low && !b.is_historical_low) return -1;
+      if (!a.is_historical_low && b.is_historical_low) return 1;
+      return b.discount_pct - a.discount_pct;
+    })
+    .slice(0, 10);
+
+  // If no deals new today, find the most recent first_posted_at
+  let stripDeals = newTodayDeals;
+  let stripTitle = "New Today";
+  if (newTodayDeals.length === 0) {
+    const dates = [...new Set(deals.map((d) => d.first_posted_at).filter(Boolean))].sort().reverse();
+    const latestDate = dates[0];
+    if (latestDate) {
+      stripDeals = deals
+        .filter((d) => d.first_posted_at === latestDate)
+        .sort((a, b) => {
+          if (a.is_historical_low && !b.is_historical_low) return -1;
+          if (!a.is_historical_low && b.is_historical_low) return 1;
+          return b.discount_pct - a.discount_pct;
+        })
+        .slice(0, 10);
+      stripTitle = "Latest Additions";
+    }
+  }
+
+  // Track new deal IDs for badge on the main board
+  const newDealIds = new Set(stripDeals.map((d) => d.id));
 
   // Apply filters
   let filtered = deals;
@@ -122,6 +156,108 @@ export default function DealsBoard({
         )}
       </div>
 
+      {/* New Today / Latest Additions strip */}
+      {stripDeals.length > 0 && (
+        <div className="mb-6 rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 via-white to-amber-50 p-5">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500 px-3 py-1 text-xs font-bold text-white">
+              ✦ {stripTitle}
+            </span>
+            <span className="text-xs text-muted">
+              {stripDeals.length} deal{stripDeals.length !== 1 ? "s" : ""}
+            </span>
+          </div>
+          <div className="flex gap-3 overflow-x-auto pb-2">
+            {stripDeals.map((deal) => (
+              <a
+                key={deal.id}
+                href={deal.product_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 w-[200px] rounded-xl border border-amber-100 bg-white p-3 hover:border-amber-300 hover:shadow-md transition-all"
+              >
+                {deal.image_url && (
+                  <div className="h-20 w-full rounded-lg bg-gray-50 flex items-center justify-center p-2 mb-2">
+                    <img
+                      src={deal.image_url.startsWith("https://muse.ai") ? `/api/img?url=${encodeURIComponent(deal.image_url)}` : deal.image_url}
+                      alt=""
+                      className="max-h-full max-w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <p className="text-xs font-semibold leading-snug line-clamp-2 text-gray-900">{deal.product_name}</p>
+                <div className="mt-1 flex items-baseline gap-2">
+                  <span className="text-sm font-extrabold text-emerald-600">{formatPrice(deal.price_current)}</span>
+                  {deal.price_list > deal.price_current && (
+                    <span className="text-[10px] text-gray-400 line-through">{formatPrice(deal.price_list)}</span>
+                  )}
+                </div>
+                <div className="mt-1 flex items-center gap-1.5">
+                  {deal.is_historical_low && (
+                    <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-[9px] font-bold text-emerald-700">LOW</span>
+                  )}
+                  {deal.discount_pct > 0 && (
+                    <span className="text-[10px] font-bold text-red-500">-{Math.round(deal.discount_pct)}%</span>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Lowest Ever rail */}
+      {(() => {
+        const lowestEver = deals
+          .filter((d) => d.is_historical_low || (d.price_90d_low && d.price_90d_low > 0 && d.price_current <= d.price_90d_low))
+          .sort((a, b) => b.discount_pct - a.discount_pct)
+          .slice(0, 10);
+        if (lowestEver.length === 0) return null;
+        return (
+          <div className="mb-6 rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 via-white to-emerald-50 p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-3 py-1 text-xs font-bold text-white">
+                <TrendingDown className="h-3 w-3" /> Lowest Ever
+              </span>
+              <span className="text-xs text-muted">{lowestEver.length} at tracked lows</span>
+            </div>
+            <div className="flex gap-3 overflow-x-auto pb-2">
+              {lowestEver.map((deal) => (
+                <a
+                  key={deal.id}
+                  href={deal.product_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 w-[200px] rounded-xl border border-emerald-100 bg-white p-3 hover:border-emerald-300 hover:shadow-md transition-all"
+                >
+                  {deal.image_url && (
+                    <div className="h-20 w-full rounded-lg bg-gray-50 flex items-center justify-center p-2 mb-2">
+                      <img
+                        src={deal.image_url.startsWith("https://muse.ai") ? `/api/img?url=${encodeURIComponent(deal.image_url)}` : deal.image_url}
+                        alt=""
+                        className="max-h-full max-w-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <p className="text-xs font-semibold leading-snug line-clamp-2 text-gray-900">{deal.product_name}</p>
+                  <div className="mt-1 flex items-baseline gap-2">
+                    <span className="text-sm font-extrabold text-emerald-600">{formatPrice(deal.price_current)}</span>
+                    {deal.price_list > deal.price_current && (
+                      <span className="text-[10px] text-gray-400 line-through">{formatPrice(deal.price_list)}</span>
+                    )}
+                  </div>
+                  <span className="mt-1 inline-block rounded bg-emerald-100 px-1.5 py-0.5 text-[9px] font-bold text-emerald-700">
+                    LOWEST TRACKED
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Filter bar */}
       <div className="mb-6 space-y-3">
         {/* Mode filters */}
@@ -204,7 +340,7 @@ export default function DealsBoard({
         // Single category — flat grid
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((deal) => (
-            <DealCard key={deal.id} deal={deal} />
+            <DealCard key={deal.id} deal={deal} isNew={newDealIds.has(deal.id)} />
           ))}
         </div>
       ) : (
@@ -223,7 +359,7 @@ export default function DealsBoard({
               </div>
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {catDeals.map((deal) => (
-                  <DealCard key={deal.id} deal={deal} />
+                  <DealCard key={deal.id} deal={deal} isNew={newDealIds.has(deal.id)} />
                 ))}
               </div>
             </section>

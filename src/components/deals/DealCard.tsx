@@ -21,12 +21,25 @@ import {
 
 interface DealCardProps {
   deal: TechDeal;
+  isNew?: boolean;
 }
 
-export default function DealCard({ deal }: DealCardProps) {
+function getPriceVerdict(deal: TechDeal): { label: string; color: string } | null {
+  if (deal.is_historical_low) return { label: "LOWEST EVER", color: "bg-emerald-600 text-white" };
+  if (deal.price_90d_low && deal.price_90d_low > 0 && deal.price_current <= deal.price_90d_low)
+    return { label: "AT ITS LOW", color: "bg-emerald-500 text-white" };
+  if (deal.price_previous && deal.price_current < deal.price_previous) {
+    const drop = deal.price_previous - deal.price_current;
+    return { label: `PRICE DROP ↓ ${formatPrice(drop)}`, color: "bg-blue-600 text-white" };
+  }
+  return null;
+}
+
+export default function DealCard({ deal, isNew }: DealCardProps) {
   const [expanded, setExpanded] = useState(false);
   const carrier = isCarrierDeal(deal);
   const savings = deal.price_list - deal.price_current;
+  const verdict = getPriceVerdict(deal);
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:border-zinc-600 hover:shadow-xl hover:shadow-black/20">
@@ -41,10 +54,15 @@ export default function DealCard({ deal }: DealCardProps) {
 
         {/* Badges */}
         <div className="absolute left-3 top-3 flex flex-col gap-1.5">
-          {deal.is_historical_low && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/90 px-2.5 py-1 text-xs font-bold text-white shadow-lg">
-              <TrendingDown className="h-3 w-3" />
-              Historical Low
+          {isNew && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-500 px-2.5 py-1 text-xs font-bold text-white shadow-lg">
+              NEW
+            </span>
+          )}
+          {verdict && (
+            <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold shadow-lg ${verdict.color}`}>
+              {verdict.label.startsWith("LOWEST") && <TrendingDown className="h-3 w-3" />}
+              {verdict.label}
             </span>
           )}
           {carrier && (
@@ -95,6 +113,16 @@ export default function DealCard({ deal }: DealCardProps) {
         {savings > 0 && (
           <p className="mt-1 text-xs font-medium text-emerald-400/80">
             You save {formatPrice(savings)}
+          </p>
+        )}
+
+        {/* Price context line */}
+        {deal.price_90d_low && deal.price_90d_low > 0 && (
+          <p className="mt-1 text-[11px] text-zinc-400">
+            Lowest tracked: {formatPrice(deal.price_90d_low)}
+            {deal.price_current <= deal.price_90d_low && (
+              <span className="text-emerald-400"> — today&apos;s price is the lowest we&apos;ve seen</span>
+            )}
           </p>
         )}
 

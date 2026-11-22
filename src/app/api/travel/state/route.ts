@@ -35,7 +35,12 @@ export async function GET(request: NextRequest) {
       'name', 'hero_image_url', 'card_image_url', 'image_url', 'image_alt',
       'description', 'essentials', 'counts', 'avg_daily_budget_usd',
       'hotel_price_bands_usd', 'entry_fee', 'opening_hours', 'top_rank',
-      'best_time_to_visit', 'parent_id',
+      'best_time_to_visit', 'parent_id', 'city_id', 'country_id',
+      // Indian-traveler fields
+      'visa_info', 'direct_flights', 'inr_budget', 'indian_restaurants',
+      'indian_groceries', 'vegetarian_info', 'jain_info', 'family_notes',
+      'senior_notes', 'indian_neighborhood', 'currency_info', 'safety_info',
+      'language_tips', 'sim_esim', 'plug_type',
     ]
 
     for (const field of feedFields) {

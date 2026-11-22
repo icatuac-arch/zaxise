@@ -10,11 +10,14 @@ const TYPE_FIELDS: Record<string, string[]> = {
     'name', 'hero_image_url', 'card_image_url', 'image_alt', 'essentials',
     'counts', 'best_time_to_visit', 'avg_daily_budget_usd', 'description',
     'country_id',
-    // Indian-traveler fields
+    // Indian-traveler fields (both Gundya's names and DB column names accepted)
     'visa_info', 'direct_flights', 'inr_budget', 'indian_restaurants',
     'indian_groceries', 'vegetarian_info', 'jain_info', 'family_notes',
     'senior_notes', 'indian_neighborhood', 'currency_info', 'safety_info',
     'language_tips', 'sim_esim', 'plug_type',
+    // Gundya's field names (mapped to columns in FIELD_ALIASES below)
+    'visa_for_indian_passport', 'direct_flights_from_india',
+    'best_time_from_india', 'currency_and_money', 'avg_daily_budget_inr',
   ],
   city: [
     'name', 'country_id', 'hero_image_url', 'card_image_url', 'image_alt',
@@ -25,11 +28,26 @@ const TYPE_FIELDS: Record<string, string[]> = {
     'indian_groceries', 'vegetarian_info', 'jain_info', 'family_notes',
     'senior_notes', 'indian_neighborhood', 'currency_info', 'safety_info',
     'language_tips', 'sim_esim', 'plug_type',
+    // Gundya's city field names
+    'where_indians_stay', 'indian_food', 'avg_daily_budget_inr',
+    'visa_for_indian_passport', 'direct_flights_from_india',
+    'best_time_from_india', 'currency_and_money',
   ],
   attraction: [
     'name', 'city_id', 'country_id', 'image_url', 'image_alt', 'description',
     'entry_fee', 'opening_hours', 'top_rank',
   ],
+}
+
+// Map Gundya's field names → DB column names
+const FIELD_ALIASES: Record<string, string> = {
+  'visa_for_indian_passport': 'visa_info',
+  'direct_flights_from_india': 'direct_flights',
+  'best_time_from_india': 'best_time_to_visit',
+  'currency_and_money': 'currency_info',
+  'avg_daily_budget_inr': 'inr_budget',
+  'where_indians_stay': 'indian_neighborhood',
+  'indian_food': 'indian_restaurants',
 }
 
 interface EntityPayload {
@@ -161,8 +179,10 @@ export async function PUT(request: NextRequest) {
     const updatedFields: string[] = []
     for (const field of allowedFields) {
       if (entity[field] !== undefined) {
-        updatePayload[field] = entity[field]
-        updatedFields.push(field)
+        // Apply field alias if exists (Gundya name → DB column name)
+        const dbColumn = FIELD_ALIASES[field] || field
+        updatePayload[dbColumn] = entity[field]
+        updatedFields.push(dbColumn)
       }
     }
 
