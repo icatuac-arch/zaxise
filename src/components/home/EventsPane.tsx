@@ -104,7 +104,7 @@ export default function EventsPane() {
     if (region.metro) params.set("metro", region.metro);
     if (category) params.set("category", category);
     if (language) params.set("language", language);
-    params.set("limit", "8");
+    params.set("limit", "4");
 
     // Date range
     if (dateRange === "this-week") {
