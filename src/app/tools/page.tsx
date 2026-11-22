@@ -2,8 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import SiteHeader from '@/components/home/SiteHeader';
-import SiteFooter from '@/components/home/SiteFooter';
 
 /* ─── Tool data ─────────────────────────────────────────────────────────── */
 
@@ -157,7 +155,7 @@ export default function ToolsIndexPage() {
 
   return (
     <div className="min-h-screen bg-paper text-ink">
-      <SiteHeader searchQuery="" onSearch={() => {}} />
+      
 
       <main className="mx-auto max-w-[1260px] px-6 pb-16 pt-8">
 
@@ -328,7 +326,7 @@ export default function ToolsIndexPage() {
         )}
       </main>
 
-      <SiteFooter />
+      
     </div>
   );
 }

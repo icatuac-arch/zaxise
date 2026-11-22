@@ -50,7 +50,7 @@ export default function ZaxiseHome() {
             Community, savings and useful discoveries.
           </p>
         </div>
-        <div className="grid gap-[18px] lg:grid-cols-[1.3fr_1fr]">
+        <div className="grid gap-[18px] lg:grid-cols-2">
           <EventsPane />
           <DealsPane />
         </div>
