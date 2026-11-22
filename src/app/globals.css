@@ -291,6 +291,16 @@ select:focus-visible {
 .rob-section [class*="bg-green-6"],
 .rob-section [class*="bg-green-7"],
 .rob-section [class*="bg-green-8"] { background-color: #801C45 !important; }
+/* Keep hero section dark so white text is readable */
+.rob-section .hero-section {
+  background: linear-gradient(135deg, #801C45, #9E3D63) !important;
+  padding: 2.5rem 0;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+.rob-section .hero-section .text-white,
+.rob-section .hero-section .text-white\/80,
+.rob-section .hero-section .text-white\/90 { color: #fff !important; }
 
 /* ── Theme unification — deals section ───────────────────────────────────── */
 .deals-section {
