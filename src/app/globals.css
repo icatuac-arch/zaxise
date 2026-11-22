@@ -301,8 +301,7 @@ select:focus-visible {
 .deals-section [class*="bg-zinc-900"],
 .deals-section [class*="bg-background"] { background: #FFFFFF !important; }
 .deals-section [class*="bg-zinc-800"] { background: #F3E6ED !important; }
-.deals-section [class*="text-foreground"],
-.deals-section [class*="text-white"] { color: #29232B !important; }
+.deals-section [class*="text-foreground"] { color: #29232B !important; }
 .deals-section [class*="text-muted"] { color: #71646C !important; }
 .deals-section [class*="border-border"],
 .deals-section [class*="border-zinc"] { border-color: #E9DFE4 !important; }
@@ -359,8 +358,7 @@ select:focus-visible {
 .time-section [class*="to-card-bg"] { --tw-gradient-to: #FAF8F9 !important; }
 .time-section [class*="border-card-border"] { border-color: #E9DFE4 !important; }
 
-/* text-white → ink (dark text on light backgrounds) */
-.time-section [class*="text-white"] { color: #29232B !important; }
+/* Only override text-white on body/section backgrounds, not on colored buttons */
 
 /* Primary accent: indigo/violet → burgundy */
 .time-section [class*="text-primary"] { color: #801C45 !important; }
@@ -390,7 +388,7 @@ select:focus-visible {
 .time-section [class*="text-muted"] { color: #71646C !important; }
 
 /* Hover overrides */
-.time-section [class*="hover:text-white"]:hover { color: #29232B !important; }
+/* removed: hover:text-white override was turning button text black */
 .time-section [class*="hover:bg-card-bg"]:hover { background-color: #F3E6ED !important; }
 
 /* Inline style hardcoded dark hex backgrounds */
