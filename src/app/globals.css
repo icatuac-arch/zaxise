@@ -137,6 +137,352 @@ select:focus-visible {
   box-shadow: 0 12px 36px #6A30400A;
 }
 
+/* ── Theme unification — tools section ───────────────────────────────────── */
+.tools-section {
+  --color-primary: #801C45;
+  --color-primary-light: #9E3D63;
+  --color-primary-dark: #631437;
+  --color-secondary: #801C45;
+  --color-dark: #29232B;
+  --color-dark-light: #71646C;
+  --color-background: #FAF8F9;
+  --color-background-alt: #F3E6ED;
+  --color-foreground: #29232B;
+  --color-card: #FFFFFF;
+  --color-card-border: #E9DFE4;
+  --color-muted: #71646C;
+  --color-input: #FFFFFF;
+  --color-footer: #29232B;
+  background: #FAF8F9;
+  color: #29232B;
+}
+
+/* Override Tailwind utility classes used in tools */
+.tools-section [class*="bg-indigo"] { background-color: #801C45 !important; }
+.tools-section [class*="text-indigo"] { color: #801C45 !important; }
+.tools-section [class*="border-indigo"] { border-color: #801C45 !important; }
+.tools-section [class*="bg-violet"] { background-color: #801C45 !important; }
+.tools-section [class*="text-violet"] { color: #801C45 !important; }
+.tools-section [class*="bg-purple"] { background-color: #9E3D63 !important; }
+.tools-section [class*="text-purple"] { color: #9E3D63 !important; }
+.tools-section [class*="bg-saffron"] { background-color: #801C45 !important; }
+.tools-section [class*="text-saffron"] { color: #801C45 !important; }
+
+/* Focus rings */
+.tools-section input:focus,
+.tools-section select:focus,
+.tools-section textarea:focus {
+  border-color: #801C45 !important;
+  outline-color: #BA7396 !important;
+}
+
+/* Buttons */
+.tools-section .btn-primary,
+.tools-section [class*="bg-indigo-600"] {
+  background-color: #801C45 !important;
+}
+.tools-section .btn-primary:hover,
+.tools-section [class*="hover:bg-indigo-700"]:hover {
+  background-color: #631437 !important;
+}
+
+/* Related tools section override */
+.tools-section .bg-gray-50 { background-color: #F3E6ED !important; }
+.tools-section .border-gray-200 { border-color: #E9DFE4 !important; }
+.tools-section .text-gray-900 { color: #29232B !important; }
+.tools-section .text-gray-500 { color: #71646C !important; }
+.tools-section .hover\:border-indigo-300:hover { border-color: #BA7396 !important; }
+.tools-section .group-hover\:text-indigo-600 { color: #801C45 !important; }
+.tools-section .text-indigo-600 { color: #801C45 !important; }
+
+/* ── Theme unification — calc section ────────────────────────────────────── */
+.calc-section {
+  --color-primary: #801C45;
+  --color-primary-light: #9E3D63;
+  --color-primary-dark: #631437;
+  --color-secondary: #801C45;
+  --color-dark: #29232B;
+  --color-dark-light: #71646C;
+  --color-background: #FAF8F9;
+  --color-background-alt: #F3E6ED;
+  --color-foreground: #29232B;
+  --color-card: #FFFFFF;
+  --color-card-border: #E9DFE4;
+  --color-muted: #71646C;
+  --color-input: #FFFFFF;
+  --color-footer: #29232B;
+  background: #FAF8F9;
+  color: #29232B;
+}
+
+/* Override Tailwind utility classes used in calc */
+.calc-section [class*="bg-indigo"] { background-color: #801C45 !important; }
+.calc-section [class*="text-indigo"] { color: #801C45 !important; }
+.calc-section [class*="border-indigo"] { border-color: #801C45 !important; }
+.calc-section [class*="bg-violet"] { background-color: #801C45 !important; }
+.calc-section [class*="text-violet"] { color: #801C45 !important; }
+.calc-section [class*="bg-purple"] { background-color: #9E3D63 !important; }
+.calc-section [class*="text-purple"] { color: #9E3D63 !important; }
+.calc-section [class*="bg-saffron"] { background-color: #801C45 !important; }
+.calc-section [class*="text-saffron"] { color: #801C45 !important; }
+
+/* Focus rings */
+.calc-section input:focus,
+.calc-section select:focus,
+.calc-section textarea:focus {
+  border-color: #801C45 !important;
+  outline-color: #BA7396 !important;
+}
+
+/* Buttons */
+.calc-section .btn-primary,
+.calc-section [class*="bg-indigo-600"] {
+  background-color: #801C45 !important;
+}
+.calc-section .btn-primary:hover,
+.calc-section [class*="hover:bg-indigo-700"]:hover {
+  background-color: #631437 !important;
+}
+
+/* Calc index page: navy header → burgundy */
+.calc-section .bg-navy { background-color: #801C45 !important; }
+.calc-section .text-gold { color: #F3E6ED !important; }
+.calc-section .text-navy { color: #801C45 !important; }
+.calc-section .hover\:text-navy:hover { color: #801C45 !important; }
+.calc-section .hover\:border-navy:hover { border-color: #801C45 !important; }
+.calc-section .focus\:ring-gold\/50:focus { --tw-ring-color: rgba(128,28,69,0.3) !important; }
+.calc-section .group-hover\:text-navy { color: #801C45 !important; }
+
+/* ── Theme unification — social section ──────────────────────────────────── */
+.social-section {
+  background: #FAF8F9 !important;
+  color: #29232B !important;
+}
+.social-section [class*="bg-\\[#0F172A\\]"],
+.social-section [class*="bg-slate-900"] { background: #FAF8F9 !important; }
+.social-section [class*="text-slate-200"],
+.social-section [class*="text-\\[#E2E8F0\\]"] { color: #29232B !important; }
+.social-section [class*="bg-violet"],
+.social-section [class*="bg-purple"] { background-color: #801C45 !important; }
+.social-section [class*="text-violet"],
+.social-section [class*="text-purple"] { color: #801C45 !important; }
+.social-section [class*="text-pink"] { color: #9E3D63 !important; }
+.social-section [class*="border-slate"] { border-color: #E9DFE4 !important; }
+.social-section .glass,
+.social-section .glass-strong { background: rgba(255,255,255,0.8) !important; border-color: #E9DFE4 !important; }
+
+/* ── Theme unification — rent-or-buy section ─────────────────────────────── */
+.rob-section {
+  background: #FAF8F9 !important;
+  color: #29232B !important;
+}
+.rob-section [data-theme] { --accent: #801C45 !important; }
+.rob-section [class*="bg-\\[#005EB8\\]"],
+.rob-section [class*="bg-\\[#EA580C\\]"],
+.rob-section [class*="bg-\\[#059669\\]"] { background-color: #801C45 !important; }
+.rob-section [class*="text-\\[#005EB8\\]"],
+.rob-section [class*="text-\\[#EA580C\\]"],
+.rob-section [class*="text-\\[#059669\\]"] { color: #801C45 !important; }
+.rob-section [class*="bg-blue"] { background-color: #801C45 !important; }
+.rob-section [class*="text-blue"] { color: #801C45 !important; }
+.rob-section [class*="border-blue"] { border-color: #801C45 !important; }
+.rob-section [class*="bg-orange"] { background-color: #801C45 !important; }
+.rob-section [class*="text-orange"] { color: #801C45 !important; }
+.rob-section [class*="bg-green-6"],
+.rob-section [class*="bg-green-7"],
+.rob-section [class*="bg-green-8"] { background-color: #801C45 !important; }
+
+/* ── Theme unification — deals section ───────────────────────────────────── */
+.deals-section {
+  background: #FAF8F9 !important;
+  color: #29232B !important;
+}
+.deals-section [class*="bg-surface"],
+.deals-section [class*="bg-zinc-900"],
+.deals-section [class*="bg-background"] { background: #FFFFFF !important; }
+.deals-section [class*="bg-zinc-800"] { background: #F3E6ED !important; }
+.deals-section [class*="text-foreground"],
+.deals-section [class*="text-white"] { color: #29232B !important; }
+.deals-section [class*="text-muted"] { color: #71646C !important; }
+.deals-section [class*="border-border"],
+.deals-section [class*="border-zinc"] { border-color: #E9DFE4 !important; }
+.deals-section [class*="bg-indigo"],
+.deals-section [class*="bg-accent"] { background-color: #801C45 !important; }
+.deals-section [class*="text-accent"],
+.deals-section [class*="text-indigo"] { color: #801C45 !important; }
+.deals-section [class*="shadow-indigo"] { box-shadow: 0 5px 15px rgba(128,28,69,0.15) !important; }
+
+/* ── Theme unification — deals-community section ─────────────────────────── */
+.dc-section {
+  background: #FAF8F9 !important;
+  color: #29232B !important;
+}
+.dc-section [class*="bg-primary"],
+.dc-section [class*="bg-\\[#1E40AF\\]"] { background-color: #801C45 !important; }
+.dc-section [class*="text-primary"] { color: #801C45 !important; }
+.dc-section [class*="bg-blue"] { background-color: #801C45 !important; }
+.dc-section [class*="text-blue"] { color: #801C45 !important; }
+.dc-section [class*="border-blue"] { border-color: #801C45 !important; }
+
+/* ── Theme unification — time section ────────────────────────────────────── */
+.time-section {
+  --color-primary: #801C45;
+  --color-primary-dark: #631437;
+  --color-secondary: #9E3D63;
+  --color-dark: #29232B;
+  --color-dark-light: #71646C;
+  --color-background: #FAF8F9;
+  --color-foreground: #29232B;
+  --color-card: #FFFFFF;
+  --color-card-border: #E9DFE4;
+  --color-muted: #71646C;
+  background: #FAF8F9 !important;
+  color: #29232B !important;
+}
+
+/* ThemeProvider sets dark radial-gradient or dark-bg class — force light */
+/* Target via data-theme attribute (all themes get light background) */
+.time-section [data-theme="galaxy"],
+.time-section [data-theme="aurora"],
+.time-section [data-theme="default"],
+.time-section [data-theme="mars"] {
+  background: #FAF8F9 !important;
+}
+/* Also catch the class-based backgrounds from ThemeProvider */
+.time-section [class*="bg-dark"] {
+  background: #FAF8F9 !important;
+}
+
+/* Card surfaces */
+.time-section [class*="bg-card-bg"] { background-color: rgba(255,255,255,0.9) !important; }
+.time-section [class*="from-card-bg"] { --tw-gradient-from: #FFFFFF !important; }
+.time-section [class*="to-card-bg"] { --tw-gradient-to: #FAF8F9 !important; }
+.time-section [class*="border-card-border"] { border-color: #E9DFE4 !important; }
+
+/* text-white → ink (dark text on light backgrounds) */
+.time-section [class*="text-white"] { color: #29232B !important; }
+
+/* Primary accent: indigo/violet → burgundy */
+.time-section [class*="text-primary"] { color: #801C45 !important; }
+.time-section [class*="bg-primary"] { background-color: #801C45 !important; }
+.time-section [class*="border-primary"] { border-color: #801C45 !important; }
+.time-section [class*="from-primary"] { --tw-gradient-from: #801C45 !important; }
+.time-section [class*="ring-primary"] { --tw-ring-color: rgba(128,28,69,0.4) !important; }
+.time-section [class*="text-secondary"] { color: #9E3D63 !important; }
+.time-section [class*="bg-secondary"] { background-color: #9E3D63 !important; }
+
+/* Indigo/violet/purple → burgundy */
+.time-section [class*="bg-indigo"] { background-color: #801C45 !important; }
+.time-section [class*="text-indigo"] { color: #801C45 !important; }
+.time-section [class*="border-indigo"] { border-color: #801C45 !important; }
+.time-section [class*="from-indigo"] { --tw-gradient-from: #801C45 !important; }
+.time-section [class*="to-indigo"] { --tw-gradient-to: #801C45 !important; }
+.time-section [class*="bg-violet"] { background-color: #801C45 !important; }
+.time-section [class*="text-violet"] { color: #9E3D63 !important; }
+.time-section [class*="bg-purple"] { background-color: #9E3D63 !important; }
+.time-section [class*="text-purple"] { color: #9E3D63 !important; }
+
+/* Cyan → teal */
+.time-section [class*="text-cyan"] { color: #087d70 !important; }
+.time-section [class*="bg-cyan"] { background-color: #E0F4F1 !important; }
+
+/* Muted text */
+.time-section [class*="text-muted"] { color: #71646C !important; }
+
+/* Hover overrides */
+.time-section [class*="hover:text-white"]:hover { color: #29232B !important; }
+.time-section [class*="hover:bg-card-bg"]:hover { background-color: #F3E6ED !important; }
+
+/* Inline style hardcoded dark hex backgrounds */
+.time-section [style*="background: #0a1628"],
+.time-section [style*="background:#0a1628"],
+.time-section [style*="background: #030712"],
+.time-section [style*="background:#030712"],
+.time-section [style*="background: #0F172A"],
+.time-section [style*="background:#0F172A"],
+.time-section [style*="background: #0B1426"],
+.time-section [style*="background:#0B1426"],
+.time-section [style*="background: #050A18"],
+.time-section [style*="background:#050A18"] {
+  background: #FAF8F9 !important;
+}
+
+/* Focus rings */
+.time-section input:focus,
+.time-section select:focus,
+.time-section textarea:focus {
+  border-color: #801C45 !important;
+  outline-color: #BA7396 !important;
+}
+
+/* ── Theme unification — facts section ───────────────────────────────────── */
+.facts-section {
+  /* Override all ThemeProvider CSS variables with burgundy palette */
+  --bg: #FAF8F9;
+  --text: #29232B;
+  --accent: #801C45;
+  --secondary: #9E3D63;
+  --surface: #FFFFFF;
+  --muted: #71646C;
+  --glow: #801C45;
+  --gradient-start: #F3E6ED;
+  --gradient-end: #FAF8F9;
+  --shadow: rgba(128, 28, 69, 0.08);
+  background: #FAF8F9 !important;
+  color: #29232B !important;
+}
+
+/* Theme classes set on <html> — override dark theme bodies */
+.facts-section [class*="theme-midnight"],
+.facts-section [class*="theme-cosmic"] {
+  background: #FAF8F9 !important;
+  color: #29232B !important;
+}
+
+/* Accent overrides */
+.facts-section [class*="text-indigo"] { color: #801C45 !important; }
+.facts-section [class*="bg-indigo"] { background-color: #801C45 !important; }
+.facts-section [class*="border-indigo"] { border-color: #801C45 !important; }
+.facts-section [class*="bg-violet"] { background-color: #801C45 !important; }
+.facts-section [class*="text-violet"] { color: #9E3D63 !important; }
+.facts-section [class*="bg-purple"] { background-color: #9E3D63 !important; }
+.facts-section [class*="text-purple"] { color: #9E3D63 !important; }
+
+/* Focus rings */
+.facts-section input:focus,
+.facts-section select:focus,
+.facts-section textarea:focus {
+  border-color: #801C45 !important;
+  outline-color: #BA7396 !important;
+}
+
+/* ── Theme unification — travel section ──────────────────────────────────── */
+.travel-section {
+  background: #FAF8F9;
+  color: #29232B;
+}
+
+/* Replace blue/sky accent classes with burgundy */
+.travel-section [class*="bg-blue"] { background-color: #801C45 !important; }
+.travel-section [class*="text-blue"] { color: #801C45 !important; }
+.travel-section [class*="border-blue"] { border-color: #801C45 !important; }
+.travel-section [class*="ring-blue"] { --tw-ring-color: rgba(128,28,69,0.4) !important; }
+.travel-section [class*="bg-sky"] { background-color: #F3E6ED !important; }
+.travel-section [class*="text-sky"] { color: #801C45 !important; }
+.travel-section [class*="bg-indigo"] { background-color: #801C45 !important; }
+.travel-section [class*="text-indigo"] { color: #801C45 !important; }
+.travel-section [class*="border-indigo"] { border-color: #801C45 !important; }
+.travel-section [class*="bg-teal"] { background-color: #087d70 !important; }
+.travel-section [class*="text-teal"] { color: #087d70 !important; }
+
+/* Focus rings */
+.travel-section input:focus,
+.travel-section select:focus,
+.travel-section textarea:focus {
+  border-color: #801C45 !important;
+  outline-color: #BA7396 !important;
+}
+
 /* Travel module styles */
 .travel-module {
   margin: 34px 0 38px;

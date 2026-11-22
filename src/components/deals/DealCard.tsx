@@ -42,9 +42,9 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
   const verdict = getPriceVerdict(deal);
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:border-zinc-600 hover:shadow-xl hover:shadow-black/20">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#E9DFE4] bg-white transition-all hover:border-[#801C45]/40 hover:shadow-xl hover:shadow-[#801C45]/10">
       {/* Image */}
-      <div className="relative h-48 bg-zinc-900 flex items-center justify-center p-4">
+      <div className="relative h-48 bg-[#F3E6ED] flex items-center justify-center p-4">
         <img
           src={proxyImg(deal.image_url)}
           alt={deal.product_name}
@@ -85,7 +85,7 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
       <div className="flex flex-1 flex-col p-5">
         {/* Retailer */}
         <div className="mb-2 flex items-center gap-2">
-          <span className="rounded-full bg-indigo-500/15 px-2.5 py-0.5 text-xs font-semibold text-indigo-300">
+          <span className="rounded-full bg-[#801C45]/10 px-2.5 py-0.5 text-xs font-semibold text-[#801C45]">
             {deal.retailer}
           </span>
           {deal.brand && (
@@ -100,7 +100,7 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
 
         {/* Pricing */}
         <div className="mt-3 flex items-baseline gap-3">
-          <span className="text-2xl font-extrabold text-emerald-400">
+          <span className="text-2xl font-extrabold text-emerald-600">
             {formatPrice(deal.price_current)}
           </span>
           {deal.price_list > deal.price_current && (
@@ -111,14 +111,14 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
         </div>
 
         {savings > 0 && (
-          <p className="mt-1 text-xs font-medium text-emerald-400/80">
+          <p className="mt-1 text-xs font-medium text-emerald-700/80">
             You save {formatPrice(savings)}
           </p>
         )}
 
         {/* Price context line */}
         {deal.price_90d_low && deal.price_90d_low > 0 && (
-          <p className="mt-1 text-[11px] text-zinc-400">
+          <p className="mt-1 text-[11px] text-[#71646C]">
             Lowest tracked: {formatPrice(deal.price_90d_low)}
             {deal.price_current <= deal.price_90d_low && (
               <span className="text-emerald-400"> — today&apos;s price is the lowest we&apos;ve seen</span>
@@ -142,7 +142,7 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
             </span>
           )}
           {deal.in_stock && (
-            <span className="flex items-center gap-1 text-emerald-400/70">
+            <span className="flex items-center gap-1 text-emerald-600/80">
               <ShieldCheck className="h-3 w-3" />
               In stock
             </span>
@@ -152,7 +152,7 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
         {/* Expand/collapse for details */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="mt-3 flex items-center gap-1 text-xs font-medium text-accent-light transition-colors hover:text-white"
+          className="mt-3 flex items-center gap-1 text-xs font-medium text-[#801C45] transition-colors hover:text-[#631437]"
         >
           {expanded ? (
             <>
@@ -181,7 +181,7 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
                     <p className="mb-1 text-xs font-semibold text-muted uppercase tracking-wider">
                       Deal Details
                     </p>
-                    <p className="text-xs leading-relaxed text-zinc-300">
+                    <p className="text-xs leading-relaxed text-[#29232B]">
                       {deal.deal_note}
                     </p>
                   </div>
@@ -193,7 +193,7 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
                     <p className="mb-1 text-xs font-semibold text-muted uppercase tracking-wider">
                       Stock
                     </p>
-                    <p className="text-xs text-zinc-400">{deal.stock_note}</p>
+                    <p className="text-xs text-[#71646C]">{deal.stock_note}</p>
                   </div>
                 )}
 
@@ -203,30 +203,30 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
                     Price Context
                   </p>
                   <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div className="rounded-lg bg-zinc-800/50 px-3 py-2">
+                    <div className="rounded-lg bg-[#F3E6ED] px-3 py-2">
                       <span className="text-muted">List price</span>
-                      <span className="ml-2 font-semibold">
+                      <span className="ml-2 font-semibold text-[#29232B]">
                         {formatPrice(deal.price_list)}
                       </span>
                     </div>
                     {deal.price_90d_low !== null && (
-                      <div className="rounded-lg bg-zinc-800/50 px-3 py-2">
+                      <div className="rounded-lg bg-[#F3E6ED] px-3 py-2">
                         <span className="text-muted">90-day low</span>
-                        <span className="ml-2 font-semibold">
+                        <span className="ml-2 font-semibold text-[#29232B]">
                           {formatPrice(deal.price_90d_low)}
                         </span>
                       </div>
                     )}
-                    <div className="rounded-lg bg-zinc-800/50 px-3 py-2">
+                    <div className="rounded-lg bg-[#F3E6ED] px-3 py-2">
                       <span className="text-muted">Yesterday</span>
-                      <span className="ml-2 font-semibold">
+                      <span className="ml-2 font-semibold text-[#29232B]">
                         {formatPrice(deal.price_previous)}
                       </span>
                     </div>
                     {deal.first_posted_at && (
-                      <div className="rounded-lg bg-zinc-800/50 px-3 py-2">
+                      <div className="rounded-lg bg-[#F3E6ED] px-3 py-2">
                         <span className="text-muted">First posted</span>
-                        <span className="ml-2 font-semibold">
+                        <span className="ml-2 font-semibold text-[#29232B]">
                           {formatDate(deal.first_posted_at)}
                         </span>
                       </div>
@@ -243,7 +243,7 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
           href={deal.product_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-500/20 transition-all hover:shadow-indigo-500/30 hover:brightness-110"
+          className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#801C45] to-[#9E3D63] py-3 text-sm font-bold text-white shadow-lg shadow-[#801C45]/20 transition-all hover:shadow-[#801C45]/30 hover:brightness-110"
         >
           Get Deal
           <ExternalLink className="h-4 w-4" />

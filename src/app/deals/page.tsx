@@ -103,7 +103,7 @@ function DealsLoading() {
 
 export default function DealsPage() {
   return (
-    <div className="min-h-screen bg-paper">
+    <div className="deals-section min-h-screen bg-paper">
       <Suspense fallback={<DealsLoading />}>
         <DealsContent />
       </Suspense>

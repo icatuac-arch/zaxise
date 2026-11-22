@@ -12,8 +12,10 @@ export const metadata: Metadata = {
 
 export default function ToolsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-paper p-8 text-center text-muted">Loading tool...</div>}>
-      <ToolPageWrapper>{children}</ToolPageWrapper>
-    </Suspense>
+    <div className="tools-section">
+      <Suspense fallback={<div className="min-h-screen bg-paper p-8 text-center text-muted">Loading tool...</div>}>
+        <ToolPageWrapper>{children}</ToolPageWrapper>
+      </Suspense>
+    </div>
   )
 }

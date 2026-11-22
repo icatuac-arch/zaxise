@@ -43,8 +43,8 @@ const CATEGORIES: Category[] = [
     id: 'image',
     label: 'Image Tools',
     icon: '🖼️',
-    accentBg: '#E8F4FD',
-    accentColor: '#1565A8',
+    accentBg: '#F3E6ED',
+    accentColor: '#801C45',
     tools: [
       { slug: 'image-compress',    name: 'Image Compress',     desc: 'Reduce image file size' },
       { slug: 'image-resize',      name: 'Image Resize',       desc: 'Resize images to any dimension' },
@@ -62,8 +62,8 @@ const CATEGORIES: Category[] = [
     id: 'dev',
     label: 'Developer Tools',
     icon: '⌨️',
-    accentBg: '#E8FDF5',
-    accentColor: '#087d70',
+    accentBg: '#F3E6ED',
+    accentColor: '#801C45',
     tools: [
       { slug: 'json-formatter',  name: 'JSON Formatter',   desc: 'Format and validate JSON' },
       { slug: 'base64',          name: 'Base64 Encoder',   desc: 'Encode / decode Base64' },
@@ -83,8 +83,8 @@ const CATEGORIES: Category[] = [
     id: 'text',
     label: 'Text Tools',
     icon: '✏️',
-    accentBg: '#FFF6E8',
-    accentColor: '#b45a27',
+    accentBg: '#F3E6ED',
+    accentColor: '#801C45',
     tools: [
       { slug: 'case-converter',    name: 'Case Converter',      desc: 'Change text case in one click' },
       { slug: 'text-counter',      name: 'Text Counter',        desc: 'Count words, characters & lines' },
@@ -101,8 +101,8 @@ const CATEGORIES: Category[] = [
     id: 'time',
     label: 'Time Tools',
     icon: '⏱️',
-    accentBg: '#F0ECFD',
-    accentColor: '#5B3FC8',
+    accentBg: '#F3E6ED',
+    accentColor: '#801C45',
     tools: [
       { slug: 'world-clock', name: 'World Clock',    desc: 'View time in any timezone' },
       { slug: 'pomodoro',    name: 'Pomodoro Timer', desc: 'Focus with Pomodoro sessions' },

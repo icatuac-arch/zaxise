@@ -303,7 +303,7 @@ export default function DealsBoard({
             onClick={() => setActiveCategory(null)}
             className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
               !activeCategory
-                ? "bg-zinc-700 text-white"
+                ? "bg-[#801C45] text-white"
                 : "bg-surface text-muted hover:text-foreground hover:bg-surface-hover"
             }`}
           >
@@ -317,7 +317,7 @@ export default function DealsBoard({
               }
               className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 activeCategory === cat
-                  ? "bg-zinc-700 text-white"
+                  ? "bg-[#801C45] text-white"
                   : "bg-surface text-muted hover:text-foreground hover:bg-surface-hover"
               }`}
             >

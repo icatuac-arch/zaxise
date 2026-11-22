@@ -96,28 +96,29 @@ export default function CalcIndexPage() {
   return (
     <div className="min-h-screen bg-paper">
       {/* Header */}
-      <div className="bg-navy text-white py-12 px-4">
+      <div className="text-white py-12 px-4" style={{ background: '#801C45' }}>
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center">
-              <Calculator className="w-5 h-5 text-gold" />
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'rgba(243,230,237,0.2)' }}>
+              <Calculator className="w-5 h-5" style={{ color: '#F3E6ED' }} />
             </div>
-            <span className="text-gold text-sm font-semibold uppercase tracking-wider">Free Tools</span>
+            <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: '#F3E6ED' }}>Free Tools</span>
           </div>
           <h1 className="text-4xl font-bold mb-2">Calculators &amp; Converters</h1>
-          <p className="text-white/70 text-lg mb-8">
+          <p className="text-lg mb-8" style={{ color: 'rgba(255,255,255,0.75)' }}>
             40+ free tools for unit conversion, finance, health, math, and everyday use.
           </p>
 
           {/* Search */}
           <div className="relative max-w-xl">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5" style={{ color: 'rgba(255,255,255,0.45)' }} />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search: BMI, mortgage, length, tip..."
-              className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-gold/50 text-sm"
+              className="w-full pl-12 pr-4 py-4 rounded-xl text-white outline-none text-sm"
+              style={{ background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.22)' }}
             />
             {filtered.length > 0 && (
               <div className="absolute z-20 left-0 right-0 mt-2 bg-white rounded-xl shadow-2xl border border-line overflow-hidden">
@@ -127,7 +128,7 @@ export default function CalcIndexPage() {
                     href={item.href}
                     className="flex items-center gap-3 px-5 py-3 text-sm text-ink hover:bg-paper transition border-b border-line last:border-b-0"
                   >
-                    <Calculator className="w-4 h-4 text-navy shrink-0" />
+                    <Calculator className="w-4 h-4 shrink-0" style={{ color: '#801C45' }} />
                     <div>
                       <span className="font-medium">{item.name}</span>
                       <span className="text-muted ml-2">{item.desc}</span>
@@ -147,8 +148,9 @@ export default function CalcIndexPage() {
             <button
               onClick={() => setActiveCategory(null)}
               className={`whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                activeCategory === null ? 'bg-navy text-white' : 'text-muted hover:text-ink hover:bg-paper'
+                activeCategory === null ? 'text-white' : 'text-muted hover:text-ink hover:bg-paper'
               }`}
+              style={activeCategory === null ? { background: '#801C45' } : {}}
             >
               All
             </button>
@@ -157,8 +159,9 @@ export default function CalcIndexPage() {
                 key={cat.name}
                 onClick={() => setActiveCategory(activeCategory === cat.name ? null : cat.name)}
                 className={`whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  activeCategory === cat.name ? 'bg-navy text-white' : 'text-muted hover:text-ink hover:bg-paper'
+                  activeCategory === cat.name ? 'text-white' : 'text-muted hover:text-ink hover:bg-paper'
                 }`}
+                style={activeCategory === cat.name ? { background: '#801C45' } : {}}
               >
                 {cat.icon} {cat.name}
               </button>
@@ -185,15 +188,15 @@ export default function CalcIndexPage() {
                   <Link
                     key={tool.href}
                     href={tool.href}
-                    className="group flex items-center justify-between bg-white border border-line rounded-xl px-4 py-4 hover:border-navy hover:shadow-md transition-all"
+                    className="group flex items-center justify-between bg-white border border-line rounded-xl px-4 py-4 hover:border-[#BA7396] hover:shadow-md transition-all"
                   >
                     <div className="min-w-0">
-                      <p className="font-semibold text-ink group-hover:text-navy transition-colors truncate">
+                      <p className="font-semibold text-ink group-hover:text-[#801C45] transition-colors truncate">
                         {tool.name}
                       </p>
                       <p className="text-xs text-muted truncate mt-0.5">{tool.desc}</p>
                     </div>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-muted group-hover:text-navy transition-colors ml-3" />
+                    <ArrowRight className="h-4 w-4 shrink-0 text-muted group-hover:text-[#801C45] transition-colors ml-3" />
                   </Link>
                 ))}
               </div>

@@ -151,15 +151,15 @@ function RelatedTools() {
           <Link
             key={tool.slug}
             href={`/calc/${tool.slug}`}
-            className="group flex items-center justify-between rounded-xl border border-line bg-white px-4 py-3 transition-all hover:border-navy hover:shadow-md"
+            className="group flex items-center justify-between rounded-xl border border-line bg-white px-4 py-3 transition-all hover:border-[#BA7396] hover:shadow-md"
           >
             <div className="min-w-0">
-              <p className="font-medium text-ink truncate group-hover:text-navy transition-colors">
+              <p className="font-medium text-ink truncate group-hover:text-[#801C45] transition-colors">
                 {tool.name}
               </p>
               <p className="text-sm text-muted truncate">{tool.label}</p>
             </div>
-            <ArrowRight className="h-4 w-4 flex-shrink-0 text-muted group-hover:text-navy transition-colors ml-3" />
+            <ArrowRight className="h-4 w-4 flex-shrink-0 text-muted group-hover:text-[#801C45] transition-colors ml-3" />
           </Link>
         ))}
       </div>

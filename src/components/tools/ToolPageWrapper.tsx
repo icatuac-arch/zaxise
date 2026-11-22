@@ -284,10 +284,10 @@ export default function ToolPageWrapper({
 
       {/* Related Tools — only on individual tool pages */}
       {!isIndexPage && (
-        <section className="bg-gray-50 border-t border-gray-200 py-10">
+        <section className="border-t py-10" style={{ background: '#F3E6ED', borderColor: '#E9DFE4' }}>
           <div className="max-w-5xl mx-auto px-4">
-            <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <Wrench className="w-5 h-5 text-indigo-600" />
+            <h3 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: '#29232B' }}>
+              <Wrench className="w-5 h-5" style={{ color: '#801C45' }} />
               You Might Also Like
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -295,12 +295,18 @@ export default function ToolPageWrapper({
                 <Link
                   key={tool.href}
                   href={tool.href}
-                  className="bg-white rounded-xl border border-gray-200 p-4 hover:border-indigo-300 hover:shadow-md transition-all group"
+                  className="bg-white rounded-xl p-4 hover:shadow-md transition-all group"
+                  style={{ border: '1px solid #E9DFE4' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#BA7396')}
+                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#E9DFE4')}
                 >
-                  <h4 className="font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                  <h4 className="font-semibold transition-colors" style={{ color: '#29232B' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#801C45')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#29232B')}
+                  >
                     {tool.name}
                   </h4>
-                  <p className="text-sm text-gray-500 mt-1">{tool.desc}</p>
+                  <p className="text-sm mt-1" style={{ color: '#71646C' }}>{tool.desc}</p>
                 </Link>
               ))}
             </div>
