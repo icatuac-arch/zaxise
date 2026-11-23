@@ -58,7 +58,7 @@ const STATIC_CARDS: StaticCard[] = [
     title: "Good food, anywhere.",
     desc: "Find vegetarian food, Jain preferences and Indian groceries.",
     arrowText: "Find food & groceries ↗",
-    href: "/travel/food",
+    href: "/travel/food-guide",
   },
   {
     artClass: "travel-art-family",
@@ -237,8 +237,8 @@ export default function TravelFeedWidget() {
         className="travel-quick-grid"
       >
         {[
-          { emoji: "🥗", label: "Vegetarian & Jain food", href: "/travel/food" },
-          { emoji: "🛒", label: "Indian groceries", href: "/travel/food" },
+          { emoji: "🥗", label: "Vegetarian & Jain food", href: "/travel/food-guide" },
+          { emoji: "🛒", label: "Indian groceries", href: "/travel/food-guide" },
           { emoji: "👨‍👩‍👧‍👦", label: "Family trip planner", href: "/travel/plan" },
           { emoji: "✈", label: "USA → India guide", href: "/travel/usa-to-india" },
         ].map((q) => (

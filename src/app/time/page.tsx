@@ -441,6 +441,8 @@ function HeroSection({ userTz, dateStr, weekNum }: { userTz: string | null; date
 
       <div className="relative mx-auto max-w-7xl px-4 pt-5 pb-4 sm:px-6 sm:pt-8 lg:px-8">
         <div className="flex flex-col items-center text-center">
+          {/* Section heading (SR-visible, styled subtly) */}
+          <h1 className="sr-only">DateZonely — World Clock, Astronomy &amp; Space</h1>
           {/* Live Clock */}
           <LiveClock timezone={tz} />
           <p className="mt-3 text-base text-muted">{dateStr}</p>

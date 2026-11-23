@@ -1,4 +1,11 @@
 import { Suspense } from 'react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'DateZonely — World Clock, Astronomy & Space | ZAXISE',
+  description:
+    'World clocks, timezone converter, ISS tracker, eclipse calendar, sunrise/sunset times, astronomy tools, and live space data — all in one place.',
+}
 
 export default function SectionLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -90,7 +90,7 @@ export async function GET(request: NextRequest) {
     {
       id: 'travelcard:food', entity_id: null,
       title: 'Vegetarian-Friendly Destinations', description: 'Find great food wherever you travel',
-      image_url: null, image_alt: 'Vegetarian food', href: '/travel/food',
+      image_url: null, image_alt: 'Vegetarian food', href: '/travel/food-guide',
       category: 'guide', tags: ['food', 'vegetarian'], is_sponsored: false,
     },
   ]
