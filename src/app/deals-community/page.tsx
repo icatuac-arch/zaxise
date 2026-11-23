@@ -121,7 +121,7 @@ export default function HomePage() {
             {categories.map((cat) => (
               <Link
                 key={cat.slug}
-                href={cat.slug ? `/deals/${cat.slug}` : '/'}
+                href={cat.slug ? `/deals-community/category/${cat.slug}` : '/deals-community'}
                 className={`flex items-center gap-1.5 px-4 py-2 border rounded-full text-sm font-semibold transition-all whitespace-nowrap shrink-0 hover:shadow-sm hover:scale-[1.03] ${getCategoryPillStyle(cat.slug)}`}
               >
                 <span>{cat.emoji}</span>
@@ -204,7 +204,7 @@ export default function HomePage() {
 
                 <div className="flex gap-3 mt-6">
                   <Link
-                    href={`/deal/${featuredDeal.id}`}
+                    href={`/deals-community/deal/${featuredDeal.id}`}
                     className="flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-colors text-sm shadow-lg"
                   >
                     View Deal <ExternalLink className="w-4 h-4" />
@@ -258,7 +258,7 @@ export default function HomePage() {
             {stores.map((store) => (
               <Link
                 key={store.name}
-                href={`/store/${store.name.toLowerCase().replace(/\s+/g, '-')}`}
+                href={`/deals-community/store/${store.name.toLowerCase().replace(/\s+/g, '-')}`}
                 className="flex flex-col items-center gap-2 px-6 py-4 bg-white border border-card-border rounded-xl hover:border-primary/30 hover:shadow-md transition-all shrink-0 min-w-[120px] group"
               >
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold text-white shadow-md ${getStoreClass(store.name)}`}>

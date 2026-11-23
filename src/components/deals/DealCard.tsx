@@ -116,6 +116,21 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
           </p>
         )}
 
+        {/* Shipping & delivered cost */}
+        {deal.shipping_cost != null && deal.shipping_cost > 0 && (
+          <p className="mt-1 text-xs text-[#71646C]">
+            🚚 +{formatPrice(deal.shipping_cost)} shipping
+          </p>
+        )}
+        {deal.price_total != null && (
+          <p className="mt-1 text-xs font-semibold text-[#29232B]">
+            Delivered: {formatPrice(deal.price_total)}
+            {deal.shipping_note ? (
+              <span className="ml-1 font-normal text-[#71646C]">({deal.shipping_note})</span>
+            ) : null}
+          </p>
+        )}
+
         {/* Price context line */}
         {deal.price_90d_low && deal.price_90d_low > 0 && (
           <p className="mt-1 text-[11px] text-[#71646C]">

@@ -36,6 +36,9 @@ interface DealPayload {
   discount_pct: number
   price_90d_low: number | null
   is_historical_low: boolean
+  shipping_cost?: number | null
+  shipping_note?: string | null
+  price_total?: number | null
   in_stock: boolean
   stock_note: string
   first_posted_at: string
@@ -161,6 +164,9 @@ export async function PUT(request: NextRequest) {
     discount_pct: deal.discount_pct || 0,
     price_90d_low: deal.price_90d_low,
     is_historical_low: deal.is_historical_low || false,
+    shipping_cost: deal.shipping_cost ?? null,
+    shipping_note: deal.shipping_note ?? null,
+    price_total: deal.price_total ?? null,
     in_stock: deal.in_stock !== false,
     stock_note: deal.stock_note || '',
     first_posted_at: deal.first_posted_at || null,

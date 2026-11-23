@@ -25,7 +25,7 @@ const FACTS: Fact[] = HERO_FACTS.map((text, i) => ({
   id: `fact-${i + 1}`,
   category: 'general',
   text,
-  source: { name: 'WorldTourly', url: '' },
+  source: { name: 'ZAXISE', url: '' },
   tags: ['general'],
   difficulty: 'easy',
   publishedAt: new Date().toISOString(),

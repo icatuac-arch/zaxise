@@ -125,7 +125,7 @@ export default function DealCard({ deal }: { deal: Deal }) {
         </span>
 
         {/* Title */}
-        <Link href={`/deal/${deal.id}`}>
+        <Link href={`/deals-community/deal/${deal.id}`}>
           <h3 className="text-text-heading font-bold text-sm mt-1 line-clamp-2 leading-snug hover:text-primary transition-colors">
             {deal.title}
           </h3>
@@ -185,7 +185,7 @@ export default function DealCard({ deal }: { deal: Deal }) {
 
           {/* Get Deal Button */}
           <Link
-            href={`/deal/${deal.id}`}
+            href={`/deals-community/deal/${deal.id}`}
             className="flex items-center gap-1 bg-primary hover:bg-primary-hover text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors"
           >
             View Deal <ExternalLink className="w-3 h-3" />

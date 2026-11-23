@@ -253,23 +253,122 @@ select:focus-visible {
 .calc-section .focus\:ring-gold\/50:focus { --tw-ring-color: rgba(128,28,69,0.3) !important; }
 .calc-section .group-hover\:text-navy { color: #801C45 !important; }
 
-/* ── Theme unification — social section ──────────────────────────────────── */
+/* ── Theme unification — social section (dark bg, burgundy accents) ────────── */
 .social-section {
-  background: #FAF8F9 !important;
-  color: #29232B !important;
+  background: #1a1225 !important;
+  color: #E2E8F0 !important;
 }
-.social-section [class*="bg-\\[#0F172A\\]"],
-.social-section [class*="bg-slate-900"] { background: #FAF8F9 !important; }
-.social-section [class*="text-slate-200"],
-.social-section [class*="text-\\[#E2E8F0\\]"] { color: #29232B !important; }
+
+/* ── Missing utility classes (originally from socialmarketly CSS) ── */
+.social-section .gradient-text {
+  background: linear-gradient(135deg, #BA7396, #801C45);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.social-section .gradient-text-violet {
+  background: linear-gradient(135deg, #BA7396, #9E3D63);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.social-section .gradient-text-cyan {
+  background: linear-gradient(135deg, #E8B4CC, #BA7396);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.social-section .feature-card {
+  background: rgba(26, 18, 37, 0.6);
+  border: 1px solid #3d2a3a;
+  border-radius: 1rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.social-section .feature-card:hover {
+  border-color: #801C45;
+  transform: translateY(-2px);
+}
+.social-section .bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+.social-section .btn-amber {
+  background: linear-gradient(135deg, #801C45, #9E3D63);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.social-section .btn-amber:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.social-section .btn-secondary {
+  background: rgba(128, 28, 69, 0.15);
+  color: #E2E8F0;
+  border: 1px solid #3d2a3a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.social-section .btn-secondary:hover {
+  border-color: #801C45;
+}
+.social-section .glass {
+  background: rgba(26, 18, 37, 0.7) !important;
+  border: 1px solid #3d2a3a !important;
+  backdrop-filter: blur(12px);
+}
+.social-section .glass-strong {
+  background: rgba(26, 18, 37, 0.85) !important;
+  border: 1px solid #3d2a3a !important;
+  backdrop-filter: blur(16px);
+}
+.social-section .section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3d2a3a, transparent);
+}
+
+/* ── Accent swap: violet/purple → burgundy ── */
 .social-section [class*="bg-violet"],
 .social-section [class*="bg-purple"] { background-color: #801C45 !important; }
 .social-section [class*="text-violet"],
-.social-section [class*="text-purple"] { color: #801C45 !important; }
-.social-section [class*="text-pink"] { color: #9E3D63 !important; }
-.social-section [class*="border-slate"] { border-color: #E9DFE4 !important; }
-.social-section .glass,
-.social-section .glass-strong { background: rgba(255,255,255,0.8) !important; border-color: #E9DFE4 !important; }
+.social-section [class*="text-purple"] { color: #BA7396 !important; }
+.social-section [class*="text-pink-4"],
+.social-section [class*="text-pink-5"] { color: #BA7396 !important; }
+.social-section [class*="text-purple-3"] { color: #D4A0B9 !important; }
+
+/* Gradients */
+.social-section [class*="from-violet"] { --tw-gradient-from: #801C45 !important; }
+.social-section [class*="to-violet"] { --tw-gradient-to: #9E3D63 !important; }
+.social-section [class*="from-purple"] { --tw-gradient-from: #9E3D63 !important; }
+.social-section [class*="to-purple"] { --tw-gradient-to: #631437 !important; }
+.social-section [class*="via-pink"] { --tw-gradient-via: #9E3D63 !important; }
+.social-section [class*="from-pink"] { --tw-gradient-from: #9E3D63 !important; }
+.social-section [class*="to-pink"],
+.social-section [class*="to-rose"] { --tw-gradient-to: #BA7396 !important; }
+.social-section [class*="from-indigo"] { --tw-gradient-from: #631437 !important; }
+.social-section [class*="to-indigo"] { --tw-gradient-to: #801C45 !important; }
+
+/* Borders */
+.social-section [class*="border-violet"] { border-color: #801C45 !important; }
+.social-section [class*="border-purple"] { border-color: #9E3D63 !important; }
+.social-section [class*="border-slate-700"],
+.social-section [class*="border-slate-800"] { border-color: #3d2a3a !important; }
+.social-section [class*="hover:border-violet"]:hover { border-color: #BA7396 !important; }
+
+/* Surfaces — keep dark palette */
+.social-section [class*="bg-slate-800"] { background-color: rgba(26, 18, 37, 0.5) !important; }
+.social-section [class*="bg-slate-900"] { background-color: #1a1225 !important; }
+.social-section [class*="hover:bg-slate-800"]:hover { background-color: rgba(26, 18, 37, 0.7) !important; }
+
+/* Shadows — burgundy tint */
+.social-section [class*="shadow-violet"] { --tw-shadow-color: rgba(128, 28, 69, 0.15) !important; }
+.social-section [class*="shadow-amber"] { --tw-shadow-color: rgba(128, 28, 69, 0.2) !important; }
 
 /* ── Theme unification — rent-or-buy section ─────────────────────────────── */
 .rob-section {

@@ -36,6 +36,9 @@ CREATE TABLE IF NOT EXISTS tech_deals (
   discount_pct NUMERIC(5,1) NOT NULL DEFAULT 0,
   price_90d_low NUMERIC(10,2),
   is_historical_low BOOLEAN NOT NULL DEFAULT false,
+  shipping_cost NUMERIC(10,2),
+  shipping_note TEXT,
+  price_total NUMERIC(10,2),
 
   -- Stock
   in_stock BOOLEAN NOT NULL DEFAULT true,

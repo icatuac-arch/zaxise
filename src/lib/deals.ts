@@ -33,6 +33,9 @@ export interface TechDeal {
   discount_pct: number
   price_90d_low: number | null
   is_historical_low: boolean
+  shipping_cost: number | null
+  shipping_note: string | null
+  price_total: number | null
   in_stock: boolean
   stock_note: string
   first_posted_at: string | null
