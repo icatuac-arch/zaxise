@@ -116,6 +116,29 @@ export function formatVerifiedDate(dateStr: string | null): string {
   })
 }
 
+/** Short verified date — "Nov 23" (no year, no time) */
+export function formatVerifiedShort(dateStr: string | null): string {
+  if (!dateStr) return ''
+  const date = new Date(dateStr + (dateStr.includes('T') ? '' : 'T12:00:00'))
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+}
+
+/** Compute deal age in days from first_posted_at vs feedDate (both YYYY-MM-DD strings) */
+export function getDealAgeDays(firstPostedAt: string | null, feedDate: string): number {
+  if (!firstPostedAt || !feedDate) return 0
+  const posted = new Date(firstPostedAt + 'T12:00:00')
+  const feed = new Date(feedDate + 'T12:00:00')
+  const diffMs = feed.getTime() - posted.getTime()
+  return Math.max(0, Math.round(diffMs / (1000 * 60 * 60 * 24)))
+}
+
+/** Human-readable age label: "NEW TODAY", "Day 2", "Day 14", etc. */
+export function getAgeLabel(firstPostedAt: string | null, feedDate: string): string {
+  const days = getDealAgeDays(firstPostedAt, feedDate)
+  if (days === 0) return 'NEW TODAY'
+  return `Day ${days + 1}`
+}
+
 // Category icons (emoji for now, can swap to lucide later)
 export const CATEGORY_ICONS: Record<string, string> = {
   Phones: '📱',

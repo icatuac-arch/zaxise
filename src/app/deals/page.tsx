@@ -14,28 +14,31 @@ async function getLatestDeals(): Promise<{
   deals: TechDeal[];
   feedDate: string;
   lastVerified: string | null;
+  previousDeals: TechDeal[];
+  previousFeedDate: string | null;
 }> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!supabaseUrl || !supabaseKey) {
-    return { deals: [], feedDate: "", lastVerified: null };
+    return { deals: [], feedDate: "", lastVerified: null, previousDeals: [], previousFeedDate: null };
   }
 
   const supabase = createClient(supabaseUrl, supabaseKey);
 
-  const { data: feedData } = await supabase
+  // Fetch the two most recent feed dates for the "gone" strip
+  const { data: feedDates } = await supabase
     .from("tech_deals_feeds")
     .select("feed_date")
     .order("feed_date", { ascending: false })
-    .limit(1)
-    .maybeSingle();
+    .limit(2);
 
-  if (!feedData) {
-    return { deals: [], feedDate: "", lastVerified: null };
+  if (!feedDates || feedDates.length === 0) {
+    return { deals: [], feedDate: "", lastVerified: null, previousDeals: [], previousFeedDate: null };
   }
 
-  const feedDate = feedData.feed_date;
+  const feedDate = feedDates[0].feed_date;
+  const previousFeedDate = feedDates.length > 1 ? feedDates[1].feed_date : null;
 
   const { data: deals } = await supabase
     .from("tech_deals")
@@ -43,8 +46,20 @@ async function getLatestDeals(): Promise<{
     .eq("feed_date", feedDate)
     .order("tier", { ascending: true });
 
+  // Fetch previous day's deals (only need id + category for diff)
+  let previousDeals: TechDeal[] = [];
+  if (previousFeedDate) {
+    const { data: prevData } = await supabase
+      .from("tech_deals")
+      .select("id,product_name,category,feed_date,brand,model,retailer,product_url,image_url,price_current,price_list,price_previous,discount_pct,price_90d_low,is_historical_low,shipping_cost,shipping_note,price_total,in_stock,stock_note,first_posted_at,last_verified_at,deal_note,tier,at_or_below_trigger,source_page")
+      .eq("feed_date", previousFeedDate);
+    if (prevData) {
+      previousDeals = prevData as TechDeal[];
+    }
+  }
+
   if (!deals || deals.length === 0) {
-    return { deals: [], feedDate, lastVerified: null };
+    return { deals: [], feedDate, lastVerified: null, previousDeals: [], previousFeedDate: null };
   }
 
   const lastVerified = deals.reduce<string | null>((latest, deal) => {
@@ -57,11 +72,13 @@ async function getLatestDeals(): Promise<{
     deals: deals as TechDeal[],
     feedDate,
     lastVerified,
+    previousDeals,
+    previousFeedDate,
   };
 }
 
 async function DealsContent() {
-  const { deals, feedDate, lastVerified } = await getLatestDeals();
+  const { deals, feedDate, lastVerified, previousDeals, previousFeedDate } = await getLatestDeals();
 
   if (deals.length === 0) {
     return (
@@ -86,6 +103,8 @@ async function DealsContent() {
         deals={deals}
         feedDate={feedDate}
         lastVerified={lastVerified}
+        previousDeals={previousDeals}
+        previousFeedDate={previousFeedDate}
       />
     </div>
   );

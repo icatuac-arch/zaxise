@@ -17,11 +17,15 @@ import {
   isCarrierDeal,
   formatPrice,
   formatDate,
+  getAgeLabel,
+  getDealAgeDays,
+  formatVerifiedShort,
 } from "@/lib/deals";
 
 interface DealCardProps {
   deal: TechDeal;
   isNew?: boolean;
+  feedDate: string;
 }
 
 function getPriceVerdict(deal: TechDeal): { label: string; color: string } | null {
@@ -35,11 +39,16 @@ function getPriceVerdict(deal: TechDeal): { label: string; color: string } | nul
   return null;
 }
 
-export default function DealCard({ deal, isNew }: DealCardProps) {
+export default function DealCard({ deal, isNew, feedDate }: DealCardProps) {
   const [expanded, setExpanded] = useState(false);
   const carrier = isCarrierDeal(deal);
   const savings = deal.price_list - deal.price_current;
   const verdict = getPriceVerdict(deal);
+  const ageLabel = getAgeLabel(deal.first_posted_at, feedDate);
+  const ageDays = getDealAgeDays(deal.first_posted_at, feedDate);
+  const isNewToday = ageDays === 0;
+  const isLastChance = ageDays >= 14;
+  const verifiedShort = formatVerifiedShort(deal.last_verified_at);
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#E9DFE4] bg-white transition-all hover:border-[#801C45]/40 hover:shadow-xl hover:shadow-[#801C45]/10">
@@ -54,9 +63,14 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
 
         {/* Badges */}
         <div className="absolute left-3 top-3 flex flex-col gap-1.5">
-          {isNew && (
+          {isNewToday && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#801C45] px-2.5 py-1 text-xs font-bold text-white shadow-lg">
+              NEW TODAY
+            </span>
+          )}
+          {isLastChance && (
             <span className="inline-flex items-center gap-1 rounded-full bg-amber-500 px-2.5 py-1 text-xs font-bold text-white shadow-lg">
-              NEW
+              LAST CHANCE
             </span>
           )}
           {verdict && (
@@ -148,12 +162,15 @@ export default function DealCard({ deal, isNew }: DealCardProps) {
           </p>
         )}
 
-        {/* Meta */}
+        {/* Age + Verified meta */}
         <div className="mt-3 flex items-center gap-3 text-xs text-muted">
           {deal.first_posted_at && (
             <span className="flex items-center gap-1">
               <Clock className="h-3 w-3" />
-              Posted {formatDate(deal.first_posted_at)}
+              {ageLabel}
+              {verifiedShort && (
+                <span className="text-[#71646C]"> · Verified {verifiedShort}</span>
+              )}
             </span>
           )}
           {deal.in_stock && (
