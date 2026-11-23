@@ -67,8 +67,30 @@ export default function GlobalNav() {
           )}
         </nav>
 
-        {/* Mobile: just show Home link */}
-        <div className="flex flex-1 items-center justify-end gap-3 md:hidden">
+        {/* Search link */}
+        <Link
+          href="/search"
+          className="hidden md:flex shrink-0 items-center gap-1.5 rounded-lg px-3 py-1.5 text-[12px] font-[650] transition-colors hover:text-[#801C45]"
+          style={{
+            background: "#F3E6ED",
+            color: pathname.startsWith("/search") ? "#801C45" : "#71646C",
+          }}
+          aria-label="Search the site"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Search
+        </Link>
+
+        {/* Mobile: Home + Search */}
+        <div className="flex flex-1 items-center justify-end gap-2 md:hidden">
+          <Link
+            href="/search"
+            className="rounded-lg px-3 py-1.5 text-[12px] font-[700] flex items-center gap-1"
+            style={{ background: "#F3E6ED", color: "#801C45" }}
+            aria-label="Search"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </Link>
           <Link
             href="/"
             className="rounded-lg px-3 py-1.5 text-[12px] font-[700]"

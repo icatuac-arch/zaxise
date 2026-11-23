@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 interface Props {
   searchQuery: string;
@@ -19,6 +21,20 @@ const NAV_LINKS = [
 ];
 
 export default function SiteHeader({ searchQuery, onSearch }: Props) {
+  const router = useRouter();
+  const [localQuery, setLocalQuery] = useState(searchQuery);
+
+  const handleChange = (value: string) => {
+    setLocalQuery(value);
+    onSearch(value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && localQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(localQuery.trim())}`);
+    }
+  };
+
   return (
     <header
       className="sticky top-0 z-10 border-b border-[#E9DFE4] bg-white/95 backdrop-blur-[18px]"
@@ -59,10 +75,11 @@ export default function SiteHeader({ searchQuery, onSearch }: Props) {
         <input
           type="text"
           placeholder="⌕  Find a tool or service"
-          value={searchQuery}
-          onChange={(e) => onSearch(e.target.value)}
+          value={localQuery}
+          onChange={(e) => handleChange(e.target.value)}
+          onKeyDown={handleKeyDown}
           className="min-w-0 w-[220px] rounded-[12px] border border-transparent bg-[#F3E6ED] px-3 py-[9px] text-sm outline-none focus:outline-[2px] focus:outline-[#BA7396]"
-          aria-label="Search services"
+          aria-label="Search services — press Enter to search"
         />
       </div>
     </header>

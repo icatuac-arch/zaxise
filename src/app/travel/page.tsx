@@ -13,12 +13,12 @@ function getCityCount(slug: string): number {
 }
 
 const featuredCountries = [
-  { name: "Japan", slug: "japan", flag: "🇯🇵", tagline: "Where tradition meets tomorrow", cities: getCityCount("japan"), image: "photo-1528360983277-13d401cdc186" },
-  { name: "Italy", slug: "italy", flag: "🇮🇹", tagline: "Art, history & la dolce vita", cities: getCityCount("italy"), image: "photo-1552832230-c0197dd311b5" },
-  { name: "France", slug: "france", flag: "🇫🇷", tagline: "Romance, culture & cuisine", cities: getCityCount("france"), image: "photo-1502602898657-3e91760cbb34" },
-  { name: "Thailand", slug: "thailand", flag: "🇹🇭", tagline: "The land of smiles", cities: getCityCount("thailand"), image: "photo-1528181304800-259b08848526" },
-  { name: "USA", slug: "united-states", flag: "🇺🇸", tagline: "Coast to coast adventures", cities: getCityCount("united-states"), image: "photo-1501594907352-04cda38ebc29" },
-  { name: "India", slug: "india", flag: "🇮🇳", tagline: "A kaleidoscope of experiences", cities: getCityCount("india"), image: "photo-1564507592333-c60657eea523" },
+  { name: "Japan", slug: "japan", flag: "🇯🇵", tagline: "Where tradition meets tomorrow", cities: getCityCount("japan"), image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Fushimi_Inari-taisha_in_Kyoto-1.jpg/1280px-Fushimi_Inari-taisha_in_Kyoto-1.jpg" },
+  { name: "Italy", slug: "italy", flag: "🇮🇹", tagline: "Art, history & la dolce vita", cities: getCityCount("italy"), image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Colosseum_in_Rome-April_2007-1-_copie_2B.jpg/1280px-Colosseum_in_Rome-April_2007-1-_copie_2B.jpg" },
+  { name: "France", slug: "france", flag: "🇫🇷", tagline: "Romance, culture & cuisine", cities: getCityCount("france"), image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg/800px-Tour_Eiffel_Wikimedia_Commons.jpg" },
+  { name: "Thailand", slug: "thailand", flag: "🇹🇭", tagline: "The land of smiles", cities: getCityCount("thailand"), image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Wat_Arun%2C_Bangkok%2C_view_from_Chao_Phraya_river.jpg/1280px-Wat_Arun%2C_Bangkok%2C_view_from_Chao_Phraya_river.jpg" },
+  { name: "USA", slug: "united-states", flag: "🇺🇸", tagline: "Coast to coast adventures", cities: getCityCount("united-states"), image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/New_york_times_square-terabass.jpg/1280px-New_york_times_square-terabass.jpg" },
+  { name: "India", slug: "india", flag: "🇮🇳", tagline: "A kaleidoscope of experiences", cities: getCityCount("india"), image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Taj_Mahal%2C_Agra%2C_India_edit3.jpg/1280px-Taj_Mahal%2C_Agra%2C_India_edit3.jpg" },
 ];
 
 const toolsAndFeatures = [
@@ -73,7 +73,7 @@ export default function Home() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`https://images.unsplash.com/${c.image}?w=600&h=400&fit=crop`}
+                  src={c.image}
                   alt={c.name}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
