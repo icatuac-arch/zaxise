@@ -11,6 +11,7 @@ import HousingCalcPane from "./HousingCalcPane";
 import QuickTools from "./QuickTools";
 import TravelFeedWidget from "./TravelFeedWidget";
 import DiscoverSection from "./DiscoverSection";
+import InternshipsWidget from "./InternshipsWidget";
 
 export default function ZaxiseHome() {
   const [currentDate, setCurrentDate] = useState("");
@@ -62,6 +63,9 @@ export default function ZaxiseHome() {
 
         {/* 3.5 Your Next Escape — travel feed (self-contained margins) */}
         <TravelFeedWidget />
+
+        {/* 3.6 Internship opportunities */}
+        <InternshipsWidget />
 
         {/* 4. Explore ZAXISE ecosystem tiles */}
         <div className="mt-[34px] mb-[14px] flex items-end justify-between gap-3">
