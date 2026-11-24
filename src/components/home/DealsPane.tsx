@@ -15,6 +15,8 @@ interface Deal {
   price_list: number;
   discount_pct: number;
   is_historical_low: boolean;
+  first_posted_at: string | null;
+  last_verified_at: string | null;
 }
 
 const CATEGORY_BG: Record<string, string> = {
@@ -35,12 +37,16 @@ function formatPrice(n: number): string {
 
 export default function DealsPane() {
   const [deals, setDeals] = useState<Deal[]>([]);
+  const [feedDate, setFeedDate] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/portal/top-deals")
       .then((r) => r.json())
-      .then((data) => setDeals(data.deals || []))
+      .then((data) => {
+        setDeals(data.deals || []);
+        setFeedDate(data.feed_date || "");
+      })
       .catch(() => setDeals([]))
       .finally(() => setLoading(false));
   }, []);
@@ -93,7 +99,10 @@ export default function DealsPane() {
         </div>
       ) : (
         <div>
-          {deals.slice(0, 4).map((deal) => (
+          {deals.slice(0, 4).map((deal) => {
+            const isNew = feedDate && deal.first_posted_at === feedDate;
+            const isLowest = deal.is_historical_low;
+            return (
             <a
               key={deal.id}
               href={deal.product_url}
@@ -102,7 +111,7 @@ export default function DealsPane() {
               className="flex items-center gap-3 py-[11px] border-b border-[#E9DFE4] min-h-[76px] transition-colors hover:bg-[#FAF4F7] -mx-1 px-1 rounded-lg"
             >
               <div
-                className="w-[60px] h-[60px] rounded-[14px] grid place-items-center shrink-0 overflow-hidden"
+                className="relative w-[60px] h-[60px] rounded-[14px] grid place-items-center shrink-0 overflow-hidden"
                 style={{ background: CATEGORY_BG[deal.category] || "#eee9ff" }}
               >
                 {deal.image_url ? (
@@ -115,11 +124,19 @@ export default function DealsPane() {
                 ) : (
                   <span className="text-[20px]">🏷️</span>
                 )}
+                {isNew && (
+                  <span className="absolute top-0 left-0 bg-[#801C45] text-white text-[8px] font-[800] px-1 py-[1px] rounded-br-md">NEW</span>
+                )}
               </div>
               <div className="min-w-0 flex-1">
-                <b className="block text-[14px] leading-snug line-clamp-1">
-                  {deal.product_name}
-                </b>
+                <div className="flex items-center gap-1.5">
+                  <b className="block text-[14px] leading-snug line-clamp-1">
+                    {deal.product_name}
+                  </b>
+                  {isLowest && (
+                    <span className="shrink-0 text-[8px] font-[800] text-[#801C45] bg-[#F3E6ED] px-1 py-[1px] rounded">LOWEST</span>
+                  )}
+                </div>
                 <small className="block text-[12px] text-[#77758a] mt-[3px]">
                   {deal.retailer} · {deal.category}
                 </small>
@@ -141,7 +158,8 @@ export default function DealsPane() {
                 </span>
               )}
             </a>
-          ))}
+            );
+          })}
         </div>
       )}
 

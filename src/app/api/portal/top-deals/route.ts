@@ -26,11 +26,11 @@ export async function GET() {
   // Get top 6 deals by tier
   const { data: deals } = await supabase
     .from('tech_deals')
-    .select('id, product_name, brand, retailer, category, product_url, image_url, price_current, price_list, discount_pct, is_historical_low, tier')
+    .select('id, product_name, brand, retailer, category, product_url, image_url, price_current, price_list, discount_pct, is_historical_low, first_posted_at, last_verified_at, tier')
     .eq('feed_date', feedData.feed_date)
     .order('tier', { ascending: true })
     .order('discount_pct', { ascending: false })
     .limit(6)
 
-  return NextResponse.json({ deals: deals || [] })
+  return NextResponse.json({ deals: deals || [], feed_date: feedData.feed_date })
 }
