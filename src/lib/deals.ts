@@ -139,6 +139,153 @@ export function getAgeLabel(firstPostedAt: string | null, feedDate: string): str
   return `Day ${days + 1}`
 }
 
+// ── Buy or Wait verdict system ──────────────────────────────────────────
+
+export interface DealVerdict {
+  type: 'new_low' | 'at_low' | 'wait' | 'price_rose' | null
+  color: 'green' | 'amber' | 'red'
+  label: string
+  icon: string
+}
+
+/**
+ * Compute a "Buy or Wait?" verdict for a deal.
+ * Rules applied in priority order — first match wins.
+ */
+export function getVerdict(deal: TechDeal, _feedDate: string): DealVerdict | null {
+  // Skip carrier-terms / free-with-plan phones
+  if (deal.price_current === 0) return null
+
+  // 1. PRICE ROSE (red)
+  if (deal.price_previous > 0 && deal.price_current > deal.price_previous) {
+    const diff = deal.price_current - deal.price_previous
+    return {
+      type: 'price_rose',
+      color: 'red',
+      label: `\u25B2 Rose ${formatPrice(diff)} since yesterday \u2014 was ${formatPrice(deal.price_previous)}`,
+      icon: '\u26A0\uFE0F',
+    }
+  }
+
+  // 2. WAIT — WAS CHEAPER (amber)
+  if (
+    deal.price_90d_low != null &&
+    deal.price_90d_low > 0 &&
+    deal.price_current > deal.price_90d_low
+  ) {
+    const diff = deal.price_current - deal.price_90d_low
+    const pct = diff / deal.price_90d_low
+    if (pct >= 0.01) {
+      return {
+        type: 'wait',
+        color: 'amber',
+        label: `Was ${formatPrice(deal.price_90d_low)} in our tracking \u2014 ${formatPrice(diff)} less than today`,
+        icon: '\u23F3',
+      }
+    }
+  }
+
+  // 3. NEW LOW (green, strongest)
+  if (deal.is_historical_low) {
+    return {
+      type: 'new_low',
+      color: 'green',
+      label: 'Lowest price we\u2019ve ever tracked',
+      icon: '\uD83C\uDF1F',
+    }
+  }
+
+  // 4. AT ITS LOW — BUY (green)
+  if (
+    deal.price_90d_low != null &&
+    deal.price_90d_low > 0 &&
+    deal.price_current <= deal.price_90d_low * 1.01
+  ) {
+    return {
+      type: 'at_low',
+      color: 'green',
+      label: 'At its tracked low \u2014 buy with confidence',
+      icon: '\u2705',
+    }
+  }
+
+  return null
+}
+
+/** Count verdicts across a list of deals (for the BF strip) */
+export function countVerdicts(deals: TechDeal[], feedDate: string) {
+  let newLow = 0
+  let atLow = 0
+  let wait = 0
+  let priceRose = 0
+
+  for (const deal of deals) {
+    const v = getVerdict(deal, feedDate)
+    if (!v) continue
+    switch (v.type) {
+      case 'new_low': newLow++; break
+      case 'at_low': atLow++; break
+      case 'wait': wait++; break
+      case 'price_rose': priceRose++; break
+    }
+  }
+
+  return { newLow, atLow, wait, priceRose, total: deals.length }
+}
+
+// ── Watch This Deal ─────────────────────────────────────────────
+
+export interface WatchedDeal {
+  product_name: string
+  price_at_watch: number
+  price_90d_low: number | null
+  watched_at: string
+}
+
+export type WatchedDealsMap = Record<string, WatchedDeal>
+
+const WATCHED_KEY = 'zx-watched-deals'
+const HINT_KEY = 'zx-watch-hint-shown'
+
+export function getWatchedDeals(): WatchedDealsMap {
+  if (typeof window === 'undefined') return {}
+  try {
+    const raw = localStorage.getItem(WATCHED_KEY)
+    return raw ? JSON.parse(raw) : {}
+  } catch {
+    return {}
+  }
+}
+
+export function setWatchedDeals(map: WatchedDealsMap): void {
+  localStorage.setItem(WATCHED_KEY, JSON.stringify(map))
+}
+
+export function toggleWatchDeal(deal: TechDeal, currentMap: WatchedDealsMap): WatchedDealsMap {
+  const next = { ...currentMap }
+  if (next[deal.product_name]) {
+    delete next[deal.product_name]
+  } else {
+    next[deal.product_name] = {
+      product_name: deal.product_name,
+      price_at_watch: deal.price_current,
+      price_90d_low: deal.price_90d_low ?? null,
+      watched_at: new Date().toISOString().slice(0, 10),
+    }
+  }
+  setWatchedDeals(next)
+  return next
+}
+
+export function isWatchHintShown(): boolean {
+  if (typeof window === 'undefined') return true
+  return localStorage.getItem(HINT_KEY) === '1'
+}
+
+export function markWatchHintShown(): void {
+  localStorage.setItem(HINT_KEY, '1')
+}
+
 // Category icons (emoji for now, can swap to lucide later)
 export const CATEGORY_ICONS: Record<string, string> = {
   Phones: '📱',

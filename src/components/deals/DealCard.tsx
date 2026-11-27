@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { proxyImg } from "@/lib/imgProxy";
 import {
@@ -11,6 +11,8 @@ import {
   Clock,
   ShieldCheck,
   AlertTriangle,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import {
   type TechDeal,
@@ -20,12 +22,17 @@ import {
   getAgeLabel,
   getDealAgeDays,
   formatVerifiedShort,
+  getVerdict,
+  isWatchHintShown,
+  markWatchHintShown,
 } from "@/lib/deals";
 
 interface DealCardProps {
   deal: TechDeal;
   isNew?: boolean;
   feedDate: string;
+  isWatched?: boolean;
+  onWatch?: (deal: TechDeal) => void;
 }
 
 function getPriceVerdict(deal: TechDeal): { label: string; color: string } | null {
@@ -39,11 +46,14 @@ function getPriceVerdict(deal: TechDeal): { label: string; color: string } | nul
   return null;
 }
 
-export default function DealCard({ deal, isNew, feedDate }: DealCardProps) {
+export default function DealCard({ deal, isNew, feedDate, isWatched, onWatch }: DealCardProps) {
   const [expanded, setExpanded] = useState(false);
+  const [showHint, setShowHint] = useState(false);
+  const hintTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const carrier = isCarrierDeal(deal);
   const savings = deal.price_list - deal.price_current;
   const verdict = getPriceVerdict(deal);
+  const buyOrWait = getVerdict(deal, feedDate);
   const ageLabel = getAgeLabel(deal.first_posted_at, feedDate);
   const ageDays = getDealAgeDays(deal.first_posted_at, feedDate);
   const isNewToday = ageDays === 0;
@@ -93,6 +103,64 @@ export default function DealCard({ deal, isNew, feedDate }: DealCardProps) {
             -{Math.round(deal.discount_pct)}%
           </div>
         )}
+
+        {/* Watch button */}
+        {onWatch && (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onWatch(deal);
+            }}
+            onMouseEnter={() => {
+              if (!isWatchHintShown()) {
+                setShowHint(true);
+                markWatchHintShown();
+                hintTimeout.current = setTimeout(() => setShowHint(false), 3000);
+              }
+            }}
+            onTouchStart={() => {
+              if (!isWatchHintShown()) {
+                setShowHint(true);
+                markWatchHintShown();
+                hintTimeout.current = setTimeout(() => setShowHint(false), 3000);
+              }
+            }}
+            className={`absolute right-3 bottom-3 z-10 flex items-center gap-1 rounded-full px-2.5 py-1.5 text-[11px] font-semibold shadow-md transition-all ${
+              isWatched
+                ? "bg-[#801C45] text-white"
+                : "bg-white/90 text-[#801C45] hover:bg-[#801C45]/10 backdrop-blur-sm"
+            }`}
+            title={isWatched ? "Stop watching" : "Watch this deal"}
+          >
+            {isWatched ? (
+              <>
+                <Eye className="h-3.5 w-3.5" />
+                Watching
+              </>
+            ) : (
+              <>
+                <EyeOff className="h-3.5 w-3.5" />
+                Watch
+              </>
+            )}
+          </button>
+        )}
+
+        {/* Watch hint tooltip */}
+        <AnimatePresence>
+          {showHint && (
+            <motion.div
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 4 }}
+              className="absolute right-3 bottom-12 z-20 rounded-lg bg-[#29232B] px-3 py-2 text-[11px] text-white shadow-lg max-w-[180px] leading-snug"
+            >
+              Watch it — we&apos;ll flag it here if the price drops.
+              <div className="absolute -bottom-1 right-4 h-2 w-2 rotate-45 bg-[#29232B]" />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Content */}
@@ -153,6 +221,22 @@ export default function DealCard({ deal, isNew, feedDate }: DealCardProps) {
               <span className="text-emerald-400"> — today&apos;s price is the lowest we&apos;ve seen</span>
             )}
           </p>
+        )}
+
+        {/* Buy or Wait verdict */}
+        {buyOrWait && (
+          <div
+            className={`mt-2 flex items-start gap-1.5 rounded-lg px-3 py-2 text-xs font-medium leading-snug ${
+              buyOrWait.color === 'green'
+                ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                : buyOrWait.color === 'amber'
+                ? 'bg-amber-50 text-amber-700 border border-amber-200'
+                : 'bg-red-50 text-red-700 border border-red-200'
+            }`}
+          >
+            <span className="flex-shrink-0 mt-px">{buyOrWait.icon}</span>
+            <span>{buyOrWait.label}</span>
+          </div>
         )}
 
         {/* Carrier warning */}
