@@ -44,7 +44,8 @@ async function getLatestDeals(): Promise<{
     .from("tech_deals")
     .select("*")
     .eq("feed_date", feedDate)
-    .order("tier", { ascending: true });
+    .order("first_posted_at", { ascending: false })
+    .order("discount_pct", { ascending: false });
 
   // Fetch previous day's deals (only need id + category for diff)
   let previousDeals: TechDeal[] = [];
